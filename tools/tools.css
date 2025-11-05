@@ -281,8 +281,9 @@ select:focus {
     }
 
     .display {
-        font-size: 2rem;
+        font-size: 1.5rem;
         padding: 1rem;
+        overflow-x: auto;
     }
 
     .tool-title {
