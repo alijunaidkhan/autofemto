@@ -48,6 +48,8 @@
             </div>
 
             <div class="button-grid" style="margin-top: 2rem;">
+                <button class="btn btn-success" onclick="undo()" id="undoBtn" disabled>↶ Undo</button>
+                <button class="btn btn-success" onclick="redo()" id="redoBtn" disabled>↷ Redo</button>
                 <button class="btn btn-primary" onclick="convertCase('upper')">UPPERCASE</button>
                 <button class="btn btn-primary" onclick="convertCase('lower')">lowercase</button>
                 <button class="btn btn-primary" onclick="convertCase('title')">Title Case</button>
@@ -61,6 +63,53 @@
     </div>
 
     <script>
+        // History management
+        let history = [''];
+        let historyIndex = 0;
+        const MAX_HISTORY = 20;
+
+        function saveToHistory(text) {
+            // Remove any future history if we're not at the end
+            if (historyIndex < history.length - 1) {
+                history = history.slice(0, historyIndex + 1);
+            }
+            
+            // Add new state
+            history.push(text);
+            
+            // Limit history size
+            if (history.length > MAX_HISTORY) {
+                history.shift();
+            } else {
+                historyIndex++;
+            }
+            
+            updateHistoryButtons();
+        }
+
+        function undo() {
+            if (historyIndex > 0) {
+                historyIndex--;
+                document.getElementById('inputText').value = history[historyIndex];
+                updateStats();
+                updateHistoryButtons();
+            }
+        }
+
+        function redo() {
+            if (historyIndex < history.length - 1) {
+                historyIndex++;
+                document.getElementById('inputText').value = history[historyIndex];
+                updateStats();
+                updateHistoryButtons();
+            }
+        }
+
+        function updateHistoryButtons() {
+            document.getElementById('undoBtn').disabled = historyIndex <= 0;
+            document.getElementById('redoBtn').disabled = historyIndex >= history.length - 1;
+        }
+
         function updateStats() {
             const text = document.getElementById('inputText').value;
             
@@ -99,19 +148,24 @@
                     break;
             }
             
+            saveToHistory(text);
             textarea.value = text;
             updateStats();
         }
 
         function reverseText() {
             const textarea = document.getElementById('inputText');
-            textarea.value = textarea.value.split('').reverse().join('');
+            const text = textarea.value.split('').reverse().join('');
+            saveToHistory(text);
+            textarea.value = text;
             updateStats();
         }
 
         function removeSpaces() {
             const textarea = document.getElementById('inputText');
-            textarea.value = textarea.value.replace(/\s+/g, '');
+            const text = textarea.value.replace(/\s+/g, '');
+            saveToHistory(text);
+            textarea.value = text;
             updateStats();
         }
 
@@ -119,13 +173,39 @@
             const textarea = document.getElementById('inputText');
             textarea.select();
             document.execCommand('copy');
-            alert('Text copied to clipboard!');
+            
+            // Visual feedback
+            const originalBg = textarea.style.background;
+            textarea.style.background = 'rgba(16, 185, 129, 0.2)';
+            setTimeout(() => {
+                textarea.style.background = originalBg;
+            }, 200);
         }
 
         function clearText() {
-            document.getElementById('inputText').value = '';
+            const text = '';
+            saveToHistory(text);
+            document.getElementById('inputText').value = text;
             updateStats();
         }
+
+        // Save to history when user manually types (with debouncing)
+        let typingTimer;
+        document.getElementById('inputText').addEventListener('input', function() {
+            clearTimeout(typingTimer);
+            typingTimer = setTimeout(() => {
+                const currentText = this.value;
+                const lastHistoryText = history[historyIndex];
+                
+                // Only save if text actually changed
+                if (currentText !== lastHistoryText) {
+                    saveToHistory(currentText);
+                }
+            }, 1000); // Save after 1 second of no typing
+        });
+
+        // Initialize
+        updateHistoryButtons();
     </script>
 </body>
 </html>

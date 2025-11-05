@@ -262,6 +262,11 @@ select:focus {
     .display {
         font-size: 2rem;
     }
+
+    /* Stack JSON textareas on mobile */
+    .tool-container > div[style*="grid-template-columns: 1fr 1fr"] {
+        grid-template-columns: 1fr !important;
+    }
 }
 
 /* Alerts */
