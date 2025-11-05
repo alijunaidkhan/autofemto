@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="stopwatch.html">Stopwatch</a></li>
+                <li><a href="timer.html">Timer</a></li>
+                <li><a href="converter.html">Converter</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">⏲️ Countdown Timer</h1>
+            <p class="tool-description">Set a countdown timer with audio alert</p>
+
+            <div class="form-group">
+                <label>Set Timer Duration:</label>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                    <div>
+                        <input type="number" id="hours" placeholder="Hours" min="0" max="23" value="0">
+                    </div>
+                    <div>
+                        <input type="number" id="minutes" placeholder="Minutes" min="0" max="59" value="5">
+                    </div>
+                    <div>
+                        <input type="number" id="seconds" placeholder="Seconds" min="0" max="59" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="display" id="display">05:00</div>
+
+            <div class="button-grid">
+                <button class="btn btn-primary" id="startBtn" onclick="startStop()">Start</button>
+                <button class="btn btn-secondary" onclick="reset()">Reset</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let totalSeconds = 300;
+        let remainingSeconds = 300;
+        let timerInterval;
+        let isRunning = false;
+
+        function startStop() {
+            if (!isRunning) {
+                if (remainingSeconds === totalSeconds) {
+                    const hours = parseInt(document.getElementById('hours').value) || 0;
+                    const minutes = parseInt(document.getElementById('minutes').value) || 0;
+                    const seconds = parseInt(document.getElementById('seconds').value) || 0;
+                    totalSeconds = hours * 3600 + minutes * 60 + seconds;
+                    remainingSeconds = totalSeconds;
+                    
+                    if (totalSeconds === 0) {
+                        alert('Please set a valid time!');
+                        return;
+                    }
+                }
+                
+                timerInterval = setInterval(countdown, 1000);
+                isRunning = true;
+                document.getElementById('startBtn').textContent = 'Pause';
+                document.getElementById('startBtn').className = 'btn btn-danger';
+                document.getElementById('hours').disabled = true;
+                document.getElementById('minutes').disabled = true;
+                document.getElementById('seconds').disabled = true;
+            } else {
+                clearInterval(timerInterval);
+                isRunning = false;
+                document.getElementById('startBtn').textContent = 'Resume';
+                document.getElementById('startBtn').className = 'btn btn-success';
+            }
+        }
+
+        function countdown() {
+            remainingSeconds--;
+            updateDisplay();
+            
+            if (remainingSeconds <= 0) {
+                clearInterval(timerInterval);
+                isRunning = false;
+                document.getElementById('display').textContent = '00:00';
+                document.getElementById('startBtn').textContent = 'Start';
+                document.getElementById('startBtn').className = 'btn btn-primary';
+                playAlert();
+            }
+        }
+
+        function updateDisplay() {
+            const hours = Math.floor(remainingSeconds / 3600);
+            const minutes = Math.floor((remainingSeconds % 3600) / 60);
+            const seconds = remainingSeconds % 60;
+            
+            if (hours > 0) {
+                document.getElementById('display').textContent = 
+                    `${pad(hours)}:${pad(minutes)}:${pad(seconds)}`;
+            } else {
+                document.getElementById('display').textContent = 
+                    `${pad(minutes)}:${pad(seconds)}`;
+            }
+        }
+
+        function pad(num) {
+            return String(num).padStart(2, '0');
+        }
+
+        function reset() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            remainingSeconds = totalSeconds;
+            updateDisplay();
+            document.getElementById('startBtn').textContent = 'Start';
+            document.getElementById('startBtn').className = 'btn btn-primary';
+            document.getElementById('hours').disabled = false;
+            document.getElementById('minutes').disabled = false;
+            document.getElementById('seconds').disabled = false;
+        }
+
+        function playAlert() {
+            // Create beep sound
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.frequency.value = 800;
+            oscillator.type = 'sine';
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 1);
+            
+            alert('⏰ Timer finished!');
+        }
+
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>

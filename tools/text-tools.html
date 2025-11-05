@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Tools - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="text-tools.html">Text Tools</a></li>
+                <li><a href="json-formatter.html">JSON Formatter</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">📝 Text Tools</h1>
+            <p class="tool-description">Case converter, word counter, and more</p>
+
+            <div class="form-group">
+                <label>Enter Text:</label>
+                <textarea id="inputText" oninput="updateStats()" placeholder="Type or paste your text here..."></textarea>
+            </div>
+
+            <div class="output-box" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; text-align: center;">
+                <div>
+                    <div style="font-size: 2rem; font-weight: bold;" id="charCount">0</div>
+                    <div style="color: var(--text-secondary);">Characters</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: bold;" id="wordCount">0</div>
+                    <div style="color: var(--text-secondary);">Words</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: bold;" id="lineCount">0</div>
+                    <div style="color: var(--text-secondary);">Lines</div>
+                </div>
+                <div>
+                    <div style="font-size: 2rem; font-weight: bold;" id="sentenceCount">0</div>
+                    <div style="color: var(--text-secondary);">Sentences</div>
+                </div>
+            </div>
+
+            <div class="button-grid" style="margin-top: 2rem;">
+                <button class="btn btn-primary" onclick="convertCase('upper')">UPPERCASE</button>
+                <button class="btn btn-primary" onclick="convertCase('lower')">lowercase</button>
+                <button class="btn btn-primary" onclick="convertCase('title')">Title Case</button>
+                <button class="btn btn-primary" onclick="convertCase('sentence')">Sentence case</button>
+                <button class="btn btn-secondary" onclick="reverseText()">Reverse Text</button>
+                <button class="btn btn-secondary" onclick="removeSpaces()">Remove Spaces</button>
+                <button class="btn btn-secondary" onclick="copyText()">Copy Text</button>
+                <button class="btn btn-danger" onclick="clearText()">Clear</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateStats() {
+            const text = document.getElementById('inputText').value;
+            
+            // Character count
+            document.getElementById('charCount').textContent = text.length;
+            
+            // Word count
+            const words = text.trim().split(/\s+/).filter(word => word.length > 0);
+            document.getElementById('wordCount').textContent = words.length;
+            
+            // Line count
+            const lines = text.split('\n').filter(line => line.trim().length > 0);
+            document.getElementById('lineCount').textContent = lines.length;
+            
+            // Sentence count
+            const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+            document.getElementById('sentenceCount').textContent = sentences.length;
+        }
+
+        function convertCase(type) {
+            const textarea = document.getElementById('inputText');
+            let text = textarea.value;
+            
+            switch(type) {
+                case 'upper':
+                    text = text.toUpperCase();
+                    break;
+                case 'lower':
+                    text = text.toLowerCase();
+                    break;
+                case 'title':
+                    text = text.toLowerCase().replace(/\b\w/g, l => l.toUpperCase());
+                    break;
+                case 'sentence':
+                    text = text.toLowerCase().replace(/(^\s*\w|[.!?]\s*\w)/g, l => l.toUpperCase());
+                    break;
+            }
+            
+            textarea.value = text;
+            updateStats();
+        }
+
+        function reverseText() {
+            const textarea = document.getElementById('inputText');
+            textarea.value = textarea.value.split('').reverse().join('');
+            updateStats();
+        }
+
+        function removeSpaces() {
+            const textarea = document.getElementById('inputText');
+            textarea.value = textarea.value.replace(/\s+/g, '');
+            updateStats();
+        }
+
+        function copyText() {
+            const textarea = document.getElementById('inputText');
+            textarea.select();
+            document.execCommand('copy');
+            alert('Text copied to clipboard!');
+        }
+
+        function clearText() {
+            document.getElementById('inputText').value = '';
+            updateStats();
+        }
+    </script>
+</body>
+</html>

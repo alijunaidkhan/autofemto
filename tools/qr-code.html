@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="qr-code.html">QR Code</a></li>
+                <li><a href="image-resizer.html">Image Resizer</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">📱 QR Code Generator</h1>
+            <p class="tool-description">Create QR codes for URLs, text, and more</p>
+
+            <div class="form-group">
+                <label>Enter Text or URL:</label>
+                <textarea id="inputText" placeholder="https://autofemto.com" rows="3"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Size:</label>
+                <select id="qrSize">
+                    <option value="200">Small (200x200)</option>
+                    <option value="300" selected>Medium (300x300)</option>
+                    <option value="400">Large (400x400)</option>
+                    <option value="500">Extra Large (500x500)</option>
+                </select>
+            </div>
+
+            <button class="btn btn-primary" onclick="generateQR()">Generate QR Code</button>
+            <button class="btn btn-secondary" onclick="downloadQR()">Download QR Code</button>
+
+            <div id="qrOutput" style="margin-top: 2rem; text-align: center; min-height: 350px; display: flex; align-items: center; justify-content: center; background: var(--input-bg); border-radius: 1rem; padding: 2rem;">
+                <p style="color: var(--text-secondary);">Your QR code will appear here</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        let qrcode = null;
+
+        function generateQR() {
+            const text = document.getElementById('inputText').value.trim();
+            const size = parseInt(document.getElementById('qrSize').value);
+            
+            if (!text) {
+                alert('Please enter text or URL');
+                return;
+            }
+            
+            const qrOutput = document.getElementById('qrOutput');
+            qrOutput.innerHTML = '';
+            
+            qrcode = new QRCode(qrOutput, {
+                text: text,
+                width: size,
+                height: size,
+                colorDark: '#000000',
+                colorLight: '#ffffff',
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+
+        function downloadQR() {
+            if (!qrcode) {
+                alert('Please generate a QR code first');
+                return;
+            }
+            
+            const canvas = document.querySelector('#qrOutput canvas');
+            if (!canvas) {
+                alert('No QR code to download');
+                return;
+            }
+            
+            const url = canvas.toDataURL('image/png');
+            const link = document.createElement('a');
+            link.download = 'qrcode.png';
+            link.href = url;
+            link.click();
+        }
+    </script>
+</body>
+</html>

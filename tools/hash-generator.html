@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hash Generator - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="hash-generator.html">Hash</a></li>
+                <li><a href="qr-code.html">QR Code</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">🔑 Hash Generator</h1>
+            <p class="tool-description">Generate MD5, SHA-1, and SHA-256 hashes</p>
+
+            <div class="form-group">
+                <label>Input Text:</label>
+                <textarea id="inputText" oninput="generateHashes()" placeholder="Enter text to hash"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>MD5:</label>
+                <input type="text" id="md5Output" readonly>
+                <button class="btn btn-secondary" style="margin-top: 0.5rem;" onclick="copyHash('md5Output')">Copy MD5</button>
+            </div>
+
+            <div class="form-group">
+                <label>SHA-1:</label>
+                <input type="text" id="sha1Output" readonly>
+                <button class="btn btn-secondary" style="margin-top: 0.5rem;" onclick="copyHash('sha1Output')">Copy SHA-1</button>
+            </div>
+
+            <div class="form-group">
+                <label>SHA-256:</label>
+                <input type="text" id="sha256Output" readonly>
+                <button class="btn btn-secondary" style="margin-top: 0.5rem;" onclick="copyHash('sha256Output')">Copy SHA-256</button>
+            </div>
+
+            <div id="message"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+    <script>
+        function generateHashes() {
+            const input = document.getElementById('inputText').value;
+            
+            if (!input) {
+                document.getElementById('md5Output').value = '';
+                document.getElementById('sha1Output').value = '';
+                document.getElementById('sha256Output').value = '';
+                return;
+            }
+            
+            // Generate hashes
+            document.getElementById('md5Output').value = CryptoJS.MD5(input).toString();
+            document.getElementById('sha1Output').value = CryptoJS.SHA1(input).toString();
+            document.getElementById('sha256Output').value = CryptoJS.SHA256(input).toString();
+        }
+
+        function copyHash(elementId) {
+            const input = document.getElementById(elementId);
+            if (!input.value) {
+                showMessage('No hash to copy', 'error');
+                return;
+            }
+            
+            input.select();
+            document.execCommand('copy');
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.className = 'btn btn-success';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.className = 'btn btn-secondary';
+            }, 2000);
+        }
+
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.className = type === 'success' ? 'alert alert-success' : 'alert alert-error';
+            messageDiv.textContent = text;
+            
+            setTimeout(() => {
+                messageDiv.innerHTML = '';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Resizer - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="image-resizer.html">Image Resizer</a></li>
+                <li><a href="../index.html">All Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">🖼️ Image Resizer</h1>
+            <p class="tool-description">Resize images quickly and easily - all processing happens in your browser</p>
+
+            <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                <input type="file" id="fileInput" accept="image/*" onchange="loadImage(event)">
+                <p style="font-size: 3rem; margin-bottom: 1rem;">📁</p>
+                <p>Click to upload an image</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">Supports: JPG, PNG, GIF, WebP</p>
+            </div>
+
+            <div id="imageControls" style="display: none;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                    <div class="form-group">
+                        <label>Width (px):</label>
+                        <input type="number" id="widthInput" oninput="updateDimensions('width')" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Height (px):</label>
+                        <input type="number" id="heightInput" oninput="updateDimensions('height')" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label>Scale (%):</label>
+                        <input type="number" id="scaleInput" oninput="updateScale()" value="100" min="1">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="maintainRatio" checked style="width: auto; margin-right: 0.5rem;">
+                        Maintain aspect ratio
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label>Output Format:</label>
+                    <select id="formatSelect">
+                        <option value="image/png">PNG</option>
+                        <option value="image/jpeg">JPEG</option>
+                        <option value="image/webp">WebP</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="qualityControl" style="display: none;">
+                    <label>Quality (1-100):</label>
+                    <input type="range" id="qualitySlider" min="1" max="100" value="90" oninput="document.getElementById('qualityValue').textContent = this.value">
+                    <span id="qualityValue">90</span>
+                </div>
+
+                <button class="btn btn-primary" onclick="resizeImage()">Resize & Preview</button>
+                <button class="btn btn-success" onclick="downloadImage()" id="downloadBtn" disabled>Download</button>
+                <button class="btn btn-danger" onclick="resetAll()">Reset</button>
+
+                <div id="previewSection" style="margin-top: 2rem; display: none;">
+                    <h3>Preview:</h3>
+                    <div style="background: var(--input-bg); padding: 1rem; border-radius: 0.5rem; text-align: center;">
+                        <canvas id="canvas" style="max-width: 100%; border: 1px solid var(--border-color);"></canvas>
+                    </div>
+                    <div id="imageInfo" style="margin-top: 1rem; color: var(--text-secondary);"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let originalImage = null;
+        let originalWidth = 0;
+        let originalHeight = 0;
+        let aspectRatio = 1;
+
+        document.getElementById('formatSelect').addEventListener('change', function() {
+            const qualityControl = document.getElementById('qualityControl');
+            if (this.value === 'image/jpeg' || this.value === 'image/webp') {
+                qualityControl.style.display = 'block';
+            } else {
+                qualityControl.style.display = 'none';
+            }
+        });
+
+        function loadImage(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                originalImage = new Image();
+                originalImage.onload = function() {
+                    originalWidth = this.width;
+                    originalHeight = this.height;
+                    aspectRatio = originalWidth / originalHeight;
+
+                    document.getElementById('widthInput').value = originalWidth;
+                    document.getElementById('heightInput').value = originalHeight;
+                    document.getElementById('imageControls').style.display = 'block';
+                    
+                    document.getElementById('imageInfo').innerHTML = 
+                        `<strong>Original:</strong> ${originalWidth} × ${originalHeight} px`;
+                };
+                originalImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function updateDimensions(changedField) {
+            if (!document.getElementById('maintainRatio').checked) return;
+
+            const width = document.getElementById('widthInput');
+            const height = document.getElementById('heightInput');
+
+            if (changedField === 'width') {
+                height.value = Math.round(width.value / aspectRatio);
+            } else {
+                width.value = Math.round(height.value * aspectRatio);
+            }
+        }
+
+        function updateScale() {
+            const scale = document.getElementById('scaleInput').value / 100;
+            document.getElementById('widthInput').value = Math.round(originalWidth * scale);
+            document.getElementById('heightInput').value = Math.round(originalHeight * scale);
+        }
+
+        function resizeImage() {
+            if (!originalImage) {
+                alert('Please upload an image first');
+                return;
+            }
+
+            const newWidth = parseInt(document.getElementById('widthInput').value);
+            const newHeight = parseInt(document.getElementById('heightInput').value);
+            
+            if (!newWidth || !newHeight || newWidth < 1 || newHeight < 1) {
+                alert('Please enter valid dimensions');
+                return;
+            }
+
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+
+            canvas.width = newWidth;
+            canvas.height = newHeight;
+
+            ctx.drawImage(originalImage, 0, 0, newWidth, newHeight);
+
+            document.getElementById('previewSection').style.display = 'block';
+            document.getElementById('downloadBtn').disabled = false;
+            
+            document.getElementById('imageInfo').innerHTML = 
+                `<strong>Original:</strong> ${originalWidth} × ${originalHeight} px | <strong>Resized:</strong> ${newWidth} × ${newHeight} px`;
+        }
+
+        function downloadImage() {
+            const canvas = document.getElementById('canvas');
+            const format = document.getElementById('formatSelect').value;
+            const quality = document.getElementById('qualitySlider').value / 100;
+
+            let dataURL;
+            if (format === 'image/png') {
+                dataURL = canvas.toDataURL(format);
+            } else {
+                dataURL = canvas.toDataURL(format, quality);
+            }
+
+            const link = document.createElement('a');
+            const extension = format.split('/')[1];
+            link.download = `resized-image.${extension}`;
+            link.href = dataURL;
+            link.click();
+        }
+
+        function resetAll() {
+            document.getElementById('fileInput').value = '';
+            document.getElementById('imageControls').style.display = 'none';
+            document.getElementById('previewSection').style.display = 'none';
+            originalImage = null;
+        }
+    </script>
+</body>
+</html>

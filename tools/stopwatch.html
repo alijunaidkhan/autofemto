@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="stopwatch.html">Stopwatch</a></li>
+                <li><a href="timer.html">Timer</a></li>
+                <li><a href="converter.html">Converter</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">⏱️ Stopwatch</h1>
+            <p class="tool-description">Precise time tracking with lap functionality</p>
+
+            <div class="display" id="display">00:00:00.000</div>
+
+            <div class="button-grid">
+                <button class="btn btn-primary" id="startBtn" onclick="startStop()">Start</button>
+                <button class="btn btn-secondary" id="lapBtn" onclick="recordLap()" disabled>Lap</button>
+                <button class="btn btn-danger" onclick="reset()">Reset</button>
+            </div>
+
+            <div id="laps" style="margin-top: 2rem;"></div>
+        </div>
+    </div>
+
+    <script>
+        let startTime = 0;
+        let elapsedTime = 0;
+        let timerInterval;
+        let isRunning = false;
+        let lapCounter = 1;
+
+        function startStop() {
+            if (!isRunning) {
+                startTime = Date.now() - elapsedTime;
+                timerInterval = setInterval(updateDisplay, 10);
+                isRunning = true;
+                document.getElementById('startBtn').textContent = 'Stop';
+                document.getElementById('startBtn').className = 'btn btn-danger';
+                document.getElementById('lapBtn').disabled = false;
+            } else {
+                clearInterval(timerInterval);
+                isRunning = false;
+                document.getElementById('startBtn').textContent = 'Resume';
+                document.getElementById('startBtn').className = 'btn btn-success';
+            }
+        }
+
+        function updateDisplay() {
+            elapsedTime = Date.now() - startTime;
+            document.getElementById('display').textContent = formatTime(elapsedTime);
+        }
+
+        function formatTime(ms) {
+            const totalSeconds = Math.floor(ms / 1000);
+            const hours = Math.floor(totalSeconds / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+            const milliseconds = Math.floor((ms % 1000));
+
+            return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(milliseconds, 3)}`;
+        }
+
+        function pad(num, size = 2) {
+            return String(num).padStart(size, '0');
+        }
+
+        function recordLap() {
+            const lapTime = formatTime(elapsedTime);
+            const lapsDiv = document.getElementById('laps');
+            const lapDiv = document.createElement('div');
+            lapDiv.className = 'output-box';
+            lapDiv.style.marginBottom = '0.5rem';
+            lapDiv.innerHTML = `<strong>Lap ${lapCounter}:</strong> ${lapTime}`;
+            lapsDiv.insertBefore(lapDiv, lapsDiv.firstChild);
+            lapCounter++;
+        }
+
+        function reset() {
+            clearInterval(timerInterval);
+            isRunning = false;
+            elapsedTime = 0;
+            lapCounter = 1;
+            document.getElementById('display').textContent = '00:00:00.000';
+            document.getElementById('startBtn').textContent = 'Start';
+            document.getElementById('startBtn').className = 'btn btn-primary';
+            document.getElementById('lapBtn').disabled = true;
+            document.getElementById('laps').innerHTML = '';
+        }
+    </script>
+</body>
+</html>

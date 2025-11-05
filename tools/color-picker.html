@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="color-picker.html">Color Picker</a></li>
+                <li><a href="text-tools.html">Text Tools</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">🎨 Color Picker</h1>
+            <p class="tool-description">Pick colors and get HEX, RGB, and HSL values</p>
+
+            <div class="form-group">
+                <label>Pick a Color:</label>
+                <input type="color" id="colorPicker" value="#6366f1" oninput="updateColor()">
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 2rem;">
+                <div class="form-group">
+                    <label>HEX:</label>
+                    <input type="text" id="hexValue" readonly>
+                    <button class="btn btn-secondary" style="margin-top: 0.5rem;" onclick="copyToClipboard('hexValue')">Copy</button>
+                </div>
+                <div class="form-group">
+                    <label>RGB:</label>
+                    <input type="text" id="rgbValue" readonly>
+                    <button class="btn btn-secondary" style="margin-top: 0.5rem;" onclick="copyToClipboard('rgbValue')">Copy</button>
+                </div>
+                <div class="form-group">
+                    <label>HSL:</label>
+                    <input type="text" id="hslValue" readonly>
+                    <button class="btn btn-secondary" style="margin-top: 0.5rem;" onclick="copyToClipboard('hslValue')">Copy</button>
+                </div>
+            </div>
+
+            <div class="output-box" id="colorPreview" style="height: 150px; margin-top: 2rem; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: bold; color: white; text-shadow: 0 0 5px rgba(0,0,0,0.5);">
+                Color Preview
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateColor() {
+            const color = document.getElementById('colorPicker').value;
+            
+            // Update preview
+            document.getElementById('colorPreview').style.background = color;
+            
+            // Convert to RGB
+            const rgb = hexToRgb(color);
+            
+            // Convert to HSL
+            const hsl = rgbToHsl(rgb.r, rgb.g, rgb.b);
+            
+            // Update displays
+            document.getElementById('hexValue').value = color.toUpperCase();
+            document.getElementById('rgbValue').value = `rgb(${rgb.r}, ${rgb.g}, ${rgb.b})`;
+            document.getElementById('hslValue').value = `hsl(${hsl.h}, ${hsl.s}%, ${hsl.l}%)`;
+        }
+
+        function hexToRgb(hex) {
+            const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+            return result ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16)
+            } : null;
+        }
+
+        function rgbToHsl(r, g, b) {
+            r /= 255;
+            g /= 255;
+            b /= 255;
+            
+            const max = Math.max(r, g, b);
+            const min = Math.min(r, g, b);
+            let h, s, l = (max + min) / 2;
+            
+            if (max === min) {
+                h = s = 0;
+            } else {
+                const d = max - min;
+                s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+                
+                switch (max) {
+                    case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+                    case g: h = (b - r) / d + 2; break;
+                    case b: h = (r - g) / d + 4; break;
+                }
+                
+                h /= 6;
+            }
+            
+            return {
+                h: Math.round(h * 360),
+                s: Math.round(s * 100),
+                l: Math.round(l * 100)
+            };
+        }
+
+        function copyToClipboard(elementId) {
+            const input = document.getElementById(elementId);
+            input.select();
+            document.execCommand('copy');
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = 'Copied!';
+            btn.className = 'btn btn-success';
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.className = 'btn btn-secondary';
+            }, 2000);
+        }
+
+        // Initialize
+        updateColor();
+    </script>
+</body>
+</html>

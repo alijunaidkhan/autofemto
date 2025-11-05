@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter - AutoFemto</title>
+    <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-content">
+            <a href="../index.html" class="logo">AutoFemto</a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="stopwatch.html">Stopwatch</a></li>
+                <li><a href="timer.html">Timer</a></li>
+                <li><a href="converter.html">Converter</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">🔄 Unit Converter</h1>
+            <p class="tool-description">Convert between different units of measurement</p>
+
+            <div class="form-group">
+                <label>Category:</label>
+                <select id="category" onchange="changeCategory()">
+                    <option value="length">Length</option>
+                    <option value="weight">Weight</option>
+                    <option value="temperature">Temperature</option>
+                    <option value="volume">Volume</option>
+                    <option value="area">Area</option>
+                    <option value="time">Time</option>
+                </select>
+            </div>
+
+            <div class="converter-grid">
+                <div class="form-group">
+                    <label>From:</label>
+                    <input type="number" id="fromValue" oninput="convert()" placeholder="Enter value">
+                    <select id="fromUnit" onchange="convert()">
+                        <!-- Options populated by JavaScript -->
+                    </select>
+                </div>
+                <div class="arrow">→</div>
+                <div class="form-group">
+                    <label>To:</label>
+                    <input type="number" id="toValue" readonly placeholder="Result">
+                    <select id="toUnit" onchange="convert()">
+                        <!-- Options populated by JavaScript -->
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const units = {
+            length: {
+                'Meter (m)': 1,
+                'Kilometer (km)': 0.001,
+                'Centimeter (cm)': 100,
+                'Millimeter (mm)': 1000,
+                'Mile (mi)': 0.000621371,
+                'Yard (yd)': 1.09361,
+                'Foot (ft)': 3.28084,
+                'Inch (in)': 39.3701
+            },
+            weight: {
+                'Kilogram (kg)': 1,
+                'Gram (g)': 1000,
+                'Milligram (mg)': 1000000,
+                'Metric Ton (t)': 0.001,
+                'Pound (lb)': 2.20462,
+                'Ounce (oz)': 35.274
+            },
+            temperature: {
+                'Celsius (°C)': 'c',
+                'Fahrenheit (°F)': 'f',
+                'Kelvin (K)': 'k'
+            },
+            volume: {
+                'Liter (L)': 1,
+                'Milliliter (mL)': 1000,
+                'Cubic Meter (m³)': 0.001,
+                'Gallon (gal)': 0.264172,
+                'Quart (qt)': 1.05669,
+                'Pint (pt)': 2.11338,
+                'Cup': 4.22675,
+                'Fluid Ounce (fl oz)': 33.814
+            },
+            area: {
+                'Square Meter (m²)': 1,
+                'Square Kilometer (km²)': 0.000001,
+                'Square Centimeter (cm²)': 10000,
+                'Square Mile (mi²)': 3.861e-7,
+                'Acre': 0.000247105,
+                'Hectare (ha)': 0.0001
+            },
+            time: {
+                'Second (s)': 1,
+                'Minute (min)': 0.0166667,
+                'Hour (h)': 0.000277778,
+                'Day': 0.0000115741,
+                'Week': 0.00000165344,
+                'Month': 3.80517e-7,
+                'Year': 3.17098e-8
+            }
+        };
+
+        function populateUnits() {
+            const category = document.getElementById('category').value;
+            const fromUnit = document.getElementById('fromUnit');
+            const toUnit = document.getElementById('toUnit');
+            
+            fromUnit.innerHTML = '';
+            toUnit.innerHTML = '';
+            
+            for (let unit in units[category]) {
+                fromUnit.innerHTML += `<option value="${unit}">${unit}</option>`;
+                toUnit.innerHTML += `<option value="${unit}">${unit}</option>`;
+            }
+            
+            toUnit.selectedIndex = 1;
+        }
+
+        function changeCategory() {
+            populateUnits();
+            document.getElementById('fromValue').value = '';
+            document.getElementById('toValue').value = '';
+        }
+
+        function convert() {
+            const category = document.getElementById('category').value;
+            const fromValue = parseFloat(document.getElementById('fromValue').value);
+            const fromUnit = document.getElementById('fromUnit').value;
+            const toUnit = document.getElementById('toUnit').value;
+            
+            if (isNaN(fromValue)) {
+                document.getElementById('toValue').value = '';
+                return;
+            }
+            
+            let result;
+            
+            if (category === 'temperature') {
+                result = convertTemperature(fromValue, fromUnit, toUnit);
+            } else {
+                const fromFactor = units[category][fromUnit];
+                const toFactor = units[category][toUnit];
+                result = (fromValue / fromFactor) * toFactor;
+            }
+            
+            document.getElementById('toValue').value = result.toFixed(6);
+        }
+
+        function convertTemperature(value, from, to) {
+            let celsius;
+            
+            // Convert to Celsius first
+            if (from === 'Celsius (°C)') {
+                celsius = value;
+            } else if (from === 'Fahrenheit (°F)') {
+                celsius = (value - 32) * 5/9;
+            } else if (from === 'Kelvin (K)') {
+                celsius = value - 273.15;
+            }
+            
+            // Convert from Celsius to target
+            if (to === 'Celsius (°C)') {
+                return celsius;
+            } else if (to === 'Fahrenheit (°F)') {
+                return celsius * 9/5 + 32;
+            } else if (to === 'Kelvin (K)') {
+                return celsius + 273.15;
+            }
+        }
+
+        // Initialize
+        populateUnits();
+    </script>
+</body>
+</html>
