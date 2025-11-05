@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG to PNG Converter - AutoFemto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #0f172a;
+            color: #f1f5f9;
+        }
+        h1 {
+            color: #6366f1;
+        }
+        .container {
+            background: #1e293b;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        canvas {
+            border: 2px solid #6366f1;
+            margin: 20px 0;
+            max-width: 100%;
+        }
+        button {
+            background: linear-gradient(135deg, #6366f1, #a855f7);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+        .info {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 Convert OG Image SVG to PNG</h1>
+        <p>This will convert your og-image.svg to a 1200x630 PNG file</p>
+        
+        <canvas id="canvas" width="1200" height="630"></canvas>
+        
+        <div>
+            <button onclick="convertAndDownload()">Convert & Download PNG</button>
+        </div>
+        
+        <div class="info">
+            <h3>Instructions:</h3>
+            <p>1. Click "Convert & Download PNG"</p>
+            <p>2. Save the file as <strong>og-image.png</strong></p>
+            <p>3. Place it in your <code>d:\autofemto\</code> folder</p>
+            <p>4. Commit and push to GitHub</p>
+        </div>
+    </div>
+
+    <script>
+        const svgContent = `<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0f172a"/>
+  
+  <!-- Gradient overlay -->
+  <rect width="1200" height="630" fill="url(#gradient)" opacity="0.1"/>
+  
+  <!-- Logo/Brand -->
+  <text x="600" y="250" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#gradient)" text-anchor="middle">
+    AutoFemto
+  </text>
+  
+  <!-- Tagline -->
+  <text x="600" y="320" font-family="Arial, sans-serif" font-size="32" fill="#94a3b8" text-anchor="middle">
+    Automate. Simplify. Accelerate.
+  </text>
+  
+  <!-- Description -->
+  <text x="600" y="400" font-family="Arial, sans-serif" font-size="28" fill="#cbd5e1" text-anchor="middle">
+    10 Free Online Tools for Developers
+  </text>
+  
+  <!-- Tools Icons -->
+  <text x="600" y="480" font-family="Arial, sans-serif" font-size="48" text-anchor="middle">
+    ⏱️ ⏲️ 🔄 🎨 📝 📋 🔐 🔑 📱 🖼️
+  </text>
+  
+  <!-- URL -->
+  <text x="600" y="560" font-family="Arial, sans-serif" font-size="24" fill="#64748b" text-anchor="middle">
+    autofemto.com
+  </text>
+</svg>`;
+
+        function convertAndDownload() {
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            
+            const img = new Image();
+            const blob = new Blob([svgContent], {type: 'image/svg+xml;charset=utf-8'});
+            const url = URL.createObjectURL(blob);
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0);
+                URL.revokeObjectURL(url);
+                
+                // Convert canvas to PNG and download
+                canvas.toBlob(function(blob) {
+                    const link = document.createElement('a');
+                    link.download = 'og-image.png';
+                    link.href = URL.createObjectURL(blob);
+                    link.click();
+                    
+                    alert('✅ PNG downloaded! Save it as og-image.png in your autofemto folder');
+                });
+            };
+            
+            img.src = url;
+        }
+    </script>
+</body>
+</html>
