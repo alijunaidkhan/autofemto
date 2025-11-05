@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Web Development Services - AutoFemto</title>
+    <meta name="description" content="Full-stack web development services. We build modern websites, web applications, and APIs tailored to your business needs.">
+    <meta name="keywords" content="web development, full stack development, website design, web application, API development">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/services/web-development.html">
+    
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        :root {
+            --input-bg: #1e293b;
+            --border-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .service-detail {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .service-hero {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 3rem;
+        }
+        
+        .service-hero .icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .service-hero h1 {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .service-description {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-box {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .feature-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.2rem;
+        }
+        
+        .tech-stack {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .tech-categories {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .tech-category {
+            background: rgba(99, 102, 241, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+        }
+        
+        .tech-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+        
+        .tech-tag {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--text-primary);
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .pricing-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .pricing-section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        .pricing-tiers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .pricing-tier {
+            background: rgba(99, 102, 241, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .pricing-tier h3 {
+            color: var(--primary-color);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .pricing-tier .price {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text-primary);
+            margin: 0.5rem 0;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 3rem auto;
+            background: var(--card-bg);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.875rem;
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group select {
+            cursor: pointer;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='rgb(241, 245, 249)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.875rem center;
+            background-size: 1.2rem;
+            padding-right: 2.5rem;
+        }
+        
+        .form-group select option {
+            background: var(--input-bg);
+            color: var(--text-primary);
+            padding: 0.5rem;
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            background: rgba(99, 102, 241, 0.05);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 1rem;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+        }
+        
+        .success-message {
+            display: none;
+            max-width: 600px;
+            margin: 3rem auto;
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            animation: slideDown 0.5s ease-out;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .success-message h3 {
+            color: #22c55e;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <h1><a href="../index.html" style="color: inherit; text-decoration: none;">AutoFemto</a></h1>
+                <p class="tagline">Automate. Simplify. Accelerate.</p>
+            </div>
+        </header>
+
+        <main class="service-detail">
+            <section class="service-hero">
+                <div class="icon">💻</div>
+                <h1>Web Development Services</h1>
+                <p class="hero-description" style="color: var(--text-secondary); font-size: 1.2rem;">
+                    Modern, scalable web solutions for your business
+                </p>
+            </section>
+
+            <section class="service-description">
+                <h2 style="color: var(--primary-color); margin-bottom: 1rem;">What We Offer</h2>
+                <p style="color: var(--text-secondary);">
+                    From landing pages to complex web applications, I provide full-stack development services
+                    using modern technologies. Whether you need a business website, web app, or custom API,
+                    I deliver high-quality, performant solutions tailored to your requirements.
+                </p>
+            </section>
+
+            <section>
+                <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Services Included</h2>
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <h3>🎨 Frontend Development</h3>
+                        <p style="color: var(--text-secondary);">Responsive, modern UI with React, Vue, or vanilla JS</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>⚙️ Backend Development</h3>
+                        <p style="color: var(--text-secondary);">Scalable APIs with Node.js, Python, or PHP</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>🗄️ Database Design</h3>
+                        <p style="color: var(--text-secondary);">Efficient data modeling with SQL or NoSQL</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>☁️ Deployment & Hosting</h3>
+                        <p style="color: var(--text-secondary);">Cloud deployment on AWS, Vercel, or Netlify</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>📱 Mobile Responsive</h3>
+                        <p style="color: var(--text-secondary);">Perfect experience on all devices</p>
+                    </div>
+                    <div class="feature-box">
+                        <h3>🔒 Security & Performance</h3>
+                        <p style="color: var(--text-secondary);">SSL, authentication, optimization included</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="tech-stack">
+                <h2 style="color: var(--primary-color);">Technology Stack</h2>
+                <div class="tech-categories">
+                    <div class="tech-category">
+                        <h3>Frontend</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Vue.js</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Tailwind CSS</span>
+                            <span class="tech-tag">HTML/CSS/JS</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Backend</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Express</span>
+                            <span class="tech-tag">Python/FastAPI</span>
+                            <span class="tech-tag">REST APIs</span>
+                            <span class="tech-tag">GraphQL</span>
+                        </div>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Database & Cloud</h3>
+                        <div class="tech-list">
+                            <span class="tech-tag">PostgreSQL</span>
+                            <span class="tech-tag">MongoDB</span>
+                            <span class="tech-tag">Redis</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Vercel</span>
+                            <span class="tech-tag">GitHub Pages</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="pricing-section">
+                <h2>Pricing</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+                    Professional web development services starting at just <strong style="color: var(--primary-color);">$50</strong>.
+                </p>
+                <div class="pricing-tiers">
+                    <div class="pricing-tier">
+                        <h3>Landing Page</h3>
+                        <div class="price">$50 - $200</div>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Single page website with responsive design
+                        </p>
+                    </div>
+                    <div class="pricing-tier">
+                        <h3>Multi-Page Site</h3>
+                        <div class="price">$200 - $500</div>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Full website with multiple pages and features
+                        </p>
+                    </div>
+                    <div class="pricing-tier">
+                        <h3>Web Application</h3>
+                        <div class="price">$500+</div>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem;">
+                            Custom web app with backend and database
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Form -->
+            <div id="contactForm" class="contact-form">
+                <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Start Your Project</h2>
+                
+                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                    <input type="hidden" name="_subject" value="Web Development Request from AutoFemto">
+                    <input type="hidden" name="service_type" value="Web Development">
+                    
+                    <div class="form-group">
+                        <label for="name">Your Name *</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="john@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project-type">What do you need? *</label>
+                        <select id="project-type" name="project_type" required>
+                            <option value="">Select project type...</option>
+                            <option value="landing-page">Landing Page</option>
+                            <option value="business-website">Business Website</option>
+                            <option value="web-app">Web Application</option>
+                            <option value="api">API Development</option>
+                            <option value="ecommerce">E-commerce Site</option>
+                            <option value="other">Other (describe below)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Project Budget (Optional)</label>
+                        <select id="budget" name="budget">
+                            <option value="">Select budget range...</option>
+                            <option value="50-100">$50 - $100</option>
+                            <option value="100-200">$100 - $200</option>
+                            <option value="200-500">$200 - $500</option>
+                            <option value="500-1000">$500 - $1,000</option>
+                            <option value="1000+">$1,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="description">Project Description *</label>
+                        <textarea id="description" name="description" required placeholder="Describe your project, goals, features needed, target audience, and any specific requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Send Request</button>
+                </form>
+            </div>
+
+            <!-- Success Message (Hidden by default) -->
+            <div id="successMessage" class="success-message">
+                <div class="success-icon">✅</div>
+                <h3>We Received Your Request!</h3>
+                <p>
+                    Thank you for reaching out! We have received your request and will get back to you soon.
+                </p>
+                <p style="margin-top: 1rem;">
+                    <a href="../index.html" style="color: var(--primary-color);">← Back to Home</a>
+                </p>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                <a href="../index.html">Home</a> | 
+                <a href="../about.html">About</a> | 
+                <a href="../contact.html">All Services</a> | 
+                <a href="../privacy.html">Privacy Policy</a>
+            </p>
+            <p>&copy; 2025 AutoFemto. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Handle form submission
+        const form = document.querySelector('form');
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+        
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.btn-submit');
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    contactForm.style.display = 'none';
+                    successMessage.classList.add('show');
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    alert('There was an error sending your request. Please try again or email directly.');
+                    submitBtn.textContent = 'Send Request';
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                alert('There was an error sending your request. Please try again or email directly.');
+                submitBtn.textContent = 'Send Request';
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
