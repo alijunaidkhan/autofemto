@@ -26,61 +26,70 @@
     <meta property="twitter:description" content="Free text manipulation tools with case conversion, word counting, and undo/redo functionality.">
     <meta property="twitter:image" content="https://autofemto.com/og-image.png">
     
+    <link rel="stylesheet" href="../theme.css">
     <link rel="stylesheet" href="tools.css">
+    <script src="../navigation.js"></script>
 </head>
 <body>
-    <nav class="nav">
-        <div class="nav-content">
-            <a href="../index.html" class="logo">AutoFemto</a>
-            <ul class="nav-links">
-                <li><a href="../index.html">Home</a></li>
-                <li><a href="text-tools.html">Text Tools</a></li>
-                <li><a href="json-formatter.html">JSON Formatter</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
+    <!-- Navigation will be inserted here by navigation.js -->
+    
+    <div class="container" style="max-width: 1200px; padding: 1rem;">
         <div class="tool-container">
             <h1 class="tool-title">📝 Text Tools</h1>
             <p class="tool-description">Case converter, word counter, and more</p>
 
+            <!-- Stats Row (above textarea) -->
+            <div class="output-box" style="padding: 1rem; margin-bottom: 1rem; background: var(--card-bg);">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 1.5rem; text-align: center;">
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color);" id="charCount">0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">Characters</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color);" id="wordCount">0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">Words</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color);" id="lineCount">0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">Lines</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color);" id="sentenceCount">0</div>
+                        <div style="color: var(--text-secondary); font-size: 0.85rem;">Sentences</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Text Area -->
             <div class="form-group">
-                <label>Enter Text:</label>
-                <textarea id="inputText" oninput="updateStats()" placeholder="Type or paste your text here..."></textarea>
+                <textarea id="inputText" oninput="updateStats()" placeholder="Type or paste your text here..." style="min-height: 400px; font-size: 1.05rem; line-height: 1.6; resize: vertical;"></textarea>
             </div>
 
-            <div class="output-box" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 1rem; text-align: center;">
-                <div>
-                    <div style="font-size: 2rem; font-weight: bold;" id="charCount">0</div>
-                    <div style="color: var(--text-secondary);">Characters</div>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; font-weight: bold;" id="wordCount">0</div>
-                    <div style="color: var(--text-secondary);">Words</div>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; font-weight: bold;" id="lineCount">0</div>
-                    <div style="color: var(--text-secondary);">Lines</div>
-                </div>
-                <div>
-                    <div style="font-size: 2rem; font-weight: bold;" id="sentenceCount">0</div>
-                    <div style="color: var(--text-secondary);">Sentences</div>
-                </div>
+            <!-- Undo/Redo Row -->
+            <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+                <button class="btn btn-secondary" onclick="undo()" id="undoBtn" disabled style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">↶ Undo</button>
+                <button class="btn btn-secondary" onclick="redo()" id="redoBtn" disabled style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">↷ Redo</button>
             </div>
 
-            <div class="button-grid" style="margin-top: 2rem;">
-                <button class="btn btn-success" onclick="undo()" id="undoBtn" disabled>↶ Undo</button>
-                <button class="btn btn-success" onclick="redo()" id="redoBtn" disabled>↷ Redo</button>
-                <button class="btn btn-primary" onclick="convertCase('upper')">UPPERCASE</button>
-                <button class="btn btn-primary" onclick="convertCase('lower')">lowercase</button>
-                <button class="btn btn-primary" onclick="convertCase('title')">Title Case</button>
-                <button class="btn btn-primary" onclick="convertCase('sentence')">Sentence case</button>
-                <button class="btn btn-secondary" onclick="reverseText()">Reverse Text</button>
-                <button class="btn btn-secondary" onclick="removeSpaces()">Remove Spaces</button>
-                <button class="btn btn-secondary" onclick="copyText()">Copy Text</button>
-                <button class="btn btn-danger" onclick="clearText()">Clear</button>
+            <!-- Action Buttons -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.75rem;">
+                <button class="btn btn-primary" onclick="convertCase('upper')" style="padding: 0.65rem; font-size: 0.9rem;">UPPERCASE</button>
+                <button class="btn btn-primary" onclick="convertCase('lower')" style="padding: 0.65rem; font-size: 0.9rem;">lowercase</button>
+                <button class="btn btn-primary" onclick="convertCase('title')" style="padding: 0.65rem; font-size: 0.9rem;">Title Case</button>
+                <button class="btn btn-primary" onclick="convertCase('sentence')" style="padding: 0.65rem; font-size: 0.9rem;">Sentence case</button>
+                <button class="btn btn-secondary" onclick="reverseText()" style="padding: 0.65rem; font-size: 0.9rem;">🔄 Reverse</button>
+                <button class="btn btn-secondary" onclick="removeSpaces()" style="padding: 0.65rem; font-size: 0.9rem;">✂️ Remove Spaces</button>
+                <button class="btn btn-secondary" onclick="copyText()" style="padding: 0.65rem; font-size: 0.9rem;">📋 Copy Text</button>
+                <button class="btn btn-danger" onclick="clearText()" style="padding: 0.65rem; font-size: 0.9rem;">🗑️ Clear All</button>
             </div>
+
+            <style>
+                @media (max-width: 768px) {
+                    .container {
+                        padding: 0.5rem;
+                    }
+                }
+            </style>
         </div>
     </div>
 

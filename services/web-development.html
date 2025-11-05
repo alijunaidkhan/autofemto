@@ -11,7 +11,9 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://autofemto.com/services/web-development.html">
     
+    <link rel="stylesheet" href="../theme.css">
     <link rel="stylesheet" href="../styles.css">
+    <script src="../navigation.js"></script>
     <style>
         :root {
             --input-bg: #1e293b;
@@ -63,6 +65,14 @@
             padding: 1.5rem;
             border-radius: 0.75rem;
             border: 1px solid rgba(255, 255, 255, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
         }
         
         .feature-box h3 {
@@ -133,6 +143,14 @@
             padding: 1.5rem;
             border-radius: 0.75rem;
             border: 1px solid rgba(99, 102, 241, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-tier:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
         }
         
         .pricing-tier h3 {
@@ -267,14 +285,9 @@
     </style>
 </head>
 <body>
+    <!-- Navigation will be inserted here by navigation.js -->
+    
     <div class="container">
-        <header>
-            <div class="logo">
-                <h1><a href="../index.html" style="color: inherit; text-decoration: none;">AutoFemto</a></h1>
-                <p class="tagline">Automate. Simplify. Accelerate.</p>
-            </div>
-        </header>
-
         <main class="service-detail">
             <section class="service-hero">
                 <div class="icon">💻</div>
@@ -395,7 +408,7 @@
             <div id="contactForm" class="contact-form">
                 <h2 style="text-align: center; margin-bottom: 2rem; color: var(--primary-color);">Start Your Project</h2>
                 
-                <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+                <form action="https://formspree.io/f/mrbonqea" method="POST">
                     <input type="hidden" name="_subject" value="Web Development Request from AutoFemto">
                     <input type="hidden" name="service_type" value="Web Development">
                     
@@ -468,6 +481,16 @@
     </div>
 
     <script>
+        // Scroll to form when feature boxes or pricing tiers are clicked
+        document.querySelectorAll('.feature-box, .pricing-tier').forEach(box => {
+            box.addEventListener('click', () => {
+                document.getElementById('contactForm').scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+            });
+        });
+        
         // Handle form submission
         const form = document.querySelector('form');
         const contactForm = document.getElementById('contactForm');
@@ -493,7 +516,6 @@
                 if (response.ok) {
                     contactForm.style.display = 'none';
                     successMessage.classList.add('show');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
                 } else {
                     alert('There was an error sending your request. Please try again or email directly.');
                     submitBtn.textContent = 'Send Request';
