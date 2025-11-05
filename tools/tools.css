@@ -242,12 +242,33 @@ select:focus {
 
 /* Responsive */
 @media (max-width: 768px) {
+    .container {
+        padding: 1rem !important;
+        max-width: 100% !important;
+    }
+
+    .tool-container {
+        padding: 1rem;
+    }
+
+    .nav {
+        padding: 1rem;
+    }
+
     .nav-content {
         flex-direction: column;
         align-items: flex-start;
+        gap: 0.5rem;
     }
 
     .nav-links {
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .nav-links a {
+        display: block;
         width: 100%;
     }
 
@@ -261,11 +282,68 @@ select:focus {
 
     .display {
         font-size: 2rem;
+        padding: 1rem;
     }
 
-    /* Stack JSON textareas on mobile */
-    .tool-container > div[style*="grid-template-columns: 1fr 1fr"] {
+    .tool-title {
+        font-size: 1.5rem;
+    }
+
+    .tool-description {
+        font-size: 0.9rem;
+    }
+
+    /* Stack side-by-side layouts on mobile */
+    div[style*="grid-template-columns: 1fr 1fr"] {
         grid-template-columns: 1fr !important;
+    }
+
+    /* Make buttons full width on mobile */
+    .button-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .btn {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    /* Adjust textarea height for mobile */
+    textarea {
+        min-height: 200px !important;
+        font-size: 14px;
+    }
+
+    /* Make feature cards stack */
+    .feature-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Color picker adjustments */
+    input[type="color"] {
+        width: 100%;
+        height: 80px;
+    }
+
+    /* QR code output */
+    #qrOutput {
+        min-height: 250px !important;
+        padding: 1rem !important;
+    }
+
+    /* File upload */
+    .file-upload {
+        padding: 1.5rem 1rem;
+    }
+
+    /* Converter select dropdowns */
+    select {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+
+    input[type="text"],
+    input[type="number"] {
+        font-size: 16px; /* Prevents zoom on iOS */
     }
 }
 

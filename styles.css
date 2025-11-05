@@ -203,12 +203,17 @@ footer {
         font-size: 2rem;
     }
 
+    .tagline {
+        font-size: 1rem;
+    }
+
     .hero h2 {
         font-size: 2rem;
     }
 
     .hero-description {
         font-size: 1.1rem;
+        padding: 0 1rem;
     }
 
     .features h3,
@@ -218,5 +223,18 @@ footer {
 
     .feature-grid {
         grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .feature-card {
+        padding: 1.5rem;
+    }
+
+    .container {
+        padding: 1rem;
+    }
+
+    main {
+        gap: 2rem;
     }
 }
