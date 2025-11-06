@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Compound Interest Calculator - Free Investment Growth Tool | AutoFemto</title>
+    <meta name="title" content="Compound Interest Calculator - Free Investment Growth Tool | AutoFemto">
+    <meta name="description" content="Free compound interest calculator with charts. Calculate investment growth with daily, monthly, quarterly, or annual compounding. Track your returns over time with detailed breakdown and visualization.">
+    <meta name="keywords" content="compound interest calculator, compound calculator, investment calculator, interest calculator, savings calculator, compound interest formula, investment growth, financial calculator, roi calculator">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/tools/compound-calculator.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://autofemto.com/tools/compound-calculator.html">
+    <meta property="og:title" content="Compound Interest Calculator - Calculate Investment Growth">
+    <meta property="og:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. Free tool with charts and detailed breakdown.">
+    <meta property="og:image" content="https://autofemto.com/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://autofemto.com/tools/compound-calculator.html">
+    <meta property="twitter:title" content="Compound Interest Calculator - Calculate Investment Growth">
+    <meta property="twitter:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. Free tool with charts.">
+    <meta property="twitter:image" content="https://autofemto.com/og-image.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5RNQ75Z8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5RNQ75Z8V');
+    </script>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Compound Interest Calculator",
+      "url": "https://autofemto.com/tools/compound-calculator.html",
+      "description": "Free compound interest calculator with charts. Calculate investment growth with various compounding frequencies and see detailed year-by-year breakdown.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Compound interest calculation",
+        "Multiple compounding frequencies",
+        "Year-by-year breakdown",
+        "Visual charts",
+        "Additional contributions support",
+        "Inflation adjustment"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autofemto.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://autofemto.com/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Compound Interest Calculator",
+          "item": "https://autofemto.com/tools/compound-calculator.html"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="tools.css">
+    <script src="../navigation.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation will be inserted here by navigation.js -->
+    
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">💰 Compound Interest Calculator</h1>
+            <p class="tool-description">Calculate your investment growth with compound interest</p>
+
+            <!-- Input Form -->
+            <div class="form-group">
+                <label for="principal">Initial Investment ($):</label>
+                <input type="number" id="principal" value="10000" min="0" step="100" placeholder="10000">
+            </div>
+
+            <div class="form-group">
+                <label for="contribution">Monthly Contribution ($):</label>
+                <input type="number" id="contribution" value="0" min="0" step="50" placeholder="0">
+            </div>
+
+            <div class="form-group">
+                <label for="rate">Annual Interest Rate (%):</label>
+                <input type="number" id="rate" value="7" min="0" max="100" step="0.1" placeholder="7">
+            </div>
+
+            <div class="form-group">
+                <label for="years">Investment Period (Years):</label>
+                <input type="number" id="years" value="10" min="1" max="50" step="1" placeholder="10">
+            </div>
+
+            <div class="form-group">
+                <label for="frequency">Compounding Frequency:</label>
+                <select id="frequency">
+                    <option value="365">Daily</option>
+                    <option value="12" selected>Monthly</option>
+                    <option value="4">Quarterly</option>
+                    <option value="1">Annually</option>
+                </select>
+            </div>
+
+            <!-- Calculate Button -->
+            <div class="button-grid" style="grid-template-columns: 1fr;">
+                <button class="btn btn-success" onclick="calculate()">Calculate</button>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" style="display: none; margin-top: 2rem;">
+                <!-- Summary Cards -->
+                <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                    <div class="stat-card" style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(99, 102, 241, 0.3);">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Final Balance</div>
+                        <div id="finalBalance" style="font-size: 1.8rem; font-weight: 700; color: var(--primary-color);"></div>
+                    </div>
+                    <div class="stat-card" style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(34, 197, 94, 0.3);">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Total Deposits</div>
+                        <div id="totalDeposits" style="font-size: 1.8rem; font-weight: 700; color: #22c55e;"></div>
+                    </div>
+                    <div class="stat-card" style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(251, 191, 36, 0.3);">
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Interest Earned</div>
+                        <div id="interestEarned" style="font-size: 1.8rem; font-weight: 700; color: #fbbf24;"></div>
+                    </div>
+                </div>
+
+                <!-- Visual Chart -->
+                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+                    <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">Growth Visualization</h3>
+                    <div style="position: relative; height: 400px;">
+                        <canvas id="growthChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Yearly Breakdown Table -->
+                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem;">
+                    <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">Year-by-Year Breakdown</h3>
+                    <div style="overflow-x: auto;">
+                        <table id="breakdownTable" style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: rgba(99, 102, 241, 0.1);">
+                                    <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Year</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Deposits</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Interest</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="breakdownBody">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formula Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">📐 Compound Interest Formula</h2>
+            <div style="background: var(--input-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                <code style="font-size: 1.1rem; color: var(--primary-color);">
+                    A = P(1 + r/n)^(nt) + PMT × [((1 + r/n)^(nt) - 1) / (r/n)]
+                </code>
+            </div>
+            <div style="display: grid; gap: 0.75rem; color: var(--text-secondary);">
+                <div><strong>A</strong> = Final amount (Future value)</div>
+                <div><strong>P</strong> = Principal amount (Initial investment)</div>
+                <div><strong>r</strong> = Annual interest rate (decimal)</div>
+                <div><strong>n</strong> = Compounding frequency per year</div>
+                <div><strong>t</strong> = Time in years</div>
+                <div><strong>PMT</strong> = Regular contribution amount</div>
+            </div>
+        </div>
+
+        <!-- Tips Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">💡 Investment Tips</h2>
+            <div class="feature-grid">
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⏰</div>
+                    <strong>Start Early</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Time is your greatest asset. Starting early gives your investments more time to grow exponentially.</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📅</div>
+                    <strong>Be Consistent</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Regular monthly contributions can significantly boost your returns over time.</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎯</div>
+                    <strong>Stay Patient</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Compound interest takes time. The longer you invest, the more powerful the compounding effect.</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📊</div>
+                    <strong>Diversify</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Don't put all eggs in one basket. Spread investments across different assets.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Tools Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">⚡ Related Tools</h2>
+            <div class="button-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <a href="converter.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔄</div>
+                    <strong>Unit Converter</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Convert between units</p>
+                </a>
+                <a href="csv-json.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📊</div>
+                    <strong>CSV to JSON</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Convert data formats</p>
+                </a>
+                <a href="../tools.html" class="btn btn-primary" style="text-decoration: none; padding: 1rem; text-align: center;">
+                    <strong>View All Tools →</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity, streamline workflows, and unlock new possibilities for professionals worldwide.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="../tools.html">All Tools</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="stopwatch.html">Stopwatch</a></li>
+                    <li><a href="timer.html">Timer</a></li>
+                    <li><a href="json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="csv-json.html">CSV to JSON</a></li>
+                    <li><a href="compound-calculator.html">Compound Calculator</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="../services/web-development.html">Web Development</a></li>
+                    <li><a href="../services/custom-tools.html">Custom Tools</a></li>
+                    <li><a href="../services/automation-ai.html">Automation & AI</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../contact.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoFemto. All rights reserved. | Powered by <a href="https://autofemto.com">AutoFemto.com</a></p>
+        </div>
+    </footer>
+
+    <script>
+        let yearlyData = [];
+        let growthChart = null;
+
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }).format(value);
+        }
+
+        function calculate() {
+            const principal = parseFloat(document.getElementById('principal').value) || 0;
+            const monthlyContribution = parseFloat(document.getElementById('contribution').value) || 0;
+            const annualRate = parseFloat(document.getElementById('rate').value) / 100 || 0;
+            const years = parseInt(document.getElementById('years').value) || 0;
+            const compoundingFrequency = parseInt(document.getElementById('frequency').value);
+
+            if (principal <= 0 || years <= 0) {
+                alert('Please enter valid values for initial investment and years.');
+                return;
+            }
+
+            yearlyData = [];
+            
+            // Add Year 0 (starting point)
+            yearlyData.push({
+                year: 0,
+                deposits: principal,
+                interest: 0,
+                balance: principal
+            });
+            
+            // When frequency is monthly, we calculate month by month
+            // Otherwise, we use standard compound interest formula
+            
+            if (compoundingFrequency === 12) {
+                // Monthly compounding - calculate month by month
+                const monthlyRate = annualRate / 12;
+                let balance = principal;
+                let totalDeposits = principal;
+                
+                for (let year = 1; year <= years; year++) {
+                    for (let month = 1; month <= 12; month++) {
+                        // Add monthly contribution
+                        balance += monthlyContribution;
+                        totalDeposits += monthlyContribution;
+                        
+                        // Apply monthly interest
+                        balance *= (1 + monthlyRate);
+                    }
+                    
+                    yearlyData.push({
+                        year: year,
+                        deposits: totalDeposits,
+                        interest: balance - totalDeposits,
+                        balance: balance
+                    });
+                }
+            } else {
+                // For other frequencies (daily, quarterly, annually)
+                const r = annualRate;
+                const n = compoundingFrequency;
+                const ratePerPeriod = r / n;
+                
+                for (let year = 1; year <= years; year++) {
+                    const t = year;
+                    const periods = n * t;
+                    
+                    // Future value of initial principal: P(1 + r/n)^(nt)
+                    const principalFV = principal * Math.pow(1 + ratePerPeriod, periods);
+                    
+                    // Future value of monthly contributions
+                    let contributionsFV = 0;
+                    const totalMonths = 12 * t;
+                    
+                    for (let month = 0; month < totalMonths; month++) {
+                        // Each contribution is added at the end of month, compounds for remaining time
+                        const monthsRemaining = totalMonths - month - 1;
+                        const periodsRemaining = monthsRemaining * (n / 12);
+                        contributionsFV += monthlyContribution * Math.pow(1 + ratePerPeriod, periodsRemaining);
+                    }
+                    
+                    const balance = principalFV + contributionsFV;
+                    const totalDeposits = principal + (monthlyContribution * 12 * t);
+
+                    yearlyData.push({
+                        year: year,
+                        deposits: totalDeposits,
+                        interest: balance - totalDeposits,
+                        balance: balance
+                    });
+                }
+            }
+
+            const lastYear = yearlyData[yearlyData.length - 1];
+            const finalBalance = lastYear.balance;
+            const totalDeposits = lastYear.deposits;
+            const totalInterest = finalBalance - totalDeposits;
+
+            // Display results
+            document.getElementById('finalBalance').textContent = formatCurrency(finalBalance);
+            document.getElementById('totalDeposits').textContent = formatCurrency(totalDeposits);
+            document.getElementById('interestEarned').textContent = formatCurrency(totalInterest);
+
+            // Generate chart
+            generateChart();
+
+            // Generate table
+            generateTable();
+
+            // Show results
+            document.getElementById('results').style.display = 'block';
+        }
+
+        function generateChart() {
+            const ctx = document.getElementById('growthChart').getContext('2d');
+            
+            // Destroy existing chart if it exists
+            if (growthChart) {
+                growthChart.destroy();
+            }
+
+            const labels = yearlyData.map(d => `Year ${d.year}`);
+            const balanceData = yearlyData.map(d => d.balance);
+            const depositsData = yearlyData.map(d => d.deposits);
+            const interestData = yearlyData.map(d => d.interest);
+
+            // Get computed styles for theme colors
+            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#6366f1';
+            const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#e2e8f0';
+            const gridColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim() || '#334155';
+
+            growthChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Total Balance',
+                            data: balanceData,
+                            borderColor: primaryColor,
+                            backgroundColor: primaryColor + '20',
+                            fill: true,
+                            tension: 0.4,
+                            borderWidth: 3,
+                            pointRadius: 4,
+                            pointHoverRadius: 6
+                        },
+                        {
+                            label: 'Total Deposits',
+                            data: depositsData,
+                            borderColor: '#22c55e',
+                            backgroundColor: 'transparent',
+                            fill: false,
+                            tension: 0.4,
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                            borderDash: [5, 5]
+                        },
+                        {
+                            label: 'Interest Earned',
+                            data: interestData,
+                            borderColor: '#fbbf24',
+                            backgroundColor: 'transparent',
+                            fill: false,
+                            tension: 0.4,
+                            borderWidth: 2,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                            borderDash: [5, 5]
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: textColor,
+                                font: {
+                                    size: 12,
+                                    family: "'Inter', sans-serif"
+                                },
+                                padding: 15,
+                                usePointStyle: true
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleColor: '#fff',
+                            bodyColor: '#fff',
+                            borderColor: primaryColor,
+                            borderWidth: 1,
+                            padding: 12,
+                            displayColors: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.dataset.label + ': ' + formatCurrency(context.parsed.y);
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: {
+                                color: gridColor,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: textColor,
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: gridColor,
+                                drawBorder: false
+                            },
+                            ticks: {
+                                color: textColor,
+                                font: {
+                                    size: 11
+                                },
+                                callback: function(value) {
+                                    return '$' + (value / 1000).toFixed(0) + 'k';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function generateTable() {
+            const tbody = document.getElementById('breakdownBody');
+            tbody.innerHTML = '';
+
+            yearlyData.forEach(data => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="padding: 0.75rem; border: 1px solid var(--border-color);">${data.year}</td>
+                    <td style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color); color: var(--primary-color);">${formatCurrency(data.deposits)}</td>
+                    <td style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color); color: #fbbf24;">${formatCurrency(data.interest)}</td>
+                    <td style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color); font-weight: 600;">${formatCurrency(data.balance)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // Auto-calculate on input change
+        ['principal', 'contribution', 'rate', 'years', 'frequency'].forEach(id => {
+            document.getElementById(id).addEventListener('input', () => {
+                if (document.getElementById('results').style.display !== 'none') {
+                    calculate();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
