@@ -146,18 +146,18 @@
 
             <div class="form-group">
                 <label>Set Timer Duration:</label>
-                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
-                    <div style="position: relative;">
-                        <input type="number" id="hours" placeholder="" min="0" max="23" value="0" style="padding-right: 1rem; text-align: left;">
-                        <span style="position: absolute; right: 2.5rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); pointer-events: none; font-size: 0.9rem;">Hours</span>
+                <div class="timer-inputs">
+                    <div class="timer-input-wrapper">
+                        <label for="hours" class="timer-label">Hours</label>
+                        <input type="number" id="hours" min="0" max="23" value="0" class="timer-input">
                     </div>
-                    <div style="position: relative;">
-                        <input type="number" id="minutes" placeholder="" min="0" max="59" value="5" style="padding-right: 1rem; text-align: left;">
-                        <span style="position: absolute; right: 2.5rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); pointer-events: none; font-size: 0.9rem;">Minutes</span>
+                    <div class="timer-input-wrapper">
+                        <label for="minutes" class="timer-label">Minutes</label>
+                        <input type="number" id="minutes" min="0" max="59" value="5" class="timer-input">
                     </div>
-                    <div style="position: relative;">
-                        <input type="number" id="seconds" placeholder="" min="0" max="59" value="0" style="padding-right: 1rem; text-align: left;">
-                        <span style="position: absolute; right: 2.5rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); pointer-events: none; font-size: 0.9rem;">Seconds</span>
+                    <div class="timer-input-wrapper">
+                        <label for="seconds" class="timer-label">Seconds</label>
+                        <input type="number" id="seconds" min="0" max="59" value="0" class="timer-input">
                     </div>
                 </div>
             </div>

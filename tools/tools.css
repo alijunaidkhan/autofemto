@@ -226,6 +226,52 @@ select:focus {
     margin-top: 1rem;
 }
 
+/* Timer Inputs */
+.timer-inputs {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.timer-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.timer-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.timer-input {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1.2rem;
+    text-align: center;
+    background: var(--input-bg);
+    color: var(--text-primary);
+    border: 2px solid var(--border-color);
+    border-radius: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.timer-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.timer-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
 .converter-grid {
     display: grid;
     grid-template-columns: 1fr auto 1fr;
@@ -345,6 +391,26 @@ select:focus {
     input[type="text"],
     input[type="number"] {
         font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Timer inputs mobile layout */
+    .timer-inputs {
+        gap: 0.75rem;
+    }
+    
+    .timer-input-wrapper {
+        gap: 0.4rem;
+    }
+    
+    .timer-label {
+        font-size: 0.75rem;
+        text-align: center;
+    }
+    
+    .timer-input {
+        padding: 0.875rem 0.5rem;
+        font-size: 1.1rem;
+        min-height: 48px;
     }
 }
 
