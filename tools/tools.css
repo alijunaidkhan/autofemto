@@ -159,10 +159,12 @@ select:focus {
 .btn-secondary {
     background: var(--input-bg);
     color: var(--text-primary);
+    border: 2px solid var(--border-color);
 }
 
 .btn-secondary:hover {
-    background: var(--border-color);
+    background: var(--card-bg);
+    border-color: var(--primary-color);
 }
 
 .btn-success {

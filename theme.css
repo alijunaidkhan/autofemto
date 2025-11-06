@@ -10,6 +10,8 @@
     --text-secondary: #cbd5e1;
     --input-bg: #1e293b;
     --border-color: rgba(255, 255, 255, 0.2);
+    --success-color: #10b981;
+    --error-color: #ef4444;
     --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     --nav-bg: rgba(15, 23, 42, 0.95);
     --shadow: rgba(0, 0, 0, 0.3);
@@ -23,6 +25,8 @@
     --text-secondary: #475569;
     --input-bg: #ffffff;
     --border-color: rgba(0, 0, 0, 0.1);
+    --success-color: #10b981;
+    --error-color: #ef4444;
     --nav-bg: rgba(248, 250, 252, 0.95);
     --shadow: rgba(0, 0, 0, 0.1);
 }
