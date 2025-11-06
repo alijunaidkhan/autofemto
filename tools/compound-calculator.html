@@ -118,6 +118,14 @@
             </div>
 
             <div class="form-group">
+                <label for="variance">Rate Variance (% of rate):</label>
+                <input type="number" id="variance" value="0" min="0" max="100" step="0.5" placeholder="0">
+                <small style="color: var(--text-secondary); display: block; margin-top: 0.5rem;">
+                    Enter percentage of the rate. Example: 10 means ±10% of rate (e.g., 10% rate → 9-11% range)
+                </small>
+            </div>
+
+            <div class="form-group">
                 <label for="years">Investment Period (Years):</label>
                 <input type="number" id="years" value="10" min="1" max="50" step="1" placeholder="10">
             </div>
@@ -142,7 +150,7 @@
                 <!-- Summary Cards -->
                 <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
                     <div class="stat-card" style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(99, 102, 241, 0.3);">
-                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Final Balance</div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">Expected Balance</div>
                         <div id="finalBalance" style="font-size: 1.8rem; font-weight: 700; color: var(--primary-color);"></div>
                     </div>
                     <div class="stat-card" style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(34, 197, 94, 0.3);">
@@ -155,17 +163,40 @@
                     </div>
                 </div>
 
-                <!-- Visual Chart -->
+                <!-- Variance Scenarios (if variance is set) -->
+                <div id="varianceScenarios" style="display: none; margin-bottom: 2rem;">
+                    <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">📊 Scenario Analysis</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        <div style="background: rgba(239, 68, 68, 0.1); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(239, 68, 68, 0.3);">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">🔻 Worst Case</div>
+                            <div id="worstCase" style="font-size: 1.5rem; font-weight: 700; color: #ef4444;"></div>
+                            <div id="worstCaseRate" style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;"></div>
+                        </div>
+                        <div style="background: rgba(34, 197, 94, 0.1); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(34, 197, 94, 0.3);">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">🔺 Best Case</div>
+                            <div id="bestCase" style="font-size: 1.5rem; font-weight: 700; color: #22c55e;"></div>
+                            <div id="bestCaseRate" style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;"></div>
+                        </div>
+                        <div style="background: rgba(99, 102, 241, 0.1); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(99, 102, 241, 0.3);">
+                            <div style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.5rem;">📏 Range</div>
+                            <div id="range" style="font-size: 1.5rem; font-weight: 700; color: var(--primary-color);"></div>
+                            <div style="font-size: 0.8rem; color: var(--text-secondary); margin-top: 0.5rem;">Potential difference</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visual Chart - Temporarily disabled
                 <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
                     <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">Growth Visualization</h3>
                     <div style="position: relative; height: 400px;">
                         <canvas id="growthChart"></canvas>
                     </div>
                 </div>
+                -->
 
                 <!-- Yearly Breakdown Table -->
-                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem;">
-                    <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">Year-by-Year Breakdown</h3>
+                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
+                    <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">📊 Expected Scenario - Year-by-Year Breakdown</h3>
                     <div style="overflow-x: auto;">
                         <table id="breakdownTable" style="width: 100%; border-collapse: collapse;">
                             <thead>
@@ -177,6 +208,46 @@
                                 </tr>
                             </thead>
                             <tbody id="breakdownBody">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Worst Case Breakdown Table -->
+                <div id="worstCaseTable" style="display: none; background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem; border: 2px solid rgba(239, 68, 68, 0.3);">
+                    <h3 style="margin: 0 0 1rem 0; color: #ef4444;">🔻 Worst Case - Year-by-Year Breakdown</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: rgba(239, 68, 68, 0.1);">
+                                    <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Year</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Deposits</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Interest</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="worstCaseBody">
+                                <!-- Populated by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Best Case Breakdown Table -->
+                <div id="bestCaseTable" style="display: none; background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; border: 2px solid rgba(34, 197, 94, 0.3);">
+                    <h3 style="margin: 0 0 1rem 0; color: #22c55e;">🔺 Best Case - Year-by-Year Breakdown</h3>
+                    <div style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="background: rgba(34, 197, 94, 0.1);">
+                                    <th style="padding: 0.75rem; text-align: left; border: 1px solid var(--border-color);">Year</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Deposits</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Interest</th>
+                                    <th style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color);">Balance</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bestCaseBody">
                                 <!-- Populated by JavaScript -->
                             </tbody>
                         </table>
@@ -318,6 +389,7 @@
             const principal = parseFloat(document.getElementById('principal').value) || 0;
             const monthlyContribution = parseFloat(document.getElementById('contribution').value) || 0;
             const annualRate = parseFloat(document.getElementById('rate').value) / 100 || 0;
+            const variancePercent = parseFloat(document.getElementById('variance').value) || 0;
             const years = parseInt(document.getElementById('years').value) || 0;
             const compoundingFrequency = parseInt(document.getElementById('frequency').value);
 
@@ -408,14 +480,82 @@
             document.getElementById('totalDeposits').textContent = formatCurrency(totalDeposits);
             document.getElementById('interestEarned').textContent = formatCurrency(totalInterest);
 
-            // Generate chart
-            generateChart();
+            // Calculate and display variance scenarios if variancePercent > 0
+            if (variancePercent > 0) {
+                // Calculate variance as a percentage of the rate
+                // E.g., if rate is 10% and variance is 10, then variance = 10% of 10% = 1 percentage point
+                const varianceAmount = annualRate * (variancePercent / 100);
+                const worstCaseRate = Math.max(0, annualRate - varianceAmount);
+                const bestCaseRate = annualRate + varianceAmount;
+                
+                // Calculate worst case
+                const worstCaseBalance = calculateFinalBalance(principal, monthlyContribution, worstCaseRate, years, compoundingFrequency);
+                
+                // Calculate best case
+                const bestCaseBalance = calculateFinalBalance(principal, monthlyContribution, bestCaseRate, years, compoundingFrequency);
+                
+                // Display variance scenarios
+                document.getElementById('worstCase').textContent = formatCurrency(worstCaseBalance);
+                document.getElementById('worstCaseRate').textContent = `At ${(worstCaseRate * 100).toFixed(2)}% annual rate`;
+                document.getElementById('bestCase').textContent = formatCurrency(bestCaseBalance);
+                document.getElementById('bestCaseRate').textContent = `At ${(bestCaseRate * 100).toFixed(2)}% annual rate`;
+                document.getElementById('range').textContent = formatCurrency(bestCaseBalance - worstCaseBalance);
+                document.getElementById('varianceScenarios').style.display = 'block';
+                
+                // Generate variance breakdown tables
+                generateVarianceTable(worstCaseRate, 'worst');
+                generateVarianceTable(bestCaseRate, 'best');
+                document.getElementById('worstCaseTable').style.display = 'block';
+                document.getElementById('bestCaseTable').style.display = 'block';
+            } else {
+                document.getElementById('varianceScenarios').style.display = 'none';
+                document.getElementById('worstCaseTable').style.display = 'none';
+                document.getElementById('bestCaseTable').style.display = 'none';
+            }
+
+            // Generate chart - Temporarily disabled
+            // generateChart();
 
             // Generate table
             generateTable();
 
             // Show results
             document.getElementById('results').style.display = 'block';
+        }
+
+        function calculateFinalBalance(principal, monthlyContribution, annualRate, years, compoundingFrequency) {
+            if (compoundingFrequency === 12) {
+                // Monthly compounding
+                const monthlyRate = annualRate / 12;
+                let balance = principal;
+                
+                for (let year = 1; year <= years; year++) {
+                    for (let month = 1; month <= 12; month++) {
+                        balance += monthlyContribution;
+                        balance *= (1 + monthlyRate);
+                    }
+                }
+                return balance;
+            } else {
+                // Other frequencies
+                const ratePerPeriod = annualRate / compoundingFrequency;
+                const periods = compoundingFrequency * years;
+                
+                // Future value of principal
+                const principalFV = principal * Math.pow(1 + ratePerPeriod, periods);
+                
+                // Future value of contributions
+                let contributionsFV = 0;
+                const totalMonths = 12 * years;
+                
+                for (let month = 0; month < totalMonths; month++) {
+                    const monthsRemaining = totalMonths - month - 1;
+                    const periodsRemaining = monthsRemaining * (compoundingFrequency / 12);
+                    contributionsFV += monthlyContribution * Math.pow(1 + ratePerPeriod, periodsRemaining);
+                }
+                
+                return principalFV + contributionsFV;
+            }
         }
 
         function generateChart() {
@@ -564,8 +704,88 @@
             });
         }
 
+        function generateVarianceTable(rate, scenario) {
+            const principal = parseFloat(document.getElementById('principal').value) || 0;
+            const monthlyContribution = parseFloat(document.getElementById('contribution').value) || 0;
+            const years = parseInt(document.getElementById('years').value) || 0;
+            const compoundingFrequency = parseInt(document.getElementById('frequency').value);
+            
+            const tbody = document.getElementById(scenario === 'worst' ? 'worstCaseBody' : 'bestCaseBody');
+            tbody.innerHTML = '';
+            
+            const varianceData = [];
+            
+            // Add Year 0
+            varianceData.push({
+                year: 0,
+                deposits: principal,
+                interest: 0,
+                balance: principal
+            });
+            
+            // Calculate year-by-year for the given rate
+            if (compoundingFrequency === 12) {
+                const monthlyRate = rate / 12;
+                let balance = principal;
+                let totalDeposits = principal;
+                
+                for (let year = 1; year <= years; year++) {
+                    for (let month = 1; month <= 12; month++) {
+                        balance += monthlyContribution;
+                        totalDeposits += monthlyContribution;
+                        balance *= (1 + monthlyRate);
+                    }
+                    
+                    varianceData.push({
+                        year: year,
+                        deposits: totalDeposits,
+                        interest: balance - totalDeposits,
+                        balance: balance
+                    });
+                }
+            } else {
+                const ratePerPeriod = rate / compoundingFrequency;
+                
+                for (let year = 1; year <= years; year++) {
+                    const periods = compoundingFrequency * year;
+                    const principalFV = principal * Math.pow(1 + ratePerPeriod, periods);
+                    
+                    let contributionsFV = 0;
+                    const totalMonths = 12 * year;
+                    
+                    for (let month = 0; month < totalMonths; month++) {
+                        const monthsRemaining = totalMonths - month - 1;
+                        const periodsRemaining = monthsRemaining * (compoundingFrequency / 12);
+                        contributionsFV += monthlyContribution * Math.pow(1 + ratePerPeriod, periodsRemaining);
+                    }
+                    
+                    const balance = principalFV + contributionsFV;
+                    const totalDeposits = principal + (monthlyContribution * 12 * year);
+
+                    varianceData.push({
+                        year: year,
+                        deposits: totalDeposits,
+                        interest: balance - totalDeposits,
+                        balance: balance
+                    });
+                }
+            }
+            
+            // Populate table
+            varianceData.forEach(data => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td style="padding: 0.75rem; border: 1px solid var(--border-color);">${data.year}</td>
+                    <td style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color); color: var(--primary-color);">${formatCurrency(data.deposits)}</td>
+                    <td style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color); color: #fbbf24;">${formatCurrency(data.interest)}</td>
+                    <td style="padding: 0.75rem; text-align: right; border: 1px solid var(--border-color); font-weight: 600;">${formatCurrency(data.balance)}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
         // Auto-calculate on input change
-        ['principal', 'contribution', 'rate', 'years', 'frequency'].forEach(id => {
+        ['principal', 'contribution', 'rate', 'variance', 'years', 'frequency'].forEach(id => {
             document.getElementById(id).addEventListener('input', () => {
                 if (document.getElementById('results').style.display !== 'none') {
                     calculate();
