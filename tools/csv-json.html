@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>CSV to JSON Converter - Free Online Tool | AutoFemto</title>
+    <meta name="title" content="CSV to JSON Converter - Free Online Tool | AutoFemto">
+    <meta name="description" content="Convert CSV to JSON and JSON to CSV instantly. Free online converter with preview, download, and data validation. Handle large files with column mapping. No signup required!">
+    <meta name="keywords" content="csv to json, json to csv, csv converter, json converter, csv to json online, convert csv to json, data converter, file converter, csv parser, json parser">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/tools/csv-json.html">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://autofemto.com/tools/csv-json.html">
+    <meta property="og:title" content="CSV to JSON Converter - Free & Fast Data Conversion">
+    <meta property="og:description" content="Convert between CSV and JSON formats instantly. Preview data, map columns, and download results. Perfect for developers and data analysts.">
+    <meta property="og:image" content="https://autofemto.com/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://autofemto.com/tools/csv-json.html">
+    <meta property="twitter:title" content="CSV to JSON Converter - Free & Fast Data Conversion">
+    <meta property="twitter:description" content="Convert between CSV and JSON formats instantly. Preview data, map columns, and download results.">
+    <meta property="twitter:image" content="https://autofemto.com/og-image.svg">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5RNQ75Z8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5RNQ75Z8V');
+    </script>
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "CSV to JSON Converter",
+      "url": "https://autofemto.com/tools/csv-json.html",
+      "description": "Free online tool to convert CSV to JSON and JSON to CSV. Fast, secure, and easy to use with data preview and validation.",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "CSV to JSON conversion",
+        "JSON to CSV conversion",
+        "Data preview",
+        "Column mapping",
+        "Large file support",
+        "Download results",
+        "Data validation"
+      ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autofemto.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://autofemto.com/tools.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "CSV to JSON Converter",
+          "item": "https://autofemto.com/tools/csv-json.html"
+        }
+      ]
+    }
+    </script>
+
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="tools.css">
+    <script src="../navigation.js"></script>
+</head>
+<body>
+    <!-- Navigation will be inserted here by navigation.js -->
+    
+    <div class="container">
+        <div class="tool-container">
+            <h1 class="tool-title">🔄 CSV to JSON Converter</h1>
+            <p class="tool-description">Convert between CSV and JSON formats instantly</p>
+
+            <!-- Conversion Direction -->
+            <div class="form-group">
+                <label>Conversion Direction:</label>
+                <div class="button-grid" style="grid-template-columns: 1fr 1fr;">
+                    <button class="btn btn-primary" id="csvToJsonBtn" onclick="setDirection('csvToJson')">CSV → JSON</button>
+                    <button class="btn btn-secondary" id="jsonToCsvBtn" onclick="setDirection('jsonToCsv')">JSON → CSV</button>
+                </div>
+            </div>
+
+            <!-- Input Options -->
+            <div class="form-group">
+                <label>Input Method:</label>
+                <div class="button-grid" style="grid-template-columns: 1fr 1fr;">
+                    <button class="btn btn-secondary" id="pasteBtn" onclick="setInputMethod('paste')">Paste Data</button>
+                    <button class="btn btn-secondary" id="uploadBtn" onclick="setInputMethod('upload')">Upload File</button>
+                </div>
+            </div>
+
+            <!-- Paste Input Area -->
+            <div class="form-group" id="pasteArea">
+                <label for="inputData" id="inputLabel">Paste CSV Data:</label>
+                <textarea id="inputData" rows="10" placeholder="Paste your CSV data here...
+Example:
+name,age,city
+John,30,New York
+Jane,25,Los Angeles"></textarea>
+            </div>
+
+            <!-- File Upload Area -->
+            <div class="form-group" id="uploadArea" style="display: none;">
+                <label>Upload File:</label>
+                <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                    <input type="file" id="fileInput" accept=".csv,.json" style="display: none;" onchange="handleFileUpload(event)">
+                    <p style="margin: 0;">📁 Click to upload CSV or JSON file</p>
+                    <p style="margin: 0.5rem 0 0 0; font-size: 0.85rem; color: var(--text-secondary);">Max file size: 10MB</p>
+                </div>
+                <p id="fileName" style="margin-top: 0.5rem; color: var(--primary-color);"></p>
+            </div>
+
+            <!-- CSV Options (only visible for CSV to JSON) -->
+            <div class="form-group" id="csvOptions">
+                <label>CSV Options:</label>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                    <div>
+                        <label for="delimiter" style="font-size: 0.9rem; color: var(--text-secondary);">Delimiter:</label>
+                        <select id="delimiter">
+                            <option value=",">Comma (,)</option>
+                            <option value=";">Semicolon (;)</option>
+                            <option value="\t">Tab (\t)</option>
+                            <option value="|">Pipe (|)</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.9rem; color: var(--text-secondary);">
+                            <input type="checkbox" id="hasHeaders" checked> First row is headers
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- JSON Options (only visible for JSON to CSV) -->
+            <div class="form-group" id="jsonOptions" style="display: none;">
+                <label>JSON Options:</label>
+                <div>
+                    <label style="font-size: 0.9rem; color: var(--text-secondary);">
+                        <input type="checkbox" id="prettyPrint"> Pretty print output
+                    </label>
+                </div>
+            </div>
+
+            <!-- Convert Button -->
+            <div class="button-grid" style="grid-template-columns: 1fr;">
+                <button class="btn btn-success" onclick="convert()">Convert</button>
+            </div>
+
+            <!-- Stats Display -->
+            <div id="stats" style="display: none; padding: 1rem; background: var(--input-bg); border-radius: 0.5rem; margin: 1rem 0;">
+                <p style="margin: 0; color: var(--text-secondary);" id="statsText"></p>
+            </div>
+
+            <!-- Output Area -->
+            <div class="form-group" id="outputArea" style="display: none;">
+                <label for="outputData">Result:</label>
+                <textarea id="outputData" rows="10" readonly></textarea>
+                
+                <div class="button-grid">
+                    <button class="btn btn-primary" onclick="copyOutput()">Copy to Clipboard</button>
+                    <button class="btn btn-secondary" onclick="downloadOutput()">Download File</button>
+                </div>
+            </div>
+
+            <!-- Preview Table -->
+            <div id="previewSection" style="display: none; margin-top: 1rem;">
+                <h3 style="color: var(--text-primary); margin-bottom: 1rem;">Data Preview (First 10 rows):</h3>
+                <div style="overflow-x: auto; background: var(--input-bg); padding: 1rem; border-radius: 0.5rem;">
+                    <table id="previewTable" style="width: 100%; border-collapse: collapse;">
+                        <!-- Table will be populated by JS -->
+                    </table>
+                </div>
+            </div>
+
+            <!-- Error Display -->
+            <div id="error" style="display: none;" class="alert alert-error"></div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">✨ Features</h2>
+            <div class="feature-grid">
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔄</div>
+                    <strong>Bidirectional</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Convert CSV to JSON or JSON to CSV</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">👁️</div>
+                    <strong>Data Preview</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">See your data before downloading</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">⚙️</div>
+                    <strong>Customizable</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Choose delimiter, headers, formatting</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">📦</div>
+                    <strong>Large Files</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Handle files up to 10MB</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔒</div>
+                    <strong>Privacy First</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">All processing happens in your browser</p>
+                </div>
+                <div class="feature-card" style="cursor: default;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">💾</div>
+                    <strong>Easy Download</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Save results as .json or .csv files</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Tools Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">⚡ Related Tools</h2>
+            <div class="button-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <a href="json-formatter.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📋</div>
+                    <strong>JSON Formatter</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Format and validate JSON</p>
+                </a>
+                <a href="base64.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔐</div>
+                    <strong>Base64 Encoder</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Encode/decode Base64</p>
+                </a>
+                <a href="../tools.html" class="btn btn-primary" style="text-decoration: none; padding: 1rem; text-align: center;">
+                    <strong>View All Tools →</strong>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let conversionDirection = 'csvToJson';
+        let inputMethod = 'paste';
+        let parsedData = null;
+
+        function setDirection(direction) {
+            conversionDirection = direction;
+            
+            // Update button styles
+            document.getElementById('csvToJsonBtn').className = direction === 'csvToJson' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('jsonToCsvBtn').className = direction === 'jsonToCsv' ? 'btn btn-primary' : 'btn btn-secondary';
+            
+            // Update options visibility
+            document.getElementById('csvOptions').style.display = direction === 'csvToJson' ? 'block' : 'none';
+            document.getElementById('jsonOptions').style.display = direction === 'jsonToCsv' ? 'block' : 'none';
+            
+            // Update placeholder and label
+            const inputLabel = document.getElementById('inputLabel');
+            const inputData = document.getElementById('inputData');
+            
+            if (direction === 'csvToJson') {
+                inputLabel.textContent = 'Paste CSV Data:';
+                inputData.placeholder = 'Paste your CSV data here...\nExample:\nname,age,city\nJohn,30,New York\nJane,25,Los Angeles';
+            } else {
+                inputLabel.textContent = 'Paste JSON Data:';
+                inputData.placeholder = 'Paste your JSON data here...\nExample:\n[\n  {"name": "John", "age": 30, "city": "New York"},\n  {"name": "Jane", "age": 25, "city": "Los Angeles"}\n]';
+            }
+            
+            // Clear output
+            document.getElementById('outputArea').style.display = 'none';
+            document.getElementById('previewSection').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('stats').style.display = 'none';
+        }
+
+        function setInputMethod(method) {
+            inputMethod = method;
+            
+            // Update button styles
+            document.getElementById('pasteBtn').className = method === 'paste' ? 'btn btn-primary' : 'btn btn-secondary';
+            document.getElementById('uploadBtn').className = method === 'upload' ? 'btn btn-primary' : 'btn btn-secondary';
+            
+            // Toggle areas
+            document.getElementById('pasteArea').style.display = method === 'paste' ? 'block' : 'none';
+            document.getElementById('uploadArea').style.display = method === 'upload' ? 'block' : 'none';
+        }
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            
+            if (file.size > 10 * 1024 * 1024) {
+                showError('File size exceeds 10MB limit');
+                return;
+            }
+            
+            document.getElementById('fileName').textContent = `Selected: ${file.name}`;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('inputData').value = e.target.result;
+            };
+            reader.readAsText(file);
+        }
+
+        function convert() {
+            try {
+                const input = document.getElementById('inputData').value.trim();
+                
+                if (!input) {
+                    showError('Please provide input data');
+                    return;
+                }
+                
+                hideError();
+                
+                if (conversionDirection === 'csvToJson') {
+                    convertCsvToJson(input);
+                } else {
+                    convertJsonToCsv(input);
+                }
+                
+            } catch (error) {
+                showError('Conversion error: ' + error.message);
+            }
+        }
+
+        function convertCsvToJson(csvText) {
+            const delimiter = document.getElementById('delimiter').value;
+            const hasHeaders = document.getElementById('hasHeaders').checked;
+            
+            // Parse CSV
+            const lines = csvText.split('\n').filter(line => line.trim());
+            
+            if (lines.length === 0) {
+                showError('No data found');
+                return;
+            }
+            
+            const headers = hasHeaders 
+                ? lines[0].split(delimiter).map(h => h.trim())
+                : lines[0].split(delimiter).map((_, i) => `column${i + 1}`);
+            
+            const dataLines = hasHeaders ? lines.slice(1) : lines;
+            
+            parsedData = dataLines.map(line => {
+                const values = line.split(delimiter);
+                const obj = {};
+                headers.forEach((header, i) => {
+                    const value = values[i] ? values[i].trim() : '';
+                    // Try to parse numbers
+                    obj[header] = isNaN(value) || value === '' ? value : Number(value);
+                });
+                return obj;
+            });
+            
+            // Generate output
+            const output = JSON.stringify(parsedData, null, 2);
+            
+            // Display results
+            displayOutput(output);
+            showStats(parsedData.length, headers.length, 'JSON');
+            showPreview(parsedData);
+        }
+
+        function convertJsonToCsv(jsonText) {
+            // Parse JSON
+            try {
+                parsedData = JSON.parse(jsonText);
+                
+                if (!Array.isArray(parsedData)) {
+                    parsedData = [parsedData];
+                }
+                
+                if (parsedData.length === 0) {
+                    showError('Empty JSON array');
+                    return;
+                }
+                
+                // Get all unique keys
+                const headers = [...new Set(parsedData.flatMap(obj => Object.keys(obj)))];
+                
+                // Generate CSV
+                let csv = headers.join(',') + '\n';
+                
+                parsedData.forEach(obj => {
+                    const row = headers.map(header => {
+                        const value = obj[header] !== undefined ? obj[header] : '';
+                        // Escape commas and quotes
+                        const stringValue = String(value);
+                        if (stringValue.includes(',') || stringValue.includes('"') || stringValue.includes('\n')) {
+                            return '"' + stringValue.replace(/"/g, '""') + '"';
+                        }
+                        return stringValue;
+                    });
+                    csv += row.join(',') + '\n';
+                });
+                
+                // Display results
+                displayOutput(csv);
+                showStats(parsedData.length, headers.length, 'CSV');
+                showPreview(parsedData);
+                
+            } catch (error) {
+                showError('Invalid JSON: ' + error.message);
+            }
+        }
+
+        function displayOutput(output) {
+            document.getElementById('outputData').value = output;
+            document.getElementById('outputArea').style.display = 'block';
+        }
+
+        function showStats(rows, columns, format) {
+            const statsDiv = document.getElementById('stats');
+            const statsText = document.getElementById('statsText');
+            statsText.textContent = `✅ Converted successfully! ${rows} rows × ${columns} columns → ${format} format`;
+            statsDiv.style.display = 'block';
+        }
+
+        function showPreview(data) {
+            if (!data || data.length === 0) return;
+            
+            const table = document.getElementById('previewTable');
+            const preview = data.slice(0, 10);
+            const headers = Object.keys(preview[0]);
+            
+            let html = '<thead><tr>';
+            headers.forEach(header => {
+                html += `<th style="padding: 0.5rem; border: 1px solid var(--border-color); text-align: left; background: rgba(99, 102, 241, 0.1);">${header}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            
+            preview.forEach(row => {
+                html += '<tr>';
+                headers.forEach(header => {
+                    html += `<td style="padding: 0.5rem; border: 1px solid var(--border-color);">${row[header] !== undefined ? row[header] : ''}</td>`;
+                });
+                html += '</tr>';
+            });
+            
+            html += '</tbody>';
+            table.innerHTML = html;
+            document.getElementById('previewSection').style.display = 'block';
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('outputData');
+            output.select();
+            document.execCommand('copy');
+            
+            const btn = event.target;
+            const originalText = btn.textContent;
+            btn.textContent = '✅ Copied!';
+            setTimeout(() => {
+                btn.textContent = originalText;
+            }, 2000);
+        }
+
+        function downloadOutput() {
+            const output = document.getElementById('outputData').value;
+            const extension = conversionDirection === 'csvToJson' ? 'json' : 'csv';
+            const mimeType = conversionDirection === 'csvToJson' ? 'application/json' : 'text/csv';
+            const filename = `converted_${Date.now()}.${extension}`;
+            
+            const blob = new Blob([output], { type: mimeType });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error');
+            errorDiv.textContent = '❌ ' + message;
+            errorDiv.style.display = 'block';
+            document.getElementById('outputArea').style.display = 'none';
+            document.getElementById('previewSection').style.display = 'none';
+            document.getElementById('stats').style.display = 'none';
+        }
+
+        function hideError() {
+            document.getElementById('error').style.display = 'none';
+        }
+    </script>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity, streamline workflows, and unlock new possibilities for professionals worldwide.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="../tools.html">All Tools</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="../tools/stopwatch.html">Stopwatch</a></li>
+                    <li><a href="../tools/timer.html">Timer</a></li>
+                    <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="../tools/csv-json.html">CSV to JSON</a></li>
+                    <li><a href="../tools/qr-code.html">QR Code Generator</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="../services/web-development.html">Web Development</a></li>
+                    <li><a href="../services/custom-tools.html">Custom Tools</a></li>
+                    <li><a href="../services/automation-ai.html">Automation & AI</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../contact.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoFemto. All rights reserved. | Powered by <a href="https://autofemto.com">AutoFemto.com</a></p>
+        </div>
+    </footer>
+</body>
+</html>
