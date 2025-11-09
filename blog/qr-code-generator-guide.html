@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>QR Code Generator Guide: Create Custom QR Codes Instantly | AutoFemto</title>
+    <meta name="description" content="Generate QR codes for URLs, WiFi, contact info, and more. Free, fast, and completely private. Learn QR code best practices, use cases, and customization tips.">
+    <meta name="keywords" content="QR code generator, create QR code, QR code maker, free QR code, WiFi QR code, vCard QR code, QR code design, custom QR code, contactless QR">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/blog/qr-code-generator-guide.html">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="QR Code Generator: Create Professional QR Codes in Seconds">
+    <meta property="og:description" content="Complete guide to generating QR codes for business, marketing, and personal use. Learn best practices and design tips.">
+    <meta property="og:image" content="https://autofemto.com/og-image.svg">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5RNQ75Z8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5RNQ75Z8V');
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "QR Code Generator Guide: Create Custom QR Codes Instantly",
+      "description": "Learn everything about QR codes: types, use cases, design best practices, and how to generate them for marketing, business, and personal use.",
+      "datePublished": "2025-11-09T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "AutoFemto"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AutoFemto",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://autofemto.com/og-image.svg"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autofemto.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://autofemto.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "QR Code Generator Guide",
+          "item": "https://autofemto.com/blog/qr-code-generator-guide.html"
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../theme.js" defer></script>
+    <script src="../navigation.js" defer></script>
+    
+    <style>
+        .blog-post {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .blog-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content ul,
+        .blog-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border-left: 4px solid #ffc107;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-box a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    
+    <article class="blog-post">
+        <div class="blog-header">
+            <h1>📱 QR Code Generator Guide: From URLs to WiFi Passwords</h1>
+            <p style="color: var(--text-secondary); margin: 1rem 0 2rem 0;">📅 November 9, 2025 | ⏱️ 6 min read</p>
+        </div>
+        
+        <div class="blog-content">
+            <p>
+                QR codes are everywhere. Restaurant menus, event tickets, product packaging, business cards, payment systems. They've gone from "that weird Japanese thing" to an essential tool for contactless interaction.
+            </p>
+            
+            <p>
+                The pandemic accelerated adoption, but QR codes are here to stay because they solve a real problem: <strong>they bridge the physical and digital worlds instantly</strong>.
+            </p>
+            
+            <p>
+                In this guide, we'll cover everything you need to know about generating and using QR codes effectively.
+            </p>
+            
+            <h2>What is a QR Code?</h2>
+            
+            <p>
+                QR stands for <strong>Quick Response</strong>. Developed in 1994 by Denso Wave (a Toyota subsidiary) for tracking car parts, QR codes can store up to <strong>4,296 alphanumeric characters</strong>.
+            </p>
+            
+            <p>
+                Unlike traditional barcodes (which only hold ~20 characters), QR codes can store:
+            </p>
+            
+            <ul>
+                <li>URLs and website links</li>
+                <li>Plain text (up to ~4,000 characters)</li>
+                <li>Contact information (vCard)</li>
+                <li>WiFi credentials</li>
+                <li>Email addresses</li>
+                <li>Phone numbers</li>
+                <li>GPS coordinates</li>
+                <li>Payment information</li>
+            </ul>
+            
+            <p>
+                <strong>Best part?</strong> Every smartphone can scan them natively—no app needed (on iOS 11+ and modern Android).
+            </p>
+            
+            <h2>Real-World Use Cases</h2>
+            
+            <h3>1. Restaurant Menus (Contactless Dining)</h3>
+            
+            <p>
+                Post-pandemic, restaurants ditched physical menus. A QR code on the table links to a digital menu. Customers scan, browse, and order—zero contact.
+            </p>
+            
+            <p>
+                <strong>Pro tip:</strong> Make sure your menu URL is mobile-optimized. QR codes are scanned on phones, not desktops.
+            </p>
+            
+            <h3>2. Event Tickets & Check-In</h3>
+            
+            <p>
+                Concert tickets, boarding passes, conference badges—all use QR codes for fast check-in. Scan once, you're in. No printing required.
+            </p>
+            
+            <h3>3. Product Packaging & Authentication</h3>
+            
+            <p>
+                Brands use QR codes for:
+            </p>
+            
+            <ul>
+                <li><strong>Instructions:</strong> "Scan for assembly guide"</li>
+                <li><strong>Authenticity:</strong> Verify the product isn't counterfeit</li>
+                <li><strong>Promotions:</strong> Link to exclusive deals or videos</li>
+            </ul>
+            
+            <h3>4. Business Cards (Digital Contact Sharing)</h3>
+            
+            <p>
+                Add a QR code to your business card that encodes your contact info (vCard). When someone scans it, their phone offers to add you as a contact. No manual typing.
+            </p>
+            
+            <h3>5. WiFi Password Sharing</h3>
+            
+            <p>
+                Hosting a party? Generate a WiFi QR code, print it, stick it on the wall. Guests scan and connect automatically—no "what's the password?" conversations.
+            </p>
+            
+            <h3>6. Marketing & Advertising</h3>
+            
+            <p>
+                Billboards, flyers, posters—add a QR code to drive traffic to your landing page, video, or app download.
+            </p>
+            
+            <h3>7. Contactless Payments</h3>
+            
+            <p>
+                PayPal, Venmo, Cash App, crypto wallets—all use QR codes for peer-to-peer payments. Scan, confirm, done.
+            </p>
+            
+            <h2>Types of QR Codes</h2>
+            
+            <h3>Static QR Codes (What We Generate)</h3>
+            
+            <p>
+                The data is <strong>encoded directly in the QR code</strong>. Once generated, it can't be changed. Examples:
+            </p>
+            
+            <ul>
+                <li>URL: <code>https://example.com</code></li>
+                <li>Text: "Welcome to our store!"</li>
+                <li>WiFi: SSID + password</li>
+            </ul>
+            
+            <p>
+                <strong>Pros:</strong> Free, works forever, no tracking, privacy-friendly.<br>
+                <strong>Cons:</strong> Can't update the content after printing.
+            </p>
+            
+            <h3>Dynamic QR Codes</h3>
+            
+            <p>
+                The QR code links to a <strong>redirect URL</strong> that you control. You can change the destination anytime without reprinting the QR code.
+            </p>
+            
+            <p>
+                <strong>Pros:</strong> Editable, trackable (scan analytics).<br>
+                <strong>Cons:</strong> Requires a paid service, stops working if the service shuts down.
+            </p>
+            
+            <div class="highlight-box">
+                <strong>When to use static vs dynamic:</strong> Use <strong>static</strong> for permanent content (WiFi passwords, contact info). Use <strong>dynamic</strong> for campaigns where you need tracking or might change the URL later.
+            </div>
+            
+            <h2>Best Practices for QR Code Design</h2>
+            
+            <h3>1. Size Matters</h3>
+            
+            <p>
+                <strong>Minimum size:</strong> 2cm x 2cm (0.8" x 0.8") for close-range scanning (business cards, flyers).<br>
+                <strong>For billboards/posters:</strong> Follow the "10:1 rule"—if someone is 10 meters away, the QR code should be at least 1 meter wide.
+            </p>
+            
+            <h3>2. Contrast is Critical</h3>
+            
+            <p>
+                Dark QR code on light background works best. Avoid:
+            </p>
+            
+            <ul>
+                <li>❌ Light QR code on dark background (scanners struggle)</li>
+                <li>❌ Low contrast (gray on white)</li>
+                <li>❌ QR code on busy backgrounds (logos, patterns)</li>
+            </ul>
+            
+            <h3>3. Add a Call-to-Action</h3>
+            
+            <p>
+                Don't just slap a QR code on something. Tell people <em>why</em> they should scan it:
+            </p>
+            
+            <ul>
+                <li>✅ "Scan to view menu"</li>
+                <li>✅ "Scan to connect to WiFi"</li>
+                <li>✅ "Scan for exclusive discount"</li>
+                <li>❌ Just a QR code with no context</li>
+            </ul>
+            
+            <h3>4. Test Before Printing</h3>
+            
+            <p>
+                <strong>Always test your QR code</strong> on multiple devices (iPhone, Android) before printing thousands of flyers. Check:
+            </p>
+            
+            <ul>
+                <li>Does it scan quickly?</li>
+                <li>Does the link work?</li>
+                <li>Is the landing page mobile-friendly?</li>
+            </ul>
+            
+            <h3>5. Use High Error Correction</h3>
+            
+            <p>
+                QR codes have built-in error correction (low, medium, quartile, high). Higher correction means the code still works even if part of it is damaged or obscured.
+            </p>
+            
+            <ul>
+                <li><strong>Low (7%):</strong> Minimal damage tolerance</li>
+                <li><strong>Medium (15%):</strong> Good balance</li>
+                <li><strong>Quartile (25%):</strong> Recommended for most uses</li>
+                <li><strong>High (30%):</strong> Best for logos/branding overlaid on QR code</li>
+            </ul>
+            
+            <div class="warning-box">
+                <strong>Warning:</strong> Higher error correction = larger QR code. Balance between reliability and size.
+            </div>
+            
+            <h2>Using Our QR Code Generator</h2>
+            
+            <p>
+                Our <a href="../tools/qr-code.html" style="color: var(--primary-color);">QR Code Generator</a> makes creating QR codes effortless:
+            </p>
+            
+            <h3>Features:</h3>
+            
+            <ul>
+                <li><strong>✅ Multiple types:</strong> URL, text, WiFi, email, phone, vCard</li>
+                <li><strong>✅ Instant generation:</strong> See your QR code in real-time</li>
+                <li><strong>✅ Download as PNG/SVG:</strong> High-res for printing</li>
+                <li><strong>✅ Customizable size:</strong> Scale for different use cases</li>
+                <li><strong>✅ Error correction levels:</strong> Choose reliability vs size</li>
+                <li><strong>✅ Privacy-first:</strong> Generated in your browser—no server upload</li>
+            </ul>
+            
+            <h3>Perfect For:</h3>
+            
+            <ul>
+                <li>📱 Business cards with contact info</li>
+                <li>🍕 Restaurant menus</li>
+                <li>📡 WiFi password sharing</li>
+                <li>🎟️ Event tickets</li>
+                <li>📦 Product packaging</li>
+                <li>📢 Marketing campaigns</li>
+                <li>💳 Payment links</li>
+            </ul>
+            
+            <div class="cta-box">
+                <h3>Generate Your QR Code Now</h3>
+                <p>Free, fast, and works offline. Create QR codes for any purpose.</p>
+                <a href="../tools/qr-code.html">Create QR Code</a>
+            </div>
+            
+            <h2>WiFi QR Code Example</h2>
+            
+            <p>
+                Here's how WiFi QR codes are encoded (you don't need to do this manually—our tool does it):
+            </p>
+            
+            <div class="code-example">
+WIFI:T:WPA;S:MyNetworkName;P:MyPassword123;H:false;;
+            </div>
+            
+            <p>
+                <strong>Format breakdown:</strong>
+            </p>
+            
+            <ul>
+                <li><code>T:</code> Security type (WPA, WEP, or nopass for open networks)</li>
+                <li><code>S:</code> SSID (network name)</li>
+                <li><code>P:</code> Password</li>
+                <li><code>H:</code> Hidden network (true/false)</li>
+            </ul>
+            
+            <p>
+                When someone scans this QR code, their phone prompts "Join WiFi Network?" → Tap → Connected. No typing.
+            </p>
+            
+            <h2>vCard QR Code Example</h2>
+            
+            <p>
+                vCard (Virtual Contact File) format:
+            </p>
+            
+            <div class="code-example">
+BEGIN:VCARD
+VERSION:3.0
+FN:John Doe
+TEL:+1-555-123-4567
+EMAIL:john@example.com
+URL:https://johndoe.com
+END:VCARD
+            </div>
+            
+            <p>
+                Scanning this QR code lets someone add your contact info directly to their phone's address book. No typos, no manual entry.
+            </p>
+            
+            <h2>Common Mistakes to Avoid</h2>
+            
+            <h3>1. Linking to Non-Mobile-Friendly Sites</h3>
+            
+            <p>
+                QR codes are scanned on phones. If your landing page isn't mobile-responsive, users will bounce immediately.
+            </p>
+            
+            <h3>2. Using Tiny QR Codes</h3>
+            
+            <p>
+                If people have to get within 2 inches to scan it, it's too small. Follow the size guidelines above.
+            </p>
+            
+            <h3>3. Not Testing Different Lighting</h3>
+            
+            <p>
+                QR codes on glossy surfaces can reflect light, making them unscannable. Test in different lighting conditions.
+            </p>
+            
+            <h3>4. Encoding Too Much Data</h3>
+            
+            <p>
+                The more data you encode, the denser (and harder to scan) the QR code becomes. Keep URLs short. Use URL shorteners if needed.
+            </p>
+            
+            <h3>5. Forgetting Analytics (If Needed)</h3>
+            
+            <p>
+                Static QR codes have no tracking. If you need to measure scans, use a dynamic QR code service or add UTM parameters to your URL.
+            </p>
+            
+            <h2>Pro Tips for Maximum Scans</h2>
+            
+            <h3>1. Use URL Shorteners</h3>
+            
+            <p>
+                Shorter URLs = simpler QR codes = faster scans. Use bit.ly or TinyURL if your URL is long.
+            </p>
+            
+            <h3>2. Add Your Logo (Carefully)</h3>
+            
+            <p>
+                You can overlay a small logo in the center of a QR code (use high error correction). Don't cover more than 15-20% of the code.
+            </p>
+            
+            <h3>3. Use Custom Colors (But Keep Contrast)</h3>
+            
+            <p>
+                Black on white is best, but you can use brand colors—just ensure high contrast (dark foreground, light background).
+            </p>
+            
+            <h3>4. Track with UTM Parameters</h3>
+            
+            <p>
+                Add tracking to your URL:
+            </p>
+            
+            <div class="code-example">
+https://example.com?utm_source=qr_code&utm_campaign=flyer2025
+            </div>
+            
+            <p>
+                Now you can see QR code traffic in Google Analytics.
+            </p>
+            
+            <h2>Frequently Asked Questions</h2>
+            
+            <h3>Do QR codes expire?</h3>
+            
+            <p>
+                <strong>Static QR codes (ours) never expire.</strong> They're just encoded data—no server dependency. Dynamic QR codes expire if the service shuts down.
+            </p>
+            
+            <h3>Can I edit a QR code after printing?</h3>
+            
+            <p>
+                <strong>Static: No.</strong> The data is baked in. <strong>Dynamic: Yes.</strong> The QR code points to a redirect you control.
+            </p>
+            
+            <h3>Are QR codes safe?</h3>
+            
+            <p>
+                Mostly, but be cautious. Malicious QR codes can link to phishing sites or auto-download malware. Always preview the URL before visiting.
+            </p>
+            
+            <h3>How much data can a QR code hold?</h3>
+            
+            <ul>
+                <li><strong>Numeric only:</strong> 7,089 characters</li>
+                <li><strong>Alphanumeric:</strong> 4,296 characters</li>
+                <li><strong>Binary (8-bit):</strong> 2,953 bytes</li>
+            </ul>
+            
+            <p>
+                Practically, keep it under 500 characters for reliable scanning.
+            </p>
+            
+            <h3>Can QR codes work without internet?</h3>
+            
+            <p>
+                Yes! Text, WiFi, and vCard QR codes work offline. URL QR codes need internet to load the page.
+            </p>
+            
+            <h2>Conclusion</h2>
+            
+            <p>
+                QR codes are simple, versatile, and incredibly useful. Whether you're a restaurant owner, marketer, event organizer, or just someone who wants to share WiFi easily, QR codes solve real problems.
+            </p>
+            
+            <p>
+                Our <a href="../tools/qr-code.html" style="color: var(--primary-color);">QR Code Generator</a> makes creating them effortless—no account, no uploads, just instant results.
+            </p>
+            
+            <p>
+                <strong>Generate once. Use forever.</strong>
+            </p>
+            
+            <p style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(99, 102, 241, 0.1);">
+                <strong>Related Tools:</strong> 
+                <a href="../tools/url-shortener.html" style="color: var(--primary-color);">URL Shortener</a> | 
+                <a href="../tools/base64.html" style="color: var(--primary-color);">Base64 Encoder</a> | 
+                <a href="../tools/hash-generator.html" style="color: var(--primary-color);">Hash Generator</a>
+            </p>
+        </div>
+    </article>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity and streamline workflows.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="../tools/qr-code.html">QR Code Generator</a></li>
+                    <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="../tools/base64.html">Base64 Encoder</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoFemto. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

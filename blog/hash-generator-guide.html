@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Hash Generator Guide: MD5, SHA-256, SHA-512 Explained | AutoFemto</title>
+    <meta name="description" content="Generate cryptographic hashes for file integrity, password verification, and security. Learn MD5 vs SHA-256 vs SHA-512 differences with examples.">
+    <meta name="keywords" content="hash generator, MD5 hash, SHA-256 hash, SHA-512 hash, checksum generator, file integrity, cryptographic hash, hash function, password hash">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/blog/hash-generator-guide.html">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Hash Generator: MD5, SHA-256, SHA-512 Complete Guide">
+    <meta property="og:description" content="Everything you need to know about cryptographic hashing for security, integrity, and verification.">
+    <meta property="og:image" content="https://autofemto.com/og-image.svg">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5RNQ75Z8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5RNQ75Z8V');
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Hash Generator Guide: MD5, SHA-256, SHA-512 Explained",
+      "description": "Learn cryptographic hashing for file integrity, password security, and data verification with MD5, SHA-256, and SHA-512.",
+      "datePublished": "2025-11-09T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "AutoFemto"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AutoFemto",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://autofemto.com/og-image.svg"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autofemto.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://autofemto.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hash Generator Guide",
+          "item": "https://autofemto.com/blog/hash-generator-guide.html"
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../theme.js" defer></script>
+    <script src="../navigation.js" defer></script>
+    
+    <style>
+        .blog-post {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .blog-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content ul,
+        .blog-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .comparison-table th {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .warning-box {
+            background: rgba(255, 87, 87, 0.1);
+            border-left: 4px solid #ff5757;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-box a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    
+    <article class="blog-post">
+        <div class="blog-header">
+            <h1>🔐 Hash Generator Guide: MD5, SHA-256, SHA-512 Explained</h1>
+            <p style="color: var(--text-secondary); margin: 1rem 0 2rem 0;">📅 November 9, 2025 | ⏱️ 7 min read</p>
+        </div>
+        
+        <div class="blog-content">
+            <p>
+                You download a software installer. Before running it, you check the website for the "SHA-256 checksum" and compare it to the file. Why? Because one corrupted bit or a malicious replacement could brick your system—or worse.
+            </p>
+            
+            <p>
+                This is <strong>cryptographic hashing</strong>, and it's how we verify data integrity, secure passwords, and ensure files haven't been tampered with.
+            </p>
+            
+            <p>
+                In this guide, we'll demystify hash functions, compare algorithms, and show you exactly when and how to use them.
+            </p>
+            
+            <h2>What is a Hash Function?</h2>
+            
+            <p>
+                A <strong>hash function</strong> takes input (text, file, data) of any size and produces a fixed-size output (the "hash" or "digest") that's:
+            </p>
+            
+            <ul>
+                <li><strong>Deterministic:</strong> Same input always produces same output</li>
+                <li><strong>Fast:</strong> Computes quickly</li>
+                <li><strong>Avalanche effect:</strong> Tiny input change = completely different hash</li>
+                <li><strong>One-way:</strong> Can't reverse-engineer the original input from the hash</li>
+                <li><strong>Collision-resistant:</strong> Hard to find two inputs with the same hash</li>
+            </ul>
+            
+            <p>
+                Example: Hash "hello" with SHA-256:
+            </p>
+            
+            <div class="code-example">
+Input:  hello
+SHA-256: 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+            </div>
+            
+            <p>
+                Change one letter ("Hello" with capital H):
+            </p>
+            
+            <div class="code-example">
+Input:  Hello
+SHA-256: 185f8db32271fe25f561a6fc938b2e264306ec304eda518007d1764826381969
+            </div>
+            
+            <p>
+                <strong>Completely different hash.</strong> This avalanche effect makes hashes perfect for integrity checks.
+            </p>
+            
+            <h2>MD5 vs SHA-256 vs SHA-512: The Breakdown</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Hash Length</th>
+                        <th>Security</th>
+                        <th>Speed</th>
+                        <th>Use Cases</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>MD5</strong></td>
+                        <td>128-bit (32 hex chars)</td>
+                        <td>❌ <strong>BROKEN</strong> (collisions found)</td>
+                        <td>⚡⚡⚡ Very fast</td>
+                        <td>Checksums, non-security uses only</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SHA-1</strong></td>
+                        <td>160-bit (40 hex chars)</td>
+                        <td>❌ <strong>DEPRECATED</strong> (collisions found 2017)</td>
+                        <td>⚡⚡⚡ Fast</td>
+                        <td>Legacy systems (avoid if possible)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SHA-256</strong></td>
+                        <td>256-bit (64 hex chars)</td>
+                        <td>✅ <strong>SECURE</strong></td>
+                        <td>⚡⚡ Fast</td>
+                        <td>File integrity, certificates, blockchain</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SHA-512</strong></td>
+                        <td>512-bit (128 hex chars)</td>
+                        <td>✅ <strong>VERY SECURE</strong></td>
+                        <td>⚡ Moderate</td>
+                        <td>High-security, future-proofing</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="warning-box">
+                <strong>⚠️ Critical: DO NOT use MD5 or SHA-1 for security-critical applications.</strong> Both have known collision attacks. Use SHA-256 or SHA-512.
+            </div>
+            
+            <h2>Real-World Use Cases</h2>
+            
+            <h3>1. File Integrity Verification</h3>
+            
+            <p>
+                <strong>Scenario:</strong> You download an Ubuntu ISO (3GB file). The download page lists the SHA-256 hash. After downloading, you generate the hash of your file and compare.
+            </p>
+            
+            <p>
+                <strong>If hashes match → File is intact.</strong><br>
+                <strong>If hashes differ → File is corrupted or tampered with.</strong>
+            </p>
+            
+            <p>
+                This protects against:
+            </p>
+            
+            <ul>
+                <li>Network corruption during download</li>
+                <li>Man-in-the-middle attacks (attacker replaces file)</li>
+                <li>Malicious mirrors serving compromised files</li>
+            </ul>
+            
+            <h3>2. Password Storage (With Salt)</h3>
+            
+            <p>
+                <strong>Never store plain-text passwords.</strong> Instead, hash them:
+            </p>
+            
+            <div class="code-example">
+User registers with password: "MySecretPass123"
+Store: SHA-256("MySecretPass123" + salt) → hash in database
+            </div>
+            
+            <p>
+                When user logs in, hash their entered password and compare to stored hash.
+            </p>
+            
+            <p>
+                <strong>Important:</strong> Use <code>bcrypt</code>, <code>scrypt</code>, or <code>Argon2</code> (not SHA-256 directly) for passwords. These are designed to be slow (prevents brute-force attacks).
+            </p>
+            
+            <h3>3. Git Commit IDs</h3>
+            
+            <p>
+                Git uses SHA-1 hashes (moving to SHA-256) for commit IDs. Each commit's content (code + metadata) is hashed to create a unique identifier.
+            </p>
+            
+            <div class="code-example">
+commit 4a5f2c8d9e3b1a6f7e8c9d0a1b2c3d4e5f6a7b8c
+            </div>
+            
+            <p>
+                This ensures commit history integrity—you can't alter past commits without changing all subsequent commit IDs.
+            </p>
+            
+            <h3>4. Blockchain (Bitcoin)</h3>
+            
+            <p>
+                Bitcoin uses SHA-256 for proof-of-work mining. Miners compete to find a hash (of block data) that meets difficulty criteria (starts with X zeros). This secures the blockchain.
+            </p>
+            
+            <h3>5. HMAC (Message Authentication)</h3>
+            
+            <p>
+                HMAC (Hash-based Message Authentication Code) combines a hash with a secret key to verify message authenticity:
+            </p>
+            
+            <div class="code-example">
+HMAC = SHA-256(secret_key + message)
+            </div>
+            
+            <p>
+                Used in API signatures (AWS, webhooks) to ensure messages haven't been tampered with.
+            </p>
+            
+            <h2>Using Our Hash Generator</h2>
+            
+            <p>
+                Our <a href="../tools/hash-generator.html" style="color: var(--primary-color);">Hash Generator</a> supports all major algorithms:
+            </p>
+            
+            <h3>Features:</h3>
+            
+            <ul>
+                <li><strong>✅ Multiple algorithms:</strong> MD5, SHA-1, SHA-256, SHA-512, RIPEMD-160</li>
+                <li><strong>✅ Text & file hashing:</strong> Hash strings or upload files</li>
+                <li><strong>✅ Instant results:</strong> Compute hashes in real-time</li>
+                <li><strong>✅ Compare hashes:</strong> Verify file integrity by comparing expected vs actual</li>
+                <li><strong>✅ Copy with one click:</strong> Easy clipboard copy</li>
+                <li><strong>✅ Privacy-first:</strong> All hashing happens in your browser</li>
+            </ul>
+            
+            <h3>Perfect For:</h3>
+            
+            <ul>
+                <li>✅ Verifying downloaded files (ISOs, installers)</li>
+                <li>✅ Generating file checksums</li>
+                <li>✅ Testing password hashes</li>
+                <li>✅ Debugging cryptographic systems</li>
+                <li>✅ Learning how hash functions work</li>
+            </ul>
+            
+            <div class="cta-box">
+                <h3>Generate Hashes Now</h3>
+                <p>MD5, SHA-256, SHA-512, and more. Free, fast, and private.</p>
+                <a href="../tools/hash-generator.html">Hash Generator Tool</a>
+            </div>
+            
+            <h2>How to Verify File Integrity (Step-by-Step)</h2>
+            
+            <p>
+                <strong>Example:</strong> Verifying a downloaded Linux ISO.
+            </p>
+            
+            <ol>
+                <li>
+                    <strong>Find the official hash:</strong> Go to the official download page (e.g., ubuntu.com) and copy the SHA-256 hash listed.
+                </li>
+                <li>
+                    <strong>Download the file:</strong> Download the ISO (e.g., <code>ubuntu-22.04.iso</code>).
+                </li>
+                <li>
+                    <strong>Generate the hash:</strong> Use our Hash Generator or command line:
+                    <div class="code-example">
+# Linux/Mac
+sha256sum ubuntu-22.04.iso
+
+# Windows PowerShell
+Get-FileHash ubuntu-22.04.iso -Algorithm SHA256
+                    </div>
+                </li>
+                <li>
+                    <strong>Compare hashes:</strong> If the generated hash matches the official hash → ✅ File is authentic.
+                </li>
+            </ol>
+            
+            <p>
+                <strong>If hashes don't match:</strong> Delete the file and re-download from a trusted source.
+            </p>
+            
+            <h2>Common Hash Attacks (and Defenses)</h2>
+            
+            <h3>1. Collision Attack</h3>
+            
+            <p>
+                <strong>Attack:</strong> Find two different inputs that produce the same hash.
+            </p>
+            
+            <p>
+                <strong>Impact:</strong> Attacker replaces a legitimate file with a malicious one that has the same hash.
+            </p>
+            
+            <p>
+                <strong>Defense:</strong> Use SHA-256 or SHA-512 (collision-resistant). MD5 and SHA-1 are vulnerable.
+            </p>
+            
+            <h3>2. Preimage Attack</h3>
+            
+            <p>
+                <strong>Attack:</strong> Given a hash, find the original input.
+            </p>
+            
+            <p>
+                <strong>Defense:</strong> Modern hash functions (SHA-256+) are preimage-resistant.
+            </p>
+            
+            <h3>3. Rainbow Table Attack (Passwords)</h3>
+            
+            <p>
+                <strong>Attack:</strong> Precompute hashes of common passwords and look up stolen hashes in the table.
+            </p>
+            
+            <p>
+                <strong>Defense:</strong> Use a <strong>salt</strong> (random data added to password before hashing):
+            </p>
+            
+            <div class="code-example">
+hash = SHA-256(password + random_salt)
+            </div>
+            
+            <p>
+                Store both hash and salt. Each user has a unique salt, rendering rainbow tables useless.
+            </p>
+            
+            <h2>Code Examples</h2>
+            
+            <h3>SHA-256 in JavaScript</h3>
+            
+            <div class="code-example">
+async function sha256(text) {
+  const buffer = new TextEncoder().encode(text);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', buffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+sha256('hello').then(hash => console.log(hash));
+// Output: 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+            </div>
+            
+            <h3>SHA-256 in Python</h3>
+            
+            <div class="code-example">
+import hashlib
+
+text = "hello"
+hash_obj = hashlib.sha256(text.encode())
+print(hash_obj.hexdigest())
+# Output: 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
+            </div>
+            
+            <h3>File Hash in Bash</h3>
+            
+            <div class="code-example">
+# SHA-256
+sha256sum filename.txt
+
+# MD5 (for checksums only, NOT security)
+md5sum filename.txt
+            </div>
+            
+            <h2>When to Use Each Algorithm</h2>
+            
+            <div class="highlight-box">
+                <ul>
+                    <li><strong>MD5:</strong> Non-security checksums (detecting accidental corruption). <strong>Never</strong> for security.</li>
+                    <li><strong>SHA-1:</strong> Avoid. Legacy systems only.</li>
+                    <li><strong>SHA-256:</strong> Most common choice. File integrity, digital signatures, certificates.</li>
+                    <li><strong>SHA-512:</strong> Extra security margin, future-proofing. Slower than SHA-256.</li>
+                    <li><strong>bcrypt/scrypt/Argon2:</strong> Password hashing only (designed to be slow).</li>
+                </ul>
+            </div>
+            
+            <h2>Frequently Asked Questions</h2>
+            
+            <h3>Can you reverse a hash?</h3>
+            
+            <p>
+                <strong>No.</strong> Hash functions are one-way. You can't get the original input from the hash (unless you brute-force all possibilities).
+            </p>
+            
+            <h3>Why are there different hash lengths?</h3>
+            
+            <p>
+                Longer hashes = more possible outputs = harder to find collisions. SHA-256 has 2<sup>256</sup> possible hashes. SHA-512 has 2<sup>512</sup>. More bits = more security.
+            </p>
+            
+            <h3>Is hashing the same as encryption?</h3>
+            
+            <p>
+                <strong>No.</strong> Encryption is reversible (decrypt with key). Hashing is irreversible (one-way).
+            </p>
+            
+            <h3>Why is MD5 still used if it's broken?</h3>
+            
+            <p>
+                MD5 is fast and fine for non-security uses (checksums, cache keys, deduplication). Just don't use it where collision resistance matters.
+            </p>
+            
+            <h3>What's the difference between hashing and checksums?</h3>
+            
+            <p>
+                "Checksum" is a general term for detecting errors. Cryptographic hashes are a type of checksum designed for security (collision-resistant, preimage-resistant).
+            </p>
+            
+            <h2>Pro Tips</h2>
+            
+            <h3>1. Always Hash with Salt for Passwords</h3>
+            
+            <p>
+                Don't hash passwords with just SHA-256. Use bcrypt or Argon2, which handle salting and slow hashing automatically.
+            </p>
+            
+            <h3>2. Use HMAC for API Signatures</h3>
+            
+            <p>
+                When verifying webhooks or API requests, use HMAC to ensure the message hasn't been tampered with:
+            </p>
+            
+            <div class="code-example">
+signature = HMAC-SHA256(secret_key, message)
+            </div>
+            
+            <h3>3. Publish Hashes Over HTTPS</h3>
+            
+            <p>
+                If your download page lists file hashes, <strong>serve it over HTTPS</strong>. Otherwise, an attacker can modify both the file and the hash.
+            </p>
+            
+            <h3>4. Verify Before Executing</h3>
+            
+            <p>
+                Always verify file hashes before running installers or scripts from the internet.
+            </p>
+            
+            <h2>Conclusion</h2>
+            
+            <p>
+                Hashing is fundamental to modern security. Whether you're verifying downloads, securing passwords, or building APIs, understanding hash functions is essential.
+            </p>
+            
+            <p>
+                Our <a href="../tools/hash-generator.html" style="color: var(--primary-color);">Hash Generator</a> makes it easy to compute MD5, SHA-256, SHA-512, and more—instantly, privately, and for free.
+            </p>
+            
+            <p>
+                <strong>Secure your data. Verify integrity. Hash with confidence.</strong>
+            </p>
+            
+            <p style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(99, 102, 241, 0.1);">
+                <strong>Related Tools:</strong> 
+                <a href="../tools/base64.html" style="color: var(--primary-color);">Base64 Encoder</a> | 
+                <a href="../tools/json-formatter.html" style="color: var(--primary-color);">JSON Formatter</a> | 
+                <a href="../tools/text-tools.html" style="color: var(--primary-color);">Text Tools</a>
+            </p>
+        </div>
+    </article>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity and streamline workflows.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="../tools/hash-generator.html">Hash Generator</a></li>
+                    <li><a href="../tools/base64.html">Base64 Encoder</a></li>
+                    <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoFemto. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

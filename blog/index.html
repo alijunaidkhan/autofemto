@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO Meta Tags -->
+    <title>Blog - AutoFemto | Web Development, Privacy & Tool Guides</title>
+    <meta name="title" content="Blog - AutoFemto | Web Development, Privacy & Tool Guides">
+    <meta name="description" content="Learn about privacy-first development, browser-based tools, automation strategies, and how to protect your data online. Expert guides and tutorials from AutoFemto.">
+    <meta name="keywords" content="web development blog, privacy tools, browser security, automation guides, online tool tutorials, data privacy, client-side processing">
+    <meta name="author" content="AutoFemto">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/blog/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://autofemto.com/blog/">
+    <meta property="og:title" content="AutoFemto Blog - Privacy, Development & Tool Guides">
+    <meta property="og:description" content="Expert articles on privacy-first tools, web development, and productivity. Learn how to protect your data and work smarter.">
+    <meta property="og:image" content="https://autofemto.com/og-image.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://autofemto.com/blog/">
+    <meta property="twitter:title" content="AutoFemto Blog - Privacy & Development Guides">
+    <meta property="twitter:description" content="Learn about privacy-first development and online tools that protect your data.">
+    <meta property="twitter:image" content="https://autofemto.com/og-image.svg">
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5RNQ75Z8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5RNQ75Z8V');
+    </script>
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Blog",
+      "name": "AutoFemto Blog",
+      "description": "Expert articles on privacy-first web development, browser-based tools, automation, and data security.",
+      "url": "https://autofemto.com/blog/",
+      "publisher": {
+        "@type": "Organization",
+        "name": "AutoFemto",
+        "url": "https://autofemto.com",
+        "logo": "https://autofemto.com/og-image.svg"
+      }
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../theme.js" defer></script>
+    <script src="../navigation.js" defer></script>
+    
+    <style>
+        .blog-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .blog-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-header p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .blog-categories {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+        
+        .category-tag {
+            padding: 0.5rem 1.5rem;
+            background: rgba(99, 102, 241, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 2rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .category-tag:hover,
+        .category-tag.active {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 24px rgba(99, 102, 241, 0.2);
+            border-color: var(--primary-color);
+        }
+        
+        .blog-card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-card-category {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-card h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+            line-height: 1.4;
+        }
+        
+        .blog-card-excerpt {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+        
+        .blog-card-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            padding-top: 1rem;
+            border-top: 1px solid rgba(99, 102, 241, 0.1);
+        }
+        
+        .blog-card-date {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .blog-card-readtime {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .blog-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation will be inserted here by navigation.js -->
+    
+    <div class="blog-container">
+        <div class="blog-header">
+            <h1>📚 AutoFemto Blog</h1>
+            <p>Learn about privacy-first development, browser-based tools, automation strategies, and how to protect your data online.</p>
+        </div>
+        
+        <div class="blog-categories">
+            <div class="category-tag active" data-category="all">All Posts</div>
+            <div class="category-tag" data-category="privacy">Privacy & Security</div>
+            <div class="category-tag" data-category="tools">Tool Guides</div>
+            <div class="category-tag" data-category="development">Development</div>
+        </div>
+        
+        <div class="blog-grid">
+            <!-- Featured: Privacy Philosophy -->
+            <div class="blog-card" data-category="privacy" onclick="location.href='privacy-first-philosophy.html'">
+                <div class="blog-card-image">🔒</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Privacy & Security</span>
+                    <h3>Why We Build Privacy-First Tools</h3>
+                    <p class="blog-card-excerpt">
+                        Discover our philosophy on data privacy and why all our tools process data entirely in your browser—no servers, no tracking, no data collection.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 8 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Featured: Privacy Verification Guide -->
+            <div class="blog-card" data-category="privacy" onclick="location.href='verify-browser-privacy.html'">
+                <div class="blog-card-image">🔍</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Privacy & Security</span>
+                    <h3>How to Verify Your Data Never Leaves Your Browser</h3>
+                    <p class="blog-card-excerpt">
+                        Step-by-step guide to using browser developer tools to confirm no data is sent to external servers. Learn how to audit any online tool for privacy.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 10 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Base64 -->
+            <div class="blog-card" data-category="tools" onclick="location.href='base64-encoder-decoder-guide.html'">
+                <div class="blog-card-image">🔤</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Base64 Encoding & Decoding: Complete Guide</h3>
+                    <p class="blog-card-excerpt">
+                        Everything you need to know about Base64 encoding—what it is, why developers use it, and how our tool can save you hours of manual work.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 7 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: JSON Formatter -->
+            <div class="blog-card" data-category="tools" onclick="location.href='json-formatter-validator-guide.html'">
+                <div class="blog-card-image">{ }</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>JSON Formatter & Validator: Developer's Best Friend</h3>
+                    <p class="blog-card-excerpt">
+                        Learn how to format, validate, and debug JSON data instantly. Discover advanced features that make working with JSON effortless.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 6 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: CSV-JSON Converter -->
+            <div class="blog-card" data-category="tools" onclick="location.href='csv-json-converter-guide.html'">
+                <div class="blog-card-image">📊</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>CSV to JSON Converter: Data Transformation Made Easy</h3>
+                    <p class="blog-card-excerpt">
+                        Convert between CSV and JSON formats instantly. Perfect for data migration, API integration, and spreadsheet automation.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 6 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: QR Code Generator -->
+            <div class="blog-card" data-category="tools" onclick="location.href='qr-code-generator-guide.html'">
+                <div class="blog-card-image">📱</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>QR Code Generator: Create Custom Codes in Seconds</h3>
+                    <p class="blog-card-excerpt">
+                        Generate QR codes for URLs, Wi-Fi, vCards, and more. Learn best practices for QR code design and placement for maximum scans.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 7 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Hash Generator -->
+            <div class="blog-card" data-category="tools" onclick="location.href='hash-generator-guide.html'">
+                <div class="blog-card-image">🔐</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Hash Generator: MD5, SHA-256, SHA-512 Explained</h3>
+                    <p class="blog-card-excerpt">
+                        Understand cryptographic hashing and when to use MD5, SHA-256, or SHA-512. Essential for security professionals and developers.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 8 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Image Resizer -->
+            <div class="blog-card" data-category="tools" onclick="location.href='image-resizer-guide.html'">
+                <div class="blog-card-image">🖼️</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Image Resizer: Batch Resize Photos Without Quality Loss</h3>
+                    <p class="blog-card-excerpt">
+                        Resize images for web, social media, or print. Learn how to maintain quality while reducing file size—all in your browser.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 6 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Text Tools -->
+            <div class="blog-card" data-category="tools" onclick="location.href='text-tools-guide.html'">
+                <div class="blog-card-image">📝</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Text Tools: Case Conversion, Word Count & More</h3>
+                    <p class="blog-card-excerpt">
+                        Transform text instantly—uppercase, lowercase, title case, reverse, sort, and count. Essential utilities for writers and developers.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 5 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Unit Converter -->
+            <div class="blog-card" data-category="tools" onclick="location.href='unit-converter-guide.html'">
+                <div class="blog-card-image">📐</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Unit Converter: Convert Length, Weight, Time & More</h3>
+                    <p class="blog-card-excerpt">
+                        Convert between 100+ units across 18 categories. From metric to imperial, temperature to data storage—instant conversions.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 6 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Color Picker -->
+            <div class="blog-card" data-category="tools" onclick="location.href='color-picker-guide.html'">
+                <div class="blog-card-image">🎨</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Color Picker: HEX, RGB, HSL Conversion for Designers</h3>
+                    <p class="blog-card-excerpt">
+                        Pick perfect colors and convert between HEX, RGB, HSL, and CMYK. Generate color palettes and gradients for your designs.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 6 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Stopwatch -->
+            <div class="blog-card" data-category="tools" onclick="location.href='stopwatch-timer-guide.html'">
+                <div class="blog-card-image">⏱️</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Stopwatch & Timer: Time Tracking for Productivity</h3>
+                    <p class="blog-card-excerpt">
+                        Master time tracking with our stopwatch and countdown timer. Perfect for Pomodoro technique, workouts, or project management.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 5 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Countdown Timer -->
+            <div class="blog-card" data-category="tools" onclick="location.href='countdown-timer-guide.html'">
+                <div class="blog-card-image">⏲️</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Countdown Timer: Master Time Management & Productivity</h3>
+                    <p class="blog-card-excerpt">
+                        Boost productivity with countdown timers. Learn the Pomodoro technique, meeting timers, and time management strategies.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 7 min read</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tool Guide: Compound Calculator -->
+            <div class="blog-card" data-category="tools" onclick="location.href='compound-interest-calculator-guide.html'">
+                <div class="blog-card-image">💰</div>
+                <div class="blog-card-content">
+                    <span class="blog-card-category">Tool Guides</span>
+                    <h3>Compound Interest Calculator: Plan Your Financial Future</h3>
+                    <p class="blog-card-excerpt">
+                        Visualize how your investments grow over time. Calculate compound interest with detailed charts and breakdowns.
+                    </p>
+                    <div class="blog-card-meta">
+                        <span class="blog-card-date">📅 November 9, 2025</span>
+                        <span class="blog-card-readtime">⏱️ 7 min read</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity, streamline workflows, and unlock new possibilities for professionals worldwide.</p>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="../tools.html">All Tools</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="index.html">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="../tools/stopwatch.html">Stopwatch</a></li>
+                    <li><a href="../tools/timer.html">Timer</a></li>
+                    <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="../tools/csv-json.html">CSV to JSON</a></li>
+                    <li><a href="../tools/qr-code.html">QR Code Generator</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Services</h3>
+                <ul>
+                    <li><a href="../services/web-development.html">Web Development</a></li>
+                    <li><a href="../services/custom-tools.html">Custom Tools</a></li>
+                    <li><a href="../services/automation-ai.html">Automation & AI</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
+                    <li><a href="../contact.html">Terms & Conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoFemto. All rights reserved. | Powered by <a href="https://autofemto.com">AutoFemto.com</a></p>
+        </div>
+    </footer>
+    
+    <script>
+        // Category filtering
+        document.querySelectorAll('.category-tag').forEach(tag => {
+            tag.addEventListener('click', function() {
+                const category = this.dataset.category;
+                
+                // Update active state
+                document.querySelectorAll('.category-tag').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Filter cards
+                document.querySelectorAll('.blog-card').forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

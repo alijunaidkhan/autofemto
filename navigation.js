@@ -12,6 +12,7 @@ function createNavigation(currentPage = '') {
     const isAbout = fileName === 'about.html';
     const isContact = fileName === 'contact.html';
     const isTools = fileName === 'tools.html';
+    const isBlog = path.includes('/blog/');
     
     const navContent = `
         <div class="nav-container">
@@ -27,6 +28,9 @@ function createNavigation(currentPage = '') {
                 </a>
                 <a href="${currentPage}tools.html" class="nav-btn ${isTools ? 'active' : ''}">
                     <span class="nav-icon">🛠️</span> Tools
+                </a>
+                <a href="${currentPage}blog/index.html" class="nav-btn ${isBlog ? 'active' : ''}">
+                    <span class="nav-icon">📚</span> Blog
                 </a>
                 <a href="${currentPage}about.html" class="nav-btn ${isAbout ? 'active' : ''}">
                     <span class="nav-icon">ℹ️</span> About
@@ -66,6 +70,7 @@ class ThemeManager {
     }
     
     init() {
+        // Apply theme IMMEDIATELY, don't wait for DOM
         this.applyTheme(this.theme);
         
         // Listen for system theme changes
@@ -111,7 +116,10 @@ class ThemeManager {
     }
 }
 
-// Initialize on page load
+// Initialize theme manager IMMEDIATELY (before DOM loads)
+window.themeManager = new ThemeManager();
+
+// Initialize navigation and animations on page load
 document.addEventListener('DOMContentLoaded', () => {
     // Determine prefix based on current page location
     const path = window.location.pathname;
@@ -121,13 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
         prefix = '../';
     } else if (path.includes('/services/')) {
         prefix = '../';
+    } else if (path.includes('/blog/')) {
+        prefix = '../';
     }
     
     // Insert navigation
     insertNavigation(prefix);
-    
-    // Initialize theme manager
-    window.themeManager = new ThemeManager();
     
     // Typing animation for tagline
     const text = "Automation at Quantum Speed!";

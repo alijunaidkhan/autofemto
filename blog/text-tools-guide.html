@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Text Tools Guide: Case Conversion, Word Count & More | AutoFemto</title>
+    <meta name="description" content="Free online text tools for case conversion, word count, character manipulation, and text transformation. Perfect for writers, developers, and content creators.">
+    <meta name="keywords" content="text tools, case converter, uppercase lowercase, word count, character count, text transformation, remove duplicates, reverse text, sort lines">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/blog/text-tools-guide.html">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Text Tools: Essential Utilities for Writers & Developers">
+    <meta property="og:description" content="Master text manipulation with case conversion, word counting, sorting, and transformation tools.">
+    <meta property="og:image" content="https://autofemto.com/og-image.svg">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5RNQ75Z8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5RNQ75Z8V');
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Text Tools Guide: Case Conversion, Word Count & More",
+      "description": "Complete guide to text manipulation tools for productivity, content creation, and development.",
+      "datePublished": "2025-11-09T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "AutoFemto"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AutoFemto",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://autofemto.com/og-image.svg"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autofemto.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://autofemto.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Text Tools Guide",
+          "item": "https://autofemto.com/blog/text-tools-guide.html"
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../theme.js" defer></script>
+    <script src="../navigation.js" defer></script>
+    
+    <style>
+        .blog-post {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .blog-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content ul,
+        .blog-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-box a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    
+    <article class="blog-post">
+        <div class="blog-header">
+            <h1>📝 Text Tools Guide: Every Text Manipulation You Need</h1>
+            <p style="color: var(--text-secondary); margin: 1rem 0 2rem 0;">📅 November 9, 2025 | ⏱️ 6 min read</p>
+        </div>
+        
+        <div class="blog-content">
+            <p>
+                You copy a list of 500 email addresses from a spreadsheet. They're all lowercase, but your email marketing tool requires proper case. Or you paste SQL column names that need converting to camelCase for your JavaScript code.
+            </p>
+            
+            <p>
+                <strong>Text manipulation tasks like this happen daily.</strong> You could do them manually (spending 20 minutes and probably making mistakes), write a script (spending 15 minutes for a 5-second task), or use the right tool and finish in 10 seconds.
+            </p>
+            
+            <p>
+                Let's explore the essential text tools every writer, developer, and content creator needs.
+            </p>
+            
+            <h2>Essential Text Transformations</h2>
+            
+            <h3>1. Case Conversion</h3>
+            
+            <p>
+                Converting text between different cases is one of the most common text operations:
+            </p>
+            
+            <div class="code-example">
+Original:      hello world example
+UPPERCASE:     HELLO WORLD EXAMPLE
+lowercase:     hello world example
+Title Case:    Hello World Example
+Sentence case: Hello world example
+camelCase:     helloWorldExample
+PascalCase:    HelloWorldExample
+snake_case:    hello_world_example
+kebab-case:    hello-world-example
+            </div>
+            
+            <p>
+                <strong>Use cases:</strong>
+            </p>
+            
+            <ul>
+                <li><strong>Developers:</strong> Converting database columns (snake_case) to JavaScript variables (camelCase)</li>
+                <li><strong>Writers:</strong> Fixing accidentally SHOUTING headlines</li>
+                <li><strong>Data entry:</strong> Standardizing names, addresses, product titles</li>
+                <li><strong>SEO:</strong> Converting keywords to title case for meta tags</li>
+            </ul>
+            
+            <h3>2. Word & Character Count</h3>
+            
+            <p>
+                Every writer needs accurate counts:
+            </p>
+            
+            <ul>
+                <li><strong>Word count:</strong> For articles, essays, reports</li>
+                <li><strong>Character count:</strong> For social media (Twitter: 280 chars, meta descriptions: 155 chars)</li>
+                <li><strong>Character count (no spaces):</strong> For forms with strict limits</li>
+                <li><strong>Line count:</strong> For poetry, code, data files</li>
+                <li><strong>Sentence count:</strong> For readability analysis</li>
+            </ul>
+            
+            <p>
+                <strong>Example:</strong> Writing a Twitter thread? Paste your tweet, see it's 295 characters, trim it down to 280. Done.
+            </p>
+            
+            <h3>3. Remove Duplicates</h3>
+            
+            <p>
+                You have a list of 1,000 email addresses with 200 duplicates. Manual deduplication? Nightmare. Tool? One click.
+            </p>
+            
+            <div class="code-example">
+Input:
+apple
+banana
+apple
+cherry
+banana
+apple
+
+Output (duplicates removed):
+apple
+banana
+cherry
+            </div>
+            
+            <p>
+                <strong>Use cases:</strong>
+            </p>
+            
+            <ul>
+                <li>Cleaning email lists</li>
+                <li>Removing duplicate URLs, keywords, tags</li>
+                <li>Data cleanup before importing to databases</li>
+            </ul>
+            
+            <h3>4. Sort Lines</h3>
+            
+            <p>
+                Alphabetize, sort numerically, or reverse sort any list:
+            </p>
+            
+            <div class="code-example">
+Input:
+Zebra
+Apple
+Banana
+Cherry
+
+Sorted (A-Z):
+Apple
+Banana
+Cherry
+Zebra
+
+Sorted (Z-A):
+Zebra
+Cherry
+Banana
+Apple
+            </div>
+            
+            <p>
+                <strong>Use cases:</strong>
+            </p>
+            
+            <ul>
+                <li>Organizing lists (products, names, URLs)</li>
+                <li>Sorting CSS properties alphabetically</li>
+                <li>Prioritizing tasks</li>
+            </ul>
+            
+            <h3>5. Reverse Text</h3>
+            
+            <p>
+                Reverse entire text, reverse word order, or reverse each line:
+            </p>
+            
+            <div class="code-example">
+Original:        Hello World
+Reversed:        dlroW olleH
+Words reversed:  World Hello
+            </div>
+            
+            <p>
+                <strong>Use cases:</strong>
+            </p>
+            
+            <ul>
+                <li>Testing string manipulation functions</li>
+                <li>Palindrome verification</li>
+                <li>Creative writing effects</li>
+            </ul>
+            
+            <h3>6. Find & Replace</h3>
+            
+            <p>
+                Bulk find/replace with regex support:
+            </p>
+            
+            <div class="code-example">
+Find:    http://
+Replace: https://
+
+Result: All HTTP URLs converted to HTTPS
+            </div>
+            
+            <p>
+                <strong>Use cases:</strong>
+            </p>
+            
+            <ul>
+                <li>Updating URLs in bulk</li>
+                <li>Fixing typos across documents</li>
+                <li>Refactoring code (variable names, function names)</li>
+            </ul>
+            
+            <h2>Real-World Use Cases</h2>
+            
+            <h3>Use Case 1: Social Media Character Limits</h3>
+            
+            <p>
+                You're writing a Twitter bio (160 char limit). Paste your text, see the count, trim accordingly. No more "your bio is too long" errors after publishing.
+            </p>
+            
+            <h3>Use Case 2: Database to JavaScript Conversion</h3>
+            
+            <p>
+                Your database uses snake_case columns:
+            </p>
+            
+            <div class="code-example">
+user_id
+first_name
+last_name
+email_address
+            </div>
+            
+            <p>
+                Convert to camelCase for your JS code:
+            </p>
+            
+            <div class="code-example">
+userId
+firstName
+lastName
+emailAddress
+            </div>
+            
+            <p>
+                Paste, convert, copy. Done in 5 seconds.
+            </p>
+            
+            <h3>Use Case 3: Cleaning Pasted Content</h3>
+            
+            <p>
+                You copy text from a PDF. It has weird line breaks, extra spaces, and formatting issues. Use text cleanup tools to:
+            </p>
+            
+            <ul>
+                <li>Remove extra spaces</li>
+                <li>Remove line breaks</li>
+                <li>Trim leading/trailing whitespace</li>
+                <li>Normalize to single spacing</li>
+            </ul>
+            
+            <h3>Use Case 4: CSV Column Extraction</h3>
+            
+            <p>
+                You have a CSV with 10 columns but only need column 3 (email addresses). Extract it, remove duplicates, sort alphabetically. Import to your email tool.
+            </p>
+            
+            <h2>Using Our Text Tools</h2>
+            
+            <p>
+                Our <a href="../tools/text-tools.html" style="color: var(--primary-color);">Text Tools</a> collection includes everything you need:
+            </p>
+            
+            <h3>Features:</h3>
+            
+            <ul>
+                <li><strong>✅ Case conversion:</strong> 9 formats (UPPERCASE, lowercase, Title, camelCase, snake_case, etc.)</li>
+                <li><strong>✅ Word/character count:</strong> With and without spaces, lines, sentences</li>
+                <li><strong>✅ Remove duplicates:</strong> Keep first occurrence or sort results</li>
+                <li><strong>✅ Sort lines:</strong> Alphabetical (A-Z, Z-A), numerical, random shuffle</li>
+                <li><strong>✅ Reverse text:</strong> Entire text, words, or lines</li>
+                <li><strong>✅ Find & replace:</strong> With regex support</li>
+                <li><strong>✅ Text cleanup:</strong> Remove extra spaces, line breaks, trim whitespace</li>
+                <li><strong>✅ Instant results:</strong> See changes in real-time</li>
+                <li><strong>✅ Privacy-first:</strong> All processing happens in your browser</li>
+            </ul>
+            
+            <h3>Perfect For:</h3>
+            
+            <ul>
+                <li>📝 Writers & content creators</li>
+                <li>💻 Developers & programmers</li>
+                <li>📊 Data analysts</li>
+                <li>📱 Social media managers</li>
+                <li>✍️ Students & researchers</li>
+                <li>📧 Email marketers</li>
+            </ul>
+            
+            <div class="cta-box">
+                <h3>Try Our Text Tools</h3>
+                <p>Case conversion, word count, duplicates removal, and more. Free and instant.</p>
+                <a href="../tools/text-tools.html">Use Text Tools Now</a>
+            </div>
+            
+            <h2>Developer-Specific Text Operations</h2>
+            
+            <h3>1. Variable Name Conversion</h3>
+            
+            <p>
+                Converting between naming conventions is a daily developer task:
+            </p>
+            
+            <div class="code-example">
+// Database (snake_case)
+user_profile_settings
+
+// JavaScript (camelCase)
+userProfileSettings
+
+// Python Class (PascalCase)
+UserProfileSettings
+
+// URL slugs (kebab-case)
+user-profile-settings
+
+// Constants (SCREAMING_SNAKE_CASE)
+USER_PROFILE_SETTINGS
+            </div>
+            
+            <h3>2. SQL to Code Translation</h3>
+            
+            <p>
+                When working with databases and APIs:
+            </p>
+            
+            <div class="code-example">
+-- SQL columns
+SELECT user_id, first_name, created_at FROM users;
+
+// JavaScript object
+const user = {
+  userId: row.user_id,
+  firstName: row.first_name,
+  createdAt: row.created_at
+};
+            </div>
+            
+            <p>
+                Copy SQL columns, convert to camelCase, build your object.
+            </p>
+            
+            <h3>3. Cleaning JSON Keys</h3>
+            
+            <p>
+                API returns inconsistent key formats? Standardize them:
+            </p>
+            
+            <div class="code-example">
+// Messy
+{
+  "User ID": "123",
+  "first name": "John",
+  "LastName": "Doe"
+}
+
+// Clean (camelCase)
+{
+  "userId": "123",
+  "firstName": "John",
+  "lastName": "Doe"
+}
+            </div>
+            
+            <h2>Writer-Specific Text Operations</h2>
+            
+            <h3>1. Title Capitalization</h3>
+            
+            <p>
+                Properly capitalize titles following AP or Chicago style:
+            </p>
+            
+            <div class="code-example">
+Original: the complete guide to web development
+Title Case: The Complete Guide to Web Development
+            </div>
+            
+            <p>
+                Correctly handles articles, conjunctions, and prepositions (the, and, to, etc.).
+            </p>
+            
+            <h3>2. Meta Description Trimming</h3>
+            
+            <p>
+                Google displays 155-160 characters in search results. Write your description, check the count, trim if needed:
+            </p>
+            
+            <div class="code-example">
+Original (175 chars):
+"Learn everything about image optimization for web and social media. 
+Discover tips, tools, and best practices to improve performance and 
+boost SEO rankings."
+
+Trimmed (158 chars):
+"Learn everything about image optimization for web and social media. 
+Discover tips, tools, and best practices to improve performance."
+            </div>
+            
+            <h3>3. Sentence Case for Conversational Tone</h3>
+            
+            <p>
+                Modern web copy uses sentence case (only first word capitalized) for friendliness:
+            </p>
+            
+            <div class="code-example">
+Title Case: Get Started With Our Amazing Platform Today
+Sentence case: Get started with our amazing platform today
+            </div>
+            
+            <h2>Common Mistakes to Avoid</h2>
+            
+            <h3>1. Using UPPERCASE for Emphasis</h3>
+            
+            <p>
+                <strong>Mistake:</strong> Writing "IMPORTANT NOTICE" in emails/docs.
+            </p>
+            
+            <p>
+                <strong>Better:</strong> Use bold or italics for emphasis. UPPERCASE feels like shouting.
+            </p>
+            
+            <h3>2. Inconsistent Naming Conventions</h3>
+            
+            <p>
+                <strong>Mistake:</strong> Mixing camelCase and snake_case in the same codebase.
+            </p>
+            
+            <p>
+                <strong>Better:</strong> Pick one convention per language (JavaScript: camelCase, Python: snake_case) and stick with it.
+            </p>
+            
+            <h3>3. Not Accounting for Unicode</h3>
+            
+            <p>
+                <strong>Mistake:</strong> Character counts that ignore emojis (they count as 2 chars or more).
+            </p>
+            
+            <p>
+                <strong>Better:</strong> Use tools that handle Unicode correctly.
+            </p>
+            
+            <h2>Pro Tips</h2>
+            
+            <h3>1. Combine Operations</h3>
+            
+            <p>
+                Chain transformations: Remove duplicates → Sort → Convert to lowercase → Copy.
+            </p>
+            
+            <h3>2. Use Regex for Advanced Find/Replace</h3>
+            
+            <p>
+                Find all URLs:
+            </p>
+            
+            <div class="code-example">
+Regex: https?://[^\s]+
+            </div>
+            
+            <p>
+                Find all email addresses:
+            </p>
+            
+            <div class="code-example">
+Regex: [a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}
+            </div>
+            
+            <h3>3. Keyboard Shortcuts</h3>
+            
+            <p>
+                Most text tools support:
+            </p>
+            
+            <ul>
+                <li><strong>Ctrl+A:</strong> Select all</li>
+                <li><strong>Ctrl+C:</strong> Copy</li>
+                <li><strong>Ctrl+V:</strong> Paste</li>
+                <li><strong>Ctrl+Z:</strong> Undo</li>
+            </ul>
+            
+            <h2>Frequently Asked Questions</h2>
+            
+            <h3>What's the difference between character count with and without spaces?</h3>
+            
+            <p>
+                <strong>With spaces:</strong> Counts everything (letters + spaces). Used for Twitter, meta descriptions.<br>
+                <strong>Without spaces:</strong> Only letters/numbers. Used for some forms, SMS character limits.
+            </p>
+            
+            <h3>Does removing duplicates preserve order?</h3>
+            
+            <p>
+                Yes, our tool keeps the first occurrence of each unique line in the original order.
+            </p>
+            
+            <h3>Can I convert entire documents?</h3>
+            
+            <p>
+                Yes, paste as much text as you want. There's no size limit (all processing happens in your browser).
+            </p>
+            
+            <h3>Is my text data safe?</h3>
+            
+            <p>
+                Absolutely. All text transformations happen in your browser using JavaScript. Your data never touches our servers.
+            </p>
+            
+            <h2>Conclusion</h2>
+            
+            <p>
+                Text manipulation is one of those tasks you do constantly but rarely think about optimizing. The right tools turn 20-minute manual jobs into 10-second operations.
+            </p>
+            
+            <p>
+                Whether you're a writer hitting character limits, a developer converting naming conventions, or anyone dealing with text data, our <a href="../tools/text-tools.html" style="color: var(--primary-color);">Text Tools</a> have you covered.
+            </p>
+            
+            <p>
+                <strong>Transform text. Save time. Stay productive.</strong>
+            </p>
+            
+            <p style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(99, 102, 241, 0.1);">
+                <strong>Related Tools:</strong> 
+                <a href="../tools/json-formatter.html" style="color: var(--primary-color);">JSON Formatter</a> | 
+                <a href="../tools/csv-json.html" style="color: var(--primary-color);">CSV to JSON</a> | 
+                <a href="../tools/base64.html" style="color: var(--primary-color);">Base64 Encoder</a>
+            </p>
+        </div>
+    </article>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity and streamline workflows.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="../tools/text-tools.html">Text Tools</a></li>
+                    <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="../tools/base64.html">Base64 Encoder</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoFemto. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

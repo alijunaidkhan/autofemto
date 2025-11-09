@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Color Picker Guide: HEX, RGB, HSL, CMYK Conversion | AutoFemto</title>
+    <meta name="description" content="Pick and convert colors between HEX, RGB, HSL, CMYK formats. Learn color theory, accessibility contrast ratios, and design best practices.">
+    <meta name="keywords" content="color picker, hex color, RGB to HEX, color converter, HSL color, CMYK color, color palette generator, contrast checker, web colors">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://autofemto.com/blog/color-picker-guide.html">
+    
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Color Picker: Master Color Formats & Accessibility">
+    <meta property="og:description" content="Complete guide to color picking, conversion, and accessibility for designers and developers.">
+    <meta property="og:image" content="https://autofemto.com/og-image.svg">
+    
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E5RNQ75Z8V"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-E5RNQ75Z8V');
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": "Color Picker Guide: HEX, RGB, HSL, CMYK Conversion",
+      "description": "Learn color formats, conversion, accessibility, and design best practices for web and print.",
+      "datePublished": "2025-11-09T00:00:00Z",
+      "author": {
+        "@type": "Organization",
+        "name": "AutoFemto"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "AutoFemto",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://autofemto.com/og-image.svg"
+        }
+      }
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://autofemto.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://autofemto.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Color Picker Guide",
+          "item": "https://autofemto.com/blog/color-picker-guide.html"
+        }
+      ]
+    }
+    </script>
+    
+    <link rel="stylesheet" href="../theme.css">
+    <link rel="stylesheet" href="../styles.css">
+    <script src="../theme.js" defer></script>
+    <script src="../navigation.js" defer></script>
+    
+    <style>
+        .blog-post {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+        
+        .blog-header h1 {
+            font-size: 2.5rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content {
+            line-height: 1.8;
+            color: var(--text-secondary);
+        }
+        
+        .blog-content h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-top: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-content ul,
+        .blog-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 2rem;
+        }
+        
+        .blog-content li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .code-example {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: left;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+        
+        .comparison-table th {
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: rgba(99, 102, 241, 0.05);
+            border-left: 4px solid var(--primary-color);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0.5rem;
+        }
+        
+        .cta-box {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .cta-box h3 {
+            color: white;
+            margin-top: 0;
+        }
+        
+        .cta-box a {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 2rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-box a:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    
+    <article class="blog-post">
+        <div class="blog-header">
+            <h1>🎨 Color Picker Guide: From HEX to Accessibility</h1>
+            <p style="color: var(--text-secondary); margin: 1rem 0 2rem 0;">📅 November 9, 2025 | ⏱️ 6 min read</p>
+        </div>
+        
+        <div class="blog-content">
+            <p>
+                You're designing a website. The brand color is #3B82F6. Your developer asks for the RGB values. Your print designer needs CMYK. Your accessibility audit says the contrast ratio is too low.
+            </p>
+            
+            <p>
+                <strong>Color is complex.</strong> Different formats for different uses, accessibility requirements, and the constant need to convert between them. Let's demystify it.
+            </p>
+            
+            <h2>Color Formats Explained</h2>
+            
+            <h3>1. HEX (Hexadecimal)</h3>
+            
+            <p>
+                The most common format for web colors. 6 characters representing Red-Green-Blue:
+            </p>
+            
+            <div class="code-example">
+#FF5733
+ ││││││
+ │││││└─ Blue (33 in hex = 51 in decimal)
+ ││││└── Green (57 in hex = 87 in decimal)
+ ││└───  Red (FF in hex = 255 in decimal)
+ │└────  Combines to RR GG BB
+ └─────  Hash symbol
+            </div>
+            
+            <p>
+                <strong>Range:</strong> 00 to FF (0-255 in decimal) per channel.<br>
+                <strong>Total colors:</strong> 16.7 million (256 × 256 × 256).
+            </p>
+            
+            <p>
+                <strong>Use cases:</strong> CSS, HTML, design tools (Figma, Sketch), hex codes on style guides.
+            </p>
+            
+            <h3>2. RGB (Red-Green-Blue)</h3>
+            
+            <p>
+                Additive color model (mixing light). Used by screens:
+            </p>
+            
+            <div class="code-example">
+rgb(255, 87, 51)
+    │    │   │
+    │    │   └── Blue: 0-255
+    │    └────── Green: 0-255
+    └─────────── Red: 0-255
+            </div>
+            
+            <p>
+                <strong>How it works:</strong> Mix red, green, blue light. All at max (255,255,255) = white. All at zero (0,0,0) = black.
+            </p>
+            
+            <p>
+                <strong>Use cases:</strong> CSS, JavaScript, image processing, digital displays.
+            </p>
+            
+            <h3>3. HSL (Hue-Saturation-Lightness)</h3>
+            
+            <p>
+                More intuitive for humans. Based on color wheel:
+            </p>
+            
+            <div class="code-example">
+hsl(12, 100%, 60%)
+    │    │     │
+    │    │     └──── Lightness: 0% (black) to 100% (white)
+    │    └────────── Saturation: 0% (gray) to 100% (vivid)
+    └─────────────── Hue: 0-360° (color wheel position)
+            </div>
+            
+            <p>
+                <strong>Hue wheel:</strong>
+            </p>
+            
+            <ul>
+                <li>0° / 360° = Red</li>
+                <li>60° = Yellow</li>
+                <li>120° = Green</li>
+                <li>180° = Cyan</li>
+                <li>240° = Blue</li>
+                <li>300° = Magenta</li>
+            </ul>
+            
+            <p>
+                <strong>Use cases:</strong> CSS, color adjustments (lightening/darkening), color harmony.
+            </p>
+            
+            <h3>4. CMYK (Cyan-Magenta-Yellow-Black)</h3>
+            
+            <p>
+                Subtractive color model (mixing ink/pigment). Used for printing:
+            </p>
+            
+            <div class="code-example">
+cmyk(0%, 66%, 80%, 0%)
+     │    │    │    │
+     │    │    │    └── Black (Key): 0-100%
+     │    │    └─────── Yellow: 0-100%
+     │    └──────────── Magenta: 0-100%
+     └───────────────── Cyan: 0-100%
+            </div>
+            
+            <p>
+                <strong>How it works:</strong> Subtracts wavelengths from white. All at 0% = white paper. All at 100% = black.
+            </p>
+            
+            <p>
+                <strong>Use cases:</strong> Print design (magazines, posters, business cards).
+            </p>
+            
+            <h2>Conversion Between Formats</h2>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Color</th>
+                        <th>HEX</th>
+                        <th>RGB</th>
+                        <th>HSL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><div style="width:30px;height:30px;background:#FF0000;border:1px solid #ccc;"></div> Red</td>
+                        <td>#FF0000</td>
+                        <td>rgb(255, 0, 0)</td>
+                        <td>hsl(0, 100%, 50%)</td>
+                    </tr>
+                    <tr>
+                        <td><div style="width:30px;height:30px;background:#00FF00;border:1px solid #ccc;"></div> Green</td>
+                        <td>#00FF00</td>
+                        <td>rgb(0, 255, 0)</td>
+                        <td>hsl(120, 100%, 50%)</td>
+                    </tr>
+                    <tr>
+                        <td><div style="width:30px;height:30px;background:#0000FF;border:1px solid #ccc;"></div> Blue</td>
+                        <td>#0000FF</td>
+                        <td>rgb(0, 0, 255)</td>
+                        <td>hsl(240, 100%, 50%)</td>
+                    </tr>
+                    <tr>
+                        <td><div style="width:30px;height:30px;background:#000000;border:1px solid #ccc;"></div> Black</td>
+                        <td>#000000</td>
+                        <td>rgb(0, 0, 0)</td>
+                        <td>hsl(0, 0%, 0%)</td>
+                    </tr>
+                    <tr>
+                        <td><div style="width:30px;height:30px;background:#FFFFFF;border:1px solid #ccc;"></div> White</td>
+                        <td>#FFFFFF</td>
+                        <td>rgb(255, 255, 255)</td>
+                        <td>hsl(0, 0%, 100%)</td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <h2>Web Accessibility: Contrast Ratios</h2>
+            
+            <p>
+                <strong>WCAG (Web Content Accessibility Guidelines) requires minimum contrast ratios</strong> between text and background for readability:
+            </p>
+            
+            <ul>
+                <li><strong>AA Level (minimum):</strong> 4.5:1 for normal text, 3:1 for large text</li>
+                <li><strong>AAA Level (enhanced):</strong> 7:1 for normal text, 4.5:1 for large text</li>
+            </ul>
+            
+            <p>
+                <strong>Example:</strong> Black text (#000000) on white background (#FFFFFF) = 21:1 contrast ratio (perfect).
+            </p>
+            
+            <div class="highlight-box">
+                <strong>Pro tip:</strong> Always test your color combinations with a contrast checker. 8% of men and 0.5% of women have some form of color blindness.
+            </div>
+            
+            <h3>Good vs Bad Contrast Examples</h3>
+            
+            <ul>
+                <li>✅ <strong>Good:</strong> Dark blue (#003366) on white (#FFFFFF) → 12.6:1 ratio</li>
+                <li>✅ <strong>Good:</strong> White (#FFFFFF) on dark gray (#333333) → 12.6:1 ratio</li>
+                <li>❌ <strong>Bad:</strong> Light gray (#CCCCCC) on white (#FFFFFF) → 1.6:1 ratio (fails)</li>
+                <li>❌ <strong>Bad:</strong> Yellow (#FFFF00) on white (#FFFFFF) → 1.1:1 ratio (terrible)</li>
+            </ul>
+            
+            <h2>Using Our Color Picker</h2>
+            
+            <p>
+                Our <a href="../tools/color-picker.html" style="color: var(--primary-color);">Color Picker</a> handles all color needs:
+            </p>
+            
+            <h3>Features:</h3>
+            
+            <ul>
+                <li><strong>✅ Visual picker:</strong> Click on color wheel or palette</li>
+                <li><strong>✅ Multiple formats:</strong> HEX, RGB, HSL, CMYK displayed simultaneously</li>
+                <li><strong>✅ Format conversion:</strong> Paste any format, get all others instantly</li>
+                <li><strong>✅ Color harmony:</strong> Generate complementary, analogous, triadic schemes</li>
+                <li><strong>✅ Shade generator:</strong> Lighten/darken colors automatically</li>
+                <li><strong>✅ Contrast checker:</strong> WCAG compliance testing</li>
+                <li><strong>✅ Copy to clipboard:</strong> One-click copy in any format</li>
+                <li><strong>✅ Privacy-first:</strong> All processing happens in your browser</li>
+            </ul>
+            
+            <h3>Perfect For:</h3>
+            
+            <ul>
+                <li>🎨 UI/UX designers</li>
+                <li>💻 Web developers</li>
+                <li>📱 App designers</li>
+                <li>🖨️ Print designers</li>
+                <li>📊 Data visualization</li>
+                <li>♿ Accessibility testing</li>
+            </ul>
+            
+            <div class="cta-box">
+                <h3>Pick & Convert Colors Now</h3>
+                <p>HEX, RGB, HSL, CMYK conversion with accessibility checking. Free and instant.</p>
+                <a href="../tools/color-picker.html">Color Picker Tool</a>
+            </div>
+            
+            <h2>Color Theory Basics</h2>
+            
+            <h3>1. Complementary Colors</h3>
+            
+            <p>
+                Opposite on the color wheel (180° apart). High contrast, vibrant:
+            </p>
+            
+            <ul>
+                <li>Red + Cyan</li>
+                <li>Blue + Orange</li>
+                <li>Yellow + Purple</li>
+            </ul>
+            
+            <h3>2. Analogous Colors</h3>
+            
+            <p>
+                Adjacent on the color wheel (30° apart). Harmonious, pleasing:
+            </p>
+            
+            <ul>
+                <li>Red + Orange + Yellow</li>
+                <li>Blue + Blue-green + Green</li>
+            </ul>
+            
+            <h3>3. Triadic Colors</h3>
+            
+            <p>
+                Equally spaced on wheel (120° apart). Balanced, vibrant:
+            </p>
+            
+            <ul>
+                <li>Red + Blue + Yellow</li>
+                <li>Orange + Purple + Green</li>
+            </ul>
+            
+            <h2>Real-World Use Cases</h2>
+            
+            <h3>Use Case 1: Web Development</h3>
+            
+            <p>
+                Designer gives you a brand color in HEX (#3B82F6). You need:
+            </p>
+            
+            <ul>
+                <li>RGB for JavaScript manipulation</li>
+                <li>HSL for creating hover states (lighten 10%)</li>
+                <li>Multiple shades for buttons, borders, backgrounds</li>
+            </ul>
+            
+            <p>
+                Convert once, generate shades, done.
+            </p>
+            
+            <h3>Use Case 2: Print Design</h3>
+            
+            <p>
+                Your web brand uses RGB (#FF5733). Printer needs CMYK for business cards. Convert and avoid washed-out print colors.
+            </p>
+            
+            <h3>Use Case 3: Accessibility Audit</h3>
+            
+            <p>
+                Your site uses gray text (#777777) on white background. Test contrast: 4.69:1—just barely passes AA for normal text. Darken to #666666 for safety margin.
+            </p>
+            
+            <h2>Common Mistakes to Avoid</h2>
+            
+            <h3>1. Using RGB for Print</h3>
+            
+            <p>
+                <strong>Mistake:</strong> Designing in RGB, sending to printer. Colors look different.
+            </p>
+            
+            <p>
+                <strong>Solution:</strong> Convert to CMYK for print projects. RGB is for screens.
+            </p>
+            
+            <h3>2. Ignoring Accessibility</h3>
+            
+            <p>
+                <strong>Mistake:</strong> Light gray text on white background because it "looks minimal."
+            </p>
+            
+            <p>
+                <strong>Solution:</strong> Always check contrast ratios. Aim for AA compliance minimum.
+            </p>
+            
+            <h3>3. Forgetting Color Blindness</h3>
+            
+            <p>
+                <strong>Mistake:</strong> Using red/green as only indicators (8% of men can't distinguish them).
+            </p>
+            
+            <p>
+                <strong>Solution:</strong> Use color + shape/icons (e.g., ✓ green checkmark, ✗ red X).
+            </p>
+            
+            <h3>4. Not Testing on Different Screens</h3>
+            
+            <p>
+                <strong>Mistake:</strong> Designing on a high-end monitor. Colors look different on users' screens.
+            </p>
+            
+            <p>
+                <strong>Solution:</strong> Test on multiple devices. Use standard color spaces (sRGB).
+            </p>
+            
+            <h2>Pro Tips</h2>
+            
+            <h3>1. Use HSL for Dynamic Color Adjustments</h3>
+            
+            <p>
+                Instead of hardcoding 10 shades, use HSL to generate them:
+            </p>
+            
+            <div class="code-example">
+/* Base color */
+--primary: hsl(220, 90%, 50%);
+
+/* Lighter shades (increase lightness) */
+--primary-light: hsl(220, 90%, 60%);
+--primary-lighter: hsl(220, 90%, 70%);
+
+/* Darker shades (decrease lightness) */
+--primary-dark: hsl(220, 90%, 40%);
+            </div>
+            
+            <h3>2. Build a Color System</h3>
+            
+            <p>
+                Don't use random colors. Define a palette:
+            </p>
+            
+            <ul>
+                <li><strong>Primary:</strong> Brand color</li>
+                <li><strong>Secondary:</strong> Accent color</li>
+                <li><strong>Neutrals:</strong> Grays (5-10 shades)</li>
+                <li><strong>Semantic:</strong> Success (green), Error (red), Warning (yellow), Info (blue)</li>
+            </ul>
+            
+            <h3>3. Use Alpha Channels for Overlays</h3>
+            
+            <p>
+                RGBA/HSLA add transparency (0-1 or 0-100%):
+            </p>
+            
+            <div class="code-example">
+rgba(0, 0, 0, 0.5)  /* 50% transparent black */
+hsla(220, 90%, 50%, 0.8)  /* 80% opaque blue */
+            </div>
+            
+            <h2>Frequently Asked Questions</h2>
+            
+            <h3>Why do my colors look different on different devices?</h3>
+            
+            <p>
+                Screens have different color gamuts (range of colors they can display) and calibrations. Use sRGB for web (most common standard).
+            </p>
+            
+            <h3>What's the difference between HEX and RGB?</h3>
+            
+            <p>
+                Same color data, different notation. HEX uses hexadecimal (base-16), RGB uses decimal (base-10). #FF0000 = rgb(255, 0, 0).
+            </p>
+            
+            <h3>Can I convert RGB to CMYK exactly?</h3>
+            
+            <p>
+                No. RGB has a wider gamut than CMYK. Some bright RGB colors can't be reproduced in print. Expect slight shifts.
+            </p>
+            
+            <h3>What's the best format for CSS?</h3>
+            
+            <p>
+                <strong>HEX:</strong> Simple, widely supported.<br>
+                <strong>RGB/RGBA:</strong> When you need transparency.<br>
+                <strong>HSL/HSLA:</strong> When you need to adjust lightness/saturation dynamically.
+            </p>
+            
+            <h2>Conclusion</h2>
+            
+            <p>
+                Color is fundamental to design, but managing formats, conversions, and accessibility can be tedious. Whether you're a designer perfecting a palette or a developer implementing it, having the right tools makes all the difference.
+            </p>
+            
+            <p>
+                Our <a href="../tools/color-picker.html" style="color: var(--primary-color);">Color Picker</a> handles conversions, generates harmonies, and checks accessibility—all in one place.
+            </p>
+            
+            <p>
+                <strong>Pick with precision. Design with confidence.</strong>
+            </p>
+            
+            <p style="margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(99, 102, 241, 0.1);">
+                <strong>Related Tools:</strong> 
+                <a href="../tools/image-resizer.html" style="color: var(--primary-color);">Image Resizer</a> | 
+                <a href="../tools/qr-code.html" style="color: var(--primary-color);">QR Code Generator</a> | 
+                <a href="../tools/base64.html" style="color: var(--primary-color);">Base64 Encoder</a>
+            </p>
+        </div>
+    </article>
+    
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>About Us</h3>
+                <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity and streamline workflows.</p>
+            </div>
+            <div class="footer-column">
+                <h3>Popular Tools</h3>
+                <ul>
+                    <li><a href="../tools/color-picker.html">Color Picker</a></li>
+                    <li><a href="../tools/image-resizer.html">Image Resizer</a></li>
+                    <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 AutoFemto. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
