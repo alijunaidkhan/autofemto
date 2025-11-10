@@ -1,0 +1,43 @@
+# AutoFemto - Privacy-First Online Tools & Development Services
+
+> https://autofemto.com
+
+## About
+AutoFemto provides free, privacy-first online tools with 100% browser-based processing. We also offer professional web development, automation, and AI integration services.
+
+## Core Services
+- Web Development: Full-stack development services for modern websites and web applications
+- Automation & AI: Workflow automation and AI integration solutions
+- Custom Tools: Specialized calculators, converters, and utilities tailored to specific needs
+
+## Free Privacy-First Tools
+All tools process data entirely in your browser - nothing is sent to our servers.
+
+### Developer Tools
+- JSON Formatter & Validator: Format, validate, and minify JSON data
+- Base64 Encoder/Decoder: Encode and decode Base64 strings
+- Hash Generator: Generate MD5, SHA-1, SHA-256, and other hashes
+- CSV to JSON Converter: Convert CSV files to JSON format
+
+### Productivity Tools
+- Text Tools: Case converter, word counter, character counter
+- Stopwatch: Precision timing with lap functionality
+- Countdown Timer: Set timers with audio alerts
+- QR Code Generator: Create custom QR codes instantly
+
+### Utility Tools
+- Unit Converter: Convert length, weight, temperature, volume, and more
+- Color Picker: Get HEX, RGB, and HSL color codes
+- Image Resizer: Resize and convert images without uploading
+- Compound Interest Calculator: Calculate investment growth
+
+## Educational Content
+Visit our blog for guides on privacy-first development, tool tutorials, and productivity strategies:
+https://autofemto.com/blog/
+
+## Privacy Philosophy
+We believe your data should stay yours. All our tools run entirely in your browser using client-side JavaScript. No data is collected, stored, or transmitted to any server.
+
+## Contact
+For custom development services or inquiries:
+https://autofemto.com/contact.html

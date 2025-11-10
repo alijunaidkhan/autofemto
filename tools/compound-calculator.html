@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-adsense-account" content="ca-pub-2073279535794487">
     
     <!-- Primary SEO Meta Tags -->
     <title>Compound Interest Calculator - Free Investment Growth Tool | AutoFemto</title>
@@ -16,14 +17,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://autofemto.com/tools/compound-calculator.html">
     <meta property="og:title" content="Compound Interest Calculator - Calculate Investment Growth">
-    <meta property="og:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. Free tool with charts and detailed breakdown.">
+    <meta property="og:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. Free tool with detailed year-by-year breakdown.">
     <meta property="og:image" content="https://autofemto.com/og-image.svg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://autofemto.com/tools/compound-calculator.html">
     <meta property="twitter:title" content="Compound Interest Calculator - Calculate Investment Growth">
-    <meta property="twitter:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. Free tool with charts.">
+    <meta property="twitter:description" content="Calculate compound interest with daily, monthly, quarterly, or annual compounding. Free tool with detailed breakdown.">
     <meta property="twitter:image" content="https://autofemto.com/og-image.svg">
 
     <!-- Google tag (gtag.js) -->
@@ -42,7 +43,7 @@
       "@type": "WebApplication",
       "name": "Compound Interest Calculator",
       "url": "https://autofemto.com/tools/compound-calculator.html",
-      "description": "Free compound interest calculator with charts. Calculate investment growth with various compounding frequencies and see detailed year-by-year breakdown.",
+      "description": "Free compound interest calculator. Calculate investment growth with various compounding frequencies and see detailed year-by-year breakdown.",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Any",
       "offers": {
@@ -54,7 +55,6 @@
         "Compound interest calculation",
         "Multiple compounding frequencies",
         "Year-by-year breakdown",
-        "Visual charts",
         "Additional contributions support",
         "Inflation adjustment"
       ]
@@ -91,7 +91,6 @@
     <link rel="stylesheet" href="../styles.css">
     <link rel="stylesheet" href="tools.css">
     <script src="../navigation.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Navigation will be inserted here by navigation.js -->
@@ -184,15 +183,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Visual Chart - Temporarily disabled
-                <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
-                    <h3 style="margin: 0 0 1rem 0; color: var(--text-primary);">Growth Visualization</h3>
-                    <div style="position: relative; height: 400px;">
-                        <canvas id="growthChart"></canvas>
-                    </div>
-                </div>
-                -->
 
                 <!-- Yearly Breakdown Table -->
                 <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 0.5rem; margin-bottom: 2rem;">
@@ -374,7 +364,6 @@
 
     <script>
         let yearlyData = [];
-        let growthChart = null;
 
         function formatCurrency(value) {
             return new Intl.NumberFormat('en-US', {
@@ -513,9 +502,6 @@
                 document.getElementById('bestCaseTable').style.display = 'none';
             }
 
-            // Generate chart - Temporarily disabled
-            // generateChart();
-
             // Generate table
             generateTable();
 
@@ -556,136 +542,6 @@
                 
                 return principalFV + contributionsFV;
             }
-        }
-
-        function generateChart() {
-            const ctx = document.getElementById('growthChart').getContext('2d');
-            
-            // Destroy existing chart if it exists
-            if (growthChart) {
-                growthChart.destroy();
-            }
-
-            const labels = yearlyData.map(d => `Year ${d.year}`);
-            const balanceData = yearlyData.map(d => d.balance);
-            const depositsData = yearlyData.map(d => d.deposits);
-            const interestData = yearlyData.map(d => d.interest);
-
-            // Get computed styles for theme colors
-            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary-color').trim() || '#6366f1';
-            const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-primary').trim() || '#e2e8f0';
-            const gridColor = getComputedStyle(document.documentElement).getPropertyValue('--border-color').trim() || '#334155';
-
-            growthChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Total Balance',
-                            data: balanceData,
-                            borderColor: primaryColor,
-                            backgroundColor: primaryColor + '20',
-                            fill: true,
-                            tension: 0.4,
-                            borderWidth: 3,
-                            pointRadius: 4,
-                            pointHoverRadius: 6
-                        },
-                        {
-                            label: 'Total Deposits',
-                            data: depositsData,
-                            borderColor: '#22c55e',
-                            backgroundColor: 'transparent',
-                            fill: false,
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 3,
-                            pointHoverRadius: 5,
-                            borderDash: [5, 5]
-                        },
-                        {
-                            label: 'Interest Earned',
-                            data: interestData,
-                            borderColor: '#fbbf24',
-                            backgroundColor: 'transparent',
-                            fill: false,
-                            tension: 0.4,
-                            borderWidth: 2,
-                            pointRadius: 3,
-                            pointHoverRadius: 5,
-                            borderDash: [5, 5]
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            labels: {
-                                color: textColor,
-                                font: {
-                                    size: 12,
-                                    family: "'Inter', sans-serif"
-                                },
-                                padding: 15,
-                                usePointStyle: true
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
-                            titleColor: '#fff',
-                            bodyColor: '#fff',
-                            borderColor: primaryColor,
-                            borderWidth: 1,
-                            padding: 12,
-                            displayColors: true,
-                            callbacks: {
-                                label: function(context) {
-                                    return context.dataset.label + ': ' + formatCurrency(context.parsed.y);
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: {
-                                color: gridColor,
-                                drawBorder: false
-                            },
-                            ticks: {
-                                color: textColor,
-                                font: {
-                                    size: 11
-                                }
-                            }
-                        },
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: gridColor,
-                                drawBorder: false
-                            },
-                            ticks: {
-                                color: textColor,
-                                font: {
-                                    size: 11
-                                },
-                                callback: function(value) {
-                                    return '$' + (value / 1000).toFixed(0) + 'k';
-                                }
-                            }
-                        }
-                    }
-                }
-            });
         }
 
         function generateTable() {

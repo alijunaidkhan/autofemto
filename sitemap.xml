@@ -134,6 +134,12 @@
 
     <!-- Blog Pages -->
     <url>
+        <loc>https://autofemto.com/blog/</loc>
+        <lastmod>2025-11-09</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
         <loc>https://autofemto.com/blog/index.html</loc>
         <lastmod>2025-11-09</lastmod>
         <changefreq>weekly</changefreq>
