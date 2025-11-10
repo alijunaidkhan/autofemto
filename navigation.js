@@ -26,9 +26,22 @@ function createNavigation(currentPage = '') {
                 <a href="${currentPage}index.html" class="nav-btn ${isHome ? 'active' : ''}">
                     <span class="nav-icon">🏠</span> Home
                 </a>
-                <a href="${currentPage}tools.html" class="nav-btn ${isTools ? 'active' : ''}">
-                    <span class="nav-icon">🛠️</span> Tools
-                </a>
+                <div class="nav-dropdown">
+                    <a href="${currentPage}tools.html" class="nav-btn ${isTools ? 'active' : ''}">
+                        <span class="nav-icon">🛠️</span> Tools <span class="dropdown-arrow">▼</span>
+                    </a>
+                    <div class="dropdown-content">
+                        <a href="${currentPage}tools/stopwatch.html">⏱️ Stopwatch</a>
+                        <a href="${currentPage}tools/timer.html">⏲️ Timer</a>
+                        <a href="${currentPage}tools/converter.html">🔄 Unit Converter</a>
+                        <a href="${currentPage}tools/compound-calculator.html">💰 Compound Calculator</a>
+                        <a href="${currentPage}tools/json-formatter.html">📋 JSON Formatter</a>
+                        <a href="${currentPage}tools/csv-json.html">📊 CSV to JSON</a>
+                        <a href="${currentPage}tools/color-picker.html">🎨 Color Picker</a>
+                        <a href="${currentPage}tools/qr-code.html">📱 QR Code</a>
+                        <a href="${currentPage}tools.html" class="view-all">View All Tools →</a>
+                    </div>
+                </div>
                 <a href="${currentPage}blog/index.html" class="nav-btn ${isBlog ? 'active' : ''}">
                     <span class="nav-icon">📚</span> Blog
                 </a>
