@@ -1,39 +1,41 @@
 <svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
   <defs>
-    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1e293b;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" style="stop-color:#6366f1;stop-opacity:1" />
-      <stop offset="100%" style="stop-color:#a855f7;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8b5cf6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ec4899;stop-opacity:1" />
     </linearGradient>
   </defs>
   
-  <!-- Background -->
-  <rect width="1200" height="630" fill="#0f172a"/>
+  <rect width="1200" height="630" fill="url(#grad1)"/>
   
-  <!-- Gradient overlay -->
-  <rect width="1200" height="630" fill="url(#gradient)" opacity="0.1"/>
+  <!-- Decorative circles -->
+  <circle cx="100" cy="100" r="150" fill="#6366f1" opacity="0.1"/>
+  <circle cx="1100" cy="530" r="200" fill="#8b5cf6" opacity="0.1"/>
+  <circle cx="600" cy="315" r="250" fill="#ec4899" opacity="0.05"/>
   
-  <!-- Logo/Brand -->
-  <text x="600" y="250" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#gradient)" text-anchor="middle">
+  <!-- Main Text -->
+  <text x="600" y="200" font-family="Arial, sans-serif" font-size="80" font-weight="bold" fill="url(#grad2)" text-anchor="middle">
     AutoFemto
   </text>
   
-  <!-- Tagline -->
-  <text x="600" y="320" font-family="Arial, sans-serif" font-size="32" fill="#94a3b8" text-anchor="middle">
-    Automate. Simplify. Accelerate.
-  </text>
-  
-  <!-- Description -->
-  <text x="600" y="400" font-family="Arial, sans-serif" font-size="28" fill="#cbd5e1" text-anchor="middle">
-    Free Online Developer Tools
-  </text>
-  
   <!-- Subtitle -->
-  <text x="600" y="450" font-family="Arial, sans-serif" font-size="24" fill="#94a3b8" text-anchor="middle">
-    Stopwatch • Timer • JSON Formatter • And More
+  <text x="600" y="280" font-family="Arial, sans-serif" font-size="32" fill="#cbd5e1" text-anchor="middle">
+    Expert Software Development Team
   </text>
   
-  <!-- URL -->
-  <text x="600" y="560" font-family="Arial, sans-serif" font-size="24" fill="#64748b" text-anchor="middle">
-    autofemto.com
+  <!-- Services -->
+  <text x="600" y="360" font-family="Arial, sans-serif" font-size="28" fill="#94a3b8" text-anchor="middle">
+    Backend Development • Agentic AI • SEO Optimization
+  </text>
+  
+  <!-- Bottom tagline -->
+  <text x="600" y="520" font-family="Arial, sans-serif" font-size="24" fill="#64748b" text-anchor="middle" font-style="italic">
+    Transform Your Digital Presence
   </text>
 </svg>

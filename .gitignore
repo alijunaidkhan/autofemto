@@ -15,3 +15,7 @@ Thumbs.db
 *~
 guides/
 copilot-scripts/
+analysis/*
+archive/
+archive-portfolio/
+blog-backup/

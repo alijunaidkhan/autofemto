@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,11 @@
     <!-- Primary SEO Meta Tags -->
     <title>Online Color Picker - HEX, RGB, HSL Color Codes | AutoFemto</title>
     <meta name="title" content="Online Color Picker - HEX, RGB, HSL Color Codes | AutoFemto">
-    <meta name="description" content="Free online color picker with 100% browser-based processing. Pick colors visually and get instant HEX, RGB, and HSL codes for web design and CSS. Simple, fast, and completely private!">
+    <meta name="description" content="Free color picker with HEX, RGB & HSL codes. Pick colors visually for web design and CSS. Fast and completely private.">
     <meta name="keywords" content="color picker, hex color picker, rgb color picker, hsl color picker, color code generator, web color picker, css color picker, color tool, design tool, hex to rgb">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://autofemto.com/tools/color-picker.html">
+    <link rel="icon" type="image/png" href="../logos/logo.png">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -154,7 +155,7 @@
     
     <div class="container">
         <div class="tool-container">
-            <h1 class="tool-title">🎨 Color Picker</h1>
+            <h1 class="tool-title">?? Color Picker</h1>
             <p class="tool-description">Pick colors and get HEX, RGB, and HSL values</p>
 
             <div class="form-group">
@@ -185,19 +186,121 @@
             </div>
         </div>
 
+        <!-- Color Picker Guide Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary);">📖 Color Picker Guide</h2>
+            
+            <div style="line-height: 1.8; color: var(--text-secondary);">
+                
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 1.5rem; margin-bottom: 0.75rem;">🎨 Understanding Color Formats</h3>
+                
+                <p>When working with colors in web design and development, you'll encounter three main formats: <strong>HEX</strong>, <strong>RGB</strong>, and <strong>HSL</strong>. Each color format has specific use cases and advantages.</p>
+                
+                <h4 style="font-size: 1.2rem; color: var(--text-primary); margin-top: 1.25rem; margin-bottom: 0.5rem;">HEX (Hexadecimal) Colors</h4>
+                <p>The most common format for web colors. A HEX color code consists of 6 characters representing Red-Green-Blue values in hexadecimal (base-16) notation. For example, <code style="background: rgba(99, 102, 241, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px;">#FF5733</code> breaks down to FF (red), 57 (green), and 33 (blue).</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li><strong>Range:</strong> 00 to FF (0-255 in decimal) per channel</li>
+                    <li><strong>Total colors:</strong> 16.7 million (256 × 256 × 256)</li>
+                    <li><strong>Best for:</strong> CSS stylesheets, HTML, design tools (Figma, Sketch), brand style guides</li>
+                </ul>
+                
+                <h4 style="font-size: 1.2rem; color: var(--text-primary); margin-top: 1.25rem; margin-bottom: 0.5rem;">RGB (Red-Green-Blue) Colors</h4>
+                <p>An additive color model that mixes light. Used by all digital screens. The format is <code style="background: rgba(99, 102, 241, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px;">rgb(255, 87, 51)</code> where each value ranges from 0-255.</p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li><strong>How it works:</strong> Mix red, green, blue light. All at max (255,255,255) = white. All at zero (0,0,0) = black</li>
+                    <li><strong>Best for:</strong> JavaScript color manipulation, CSS with transparency (RGBA), image processing</li>
+                </ul>
+                
+                <h4 style="font-size: 1.2rem; color: var(--text-primary); margin-top: 1.25rem; margin-bottom: 0.5rem;">HSL (Hue-Saturation-Lightness) Colors</h4>
+                <p>More intuitive for humans, based on the color wheel. Format: <code style="background: rgba(99, 102, 241, 0.1); padding: 0.2rem 0.5rem; border-radius: 4px;">hsl(12, 100%, 60%)</code></p>
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li><strong>Hue:</strong> 0-360° position on the color wheel (0°=Red, 120°=Green, 240°=Blue)</li>
+                    <li><strong>Saturation:</strong> 0% (gray) to 100% (vivid color)</li>
+                    <li><strong>Lightness:</strong> 0% (black) to 100% (white)</li>
+                    <li><strong>Best for:</strong> Creating color variations, hover states, dynamic color adjustments in CSS</li>
+                </ul>
+                
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.75rem;">🔄 Converting Between Color Formats</h3>
+                
+                <p>Our color picker tool instantly converts between all formats. Here are common color conversions:</p>
+                
+                <div style="overflow-x: auto; margin: 1rem 0;">
+                    <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+                        <thead>
+                            <tr style="background: rgba(99, 102, 241, 0.1);">
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(99, 102, 241, 0.2);">Color</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(99, 102, 241, 0.2);">HEX</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(99, 102, 241, 0.2);">RGB</th>
+                                <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(99, 102, 241, 0.2);">HSL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">🔴 Red</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">#FF0000</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">rgb(255, 0, 0)</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">hsl(0, 100%, 50%)</td></tr>
+                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">🟢 Green</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">#00FF00</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">rgb(0, 255, 0)</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">hsl(120, 100%, 50%)</td></tr>
+                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">🔵 Blue</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">#0000FF</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">rgb(0, 0, 255)</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">hsl(240, 100%, 50%)</td></tr>
+                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">⚫ Black</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">#000000</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">rgb(0, 0, 0)</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">hsl(0, 0%, 0%)</td></tr>
+                            <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">⚪ White</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">#FFFFFF</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">rgb(255, 255, 255)</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">hsl(0, 0%, 100%)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.75rem;">🎯 Color Theory Basics for Web Design</h3>
+                
+                <p>Understanding color relationships helps create visually appealing designs:</p>
+                
+                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-top: 1rem; margin-bottom: 0.5rem;">Complementary Colors</h4>
+                <p>Opposite on the color wheel (180° apart). Creates high contrast and vibrant combinations: Red + Cyan, Blue + Orange, Yellow + Purple.</p>
+                
+                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-top: 1rem; margin-bottom: 0.5rem;">Analogous Colors</h4>
+                <p>Adjacent on the color wheel (30° apart). Creates harmonious, pleasing combinations: Red + Orange + Yellow, Blue + Blue-green + Green.</p>
+                
+                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-top: 1rem; margin-bottom: 0.5rem;">Triadic Colors</h4>
+                <p>Equally spaced on the wheel (120° apart). Balanced and vibrant: Red + Blue + Yellow, Orange + Purple + Green.</p>
+                
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.75rem;">💻 Common Use Cases</h3>
+                
+                <ul style="margin: 1rem 0; padding-left: 1.5rem;">
+                    <li><strong>CSS Styling:</strong> Use HEX for simplicity, RGBA/HSLA when you need transparency</li>
+                    <li><strong>Web Design:</strong> Pick brand colors and generate consistent color palettes</li>
+                    <li><strong>Branding:</strong> Define primary, secondary, and accent colors for your brand identity</li>
+                    <li><strong>UI/UX Design:</strong> Create hover states by adjusting HSL lightness values</li>
+                    <li><strong>Accessibility:</strong> Ensure text has sufficient contrast against backgrounds (WCAG recommends 4.5:1 minimum)</li>
+                </ul>
+                
+                <div style="background: rgba(99, 102, 241, 0.05); border-left: 4px solid var(--primary-color); padding: 1rem 1.5rem; margin: 1.5rem 0; border-radius: 0.5rem;">
+                    <strong>💡 Pro Tip:</strong> Use HSL for dynamic color adjustments in CSS. Instead of hardcoding multiple shades, adjust the lightness value to create lighter/darker variations of your base color.
+                </div>
+                
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 0.75rem;">❓ Frequently Asked Questions</h3>
+                
+                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-top: 1rem; margin-bottom: 0.5rem;">What's the difference between HEX and RGB?</h4>
+                <p>Same color data, different notation. HEX uses hexadecimal (base-16), RGB uses decimal (base-10). #FF0000 = rgb(255, 0, 0). Both represent the same red color.</p>
+                
+                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-top: 1rem; margin-bottom: 0.5rem;">What's the best color format for CSS?</h4>
+                <p><strong>HEX:</strong> Simple and widely supported. <strong>RGB/RGBA:</strong> When you need transparency. <strong>HSL/HSLA:</strong> When you need to adjust lightness/saturation dynamically.</p>
+                
+                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-top: 1rem; margin-bottom: 0.5rem;">Why do colors look different on different screens?</h4>
+                <p>Screens have different color gamuts (range of colors they can display) and calibrations. Use sRGB for web design as it's the most common standard.</p>
+                
+                <h4 style="font-size: 1.1rem; color: var(--text-primary); margin-top: 1rem; margin-bottom: 0.5rem;">How do I ensure my colors are accessible?</h4>
+                <p>Check contrast ratios between text and background. WCAG guidelines recommend at least 4.5:1 for normal text and 3:1 for large text. Always test with accessibility tools.</p>
+                
+            </div>
+        </div>
+
         <!-- Related Tools Section -->
         <div class="tool-container" style="margin-top: 2rem;">
             <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">⚡ Related Tools</h2>
             <div class="button-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <a href="../index.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📝</div>
+                    <strong>JSON Formatter</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Format & validate JSON</p>
+                </a>
                 <a href="image-resizer.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
                     <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🖼️</div>
                     <strong>Image Resizer</strong>
                     <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Resize images easily</p>
-                </a>
-                <a href="qr-code.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
-                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📱</div>
-                    <strong>QR Code Generator</strong>
-                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Create QR codes</p>
                 </a>
                 <a href="../tools.html" class="btn btn-primary" style="text-decoration: none; padding: 1rem; text-align: center;">
                     <strong>View All Tools →</strong>
@@ -295,8 +398,7 @@
                 <h3>Resources</h3>
                 <ul>
                     <li><a href="../tools.html">All Tools</a></li>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
             
@@ -305,18 +407,9 @@
                 <ul>
                     <li><a href="stopwatch.html">Stopwatch</a></li>
                     <li><a href="timer.html">Timer</a></li>
-                    <li><a href="json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="../index.html">JSON Formatter</a></li>
                     <li><a href="csv-json.html">CSV to JSON</a></li>
                     <li><a href="qr-code.html">QR Code Generator</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="../services/web-development.html">Web Development</a></li>
-                    <li><a href="../services/custom-tools.html">Custom Tools</a></li>
-                    <li><a href="../services/automation-ai.html">Automation & AI</a></li>
                 </ul>
             </div>
             
@@ -324,7 +417,6 @@
                 <h3>Legal</h3>
                 <ul>
                     <li><a href="../privacy.html">Privacy Policy</a></li>
-                    <li><a href="../contact.html">Terms & Conditions</a></li>
                 </ul>
             </div>
         </div>

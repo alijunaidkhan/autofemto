@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +6,13 @@
     <meta name="google-adsense-account" content="ca-pub-2073279535794487">
     
     <!-- Primary SEO Meta Tags -->
-    <title>Text Tools - Case Converter, Word Counter, Character Counter | AutoFemto</title>
-    <meta name="title" content="Text Tools - Case Converter, Word Counter, Character Counter | AutoFemto">
-    <meta name="description" content="Free online text tools with 100% browser-based processing—your data never leaves your device. Convert case, count words/characters, reverse text instantly. Includes undo/redo history, completely private!">
+    <title>Text Tools - Case Converter & Word Counter Free</title>
+    <meta name="title" content="Text Tools - Case Converter & Word Counter Free">
+    <meta name="description" content="Free text tools: case converter, word counter & character counter. 100% browser-based processing - your text never leaves.">
     <meta name="keywords" content="text tools, case converter, uppercase converter, lowercase converter, title case, sentence case, word counter, character counter, text manipulation, text editor, writing tools, reverse text, private text tools">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://autofemto.com/tools/text-tools.html">
+    <link rel="icon" type="image/png" href="../logos/logo.png">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -155,7 +156,7 @@
     
     <div class="container" style="max-width: 1200px; padding: 1rem;">
         <div class="tool-container">
-            <h1 class="tool-title">📝 Text Tools</h1>
+            <h1 class="tool-title">?? Text Tools</h1>
             <p class="tool-description">Case converter, word counter, and more</p>
 
             <!-- Stats Row (above textarea) -->
@@ -187,8 +188,8 @@
 
             <!-- Undo/Redo Row -->
             <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
-                <button class="btn btn-secondary" onclick="undo()" id="undoBtn" disabled style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">↶ Undo</button>
-                <button class="btn btn-secondary" onclick="redo()" id="redoBtn" disabled style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">↷ Redo</button>
+                <button class="btn btn-secondary" onclick="undo()" id="undoBtn" disabled style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">? Undo</button>
+                <button class="btn btn-secondary" onclick="redo()" id="redoBtn" disabled style="padding: 0.6rem 1.5rem; font-size: 0.95rem;">? Redo</button>
             </div>
 
             <!-- Action Buttons -->
@@ -197,10 +198,10 @@
                 <button class="btn btn-primary" onclick="convertCase('lower')" style="padding: 0.65rem; font-size: 0.9rem;">lowercase</button>
                 <button class="btn btn-primary" onclick="convertCase('title')" style="padding: 0.65rem; font-size: 0.9rem;">Title Case</button>
                 <button class="btn btn-primary" onclick="convertCase('sentence')" style="padding: 0.65rem; font-size: 0.9rem;">Sentence case</button>
-                <button class="btn btn-secondary" onclick="reverseText()" style="padding: 0.65rem; font-size: 0.9rem;">🔄 Reverse</button>
-                <button class="btn btn-secondary" onclick="removeSpaces()" style="padding: 0.65rem; font-size: 0.9rem;">✂️ Remove Spaces</button>
-                <button class="btn btn-secondary" onclick="copyText()" style="padding: 0.65rem; font-size: 0.9rem;">📋 Copy Text</button>
-                <button class="btn btn-danger" onclick="clearText()" style="padding: 0.65rem; font-size: 0.9rem;">🗑️ Clear All</button>
+                <button class="btn btn-secondary" onclick="reverseText()" style="padding: 0.65rem; font-size: 0.9rem;">?? Reverse</button>
+                <button class="btn btn-secondary" onclick="removeSpaces()" style="padding: 0.65rem; font-size: 0.9rem;">?? Remove Spaces</button>
+                <button class="btn btn-secondary" onclick="copyText()" style="padding: 0.65rem; font-size: 0.9rem;">?? Copy Text</button>
+                <button class="btn btn-danger" onclick="clearText()" style="padding: 0.65rem; font-size: 0.9rem;">??? Clear All</button>
             </div>
 
             <style>
@@ -212,22 +213,185 @@
             </style>
         </div>
 
+        <!-- Guide Section -->
+        <div class="tool-container guide-section" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--text-primary);">📖 Complete Guide to Text Tools</h2>
+            
+            <!-- What Are Text Tools -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="font-size: 1.25rem; color: var(--primary-color); margin-bottom: 0.75rem;">What Are Text Tools?</h3>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                    <strong>Text tools</strong> are online utilities designed to help you manipulate, transform, and analyze text quickly and efficiently. Whether you're a writer, developer, content creator, or social media manager, text manipulation tasks happen daily—from converting case formats to counting characters for Twitter posts.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.7;">
+                    Our free <strong>text tools</strong> include a powerful <strong>case converter</strong>, <strong>word counter</strong>, <strong>character counter</strong>, and more. All processing happens in your browser—your text never leaves your device.
+                </p>
+            </div>
+
+            <!-- Case Conversion Types -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="font-size: 1.25rem; color: var(--primary-color); margin-bottom: 0.75rem;">Case Conversion Types</h3>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                    The <strong>case converter</strong> transforms your text between different formats instantly:
+                </p>
+                <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem; margin-bottom: 1rem; font-family: monospace; font-size: 0.9rem;">
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--text-secondary);">Original:</span> hello world example</div>
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--primary-color);">UPPERCASE:</span> HELLO WORLD EXAMPLE</div>
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--primary-color);">lowercase:</span> hello world example</div>
+                    <div style="margin-bottom: 0.5rem;"><span style="color: var(--primary-color);">Title Case:</span> Hello World Example</div>
+                    <div><span style="color: var(--primary-color);">Sentence case:</span> Hello world example</div>
+                </div>
+                <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem;">
+                    <li><strong>Uppercase converter:</strong> Transforms all letters to CAPITALS—perfect for headlines and emphasis</li>
+                    <li><strong>Lowercase converter:</strong> Converts everything to small letters—ideal for normalizing data</li>
+                    <li><strong>Title Case:</strong> Capitalizes First Letter Of Each Word—great for titles and headings</li>
+                    <li><strong>Sentence case:</strong> Capitalizes only the first letter of sentences—for professional writing</li>
+                </ul>
+            </div>
+
+            <!-- Word and Character Counting -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="font-size: 1.25rem; color: var(--primary-color); margin-bottom: 0.75rem;">Word & Character Counting for SEO and Social Media</h3>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                    Our <strong>word counter</strong> and <strong>character counter</strong> provide real-time statistics essential for content optimization:
+                </p>
+                <ul style="color: var(--text-secondary); line-height: 1.8; padding-left: 1.5rem; margin-bottom: 1rem;">
+                    <li><strong>Word count:</strong> Essential for articles, essays, blog posts, and meeting content requirements</li>
+                    <li><strong>Character count:</strong> Critical for Twitter/X posts (280 chars), meta descriptions (155-160 chars), and SMS</li>
+                    <li><strong>Line count:</strong> Useful for code, poetry, and data files</li>
+                    <li><strong>Sentence count:</strong> Helps with readability analysis and content structure</li>
+                </ul>
+                <div style="background: rgba(99, 102, 241, 0.05); border-left: 4px solid var(--primary-color); padding: 1rem; border-radius: 0.5rem;">
+                    <p style="color: var(--text-secondary); margin: 0;"><strong>💡 Pro Tip:</strong> Writing a Twitter thread? Paste your tweet, see it's 295 characters, trim it to 280. No more "your post is too long" errors!</p>
+                </div>
+            </div>
+
+            <!-- Text Manipulation Features -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="font-size: 1.25rem; color: var(--primary-color); margin-bottom: 0.75rem;">Text Manipulation Features</h3>
+                <p style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 1rem;">
+                    Beyond case conversion, our <strong>text manipulation</strong> tools offer powerful features:
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🔄 Reverse Text</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Flip your text backwards—useful for testing, creative effects, and palindrome verification.</p>
+                    </div>
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🧹 Remove Spaces</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Strip all whitespace from text—perfect for creating slugs, hashtags, or compact data.</p>
+                    </div>
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">↩️ Undo/Redo History</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Made a mistake? Undo up to 20 previous changes and redo if needed.</p>
+                    </div>
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">📋 One-Click Copy</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0;">Copy your transformed text instantly with visual feedback confirmation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Common Use Cases -->
+            <div style="margin-bottom: 2rem;">
+                <h3 style="font-size: 1.25rem; color: var(--primary-color); margin-bottom: 0.75rem;">Common Use Cases</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">📝 Writing & Editing</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1.25rem; margin: 0;">
+                            <li>Fix accidentally typed CAPS LOCK</li>
+                            <li>Format titles and headings</li>
+                            <li>Meet word count requirements</li>
+                            <li>Check article length</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">🔍 SEO & Marketing</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1.25rem; margin: 0;">
+                            <li>Optimize meta descriptions (155 chars)</li>
+                            <li>Title case for keywords</li>
+                            <li>Count content for guidelines</li>
+                            <li>Format headlines properly</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">📱 Social Media</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1.25rem; margin: 0;">
+                            <li>Twitter/X posts (280 chars)</li>
+                            <li>Instagram bios (150 chars)</li>
+                            <li>LinkedIn headlines (120 chars)</li>
+                            <li>YouTube descriptions</li>
+                        </ul>
+                    </div>
+                    <div style="background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 0.5rem; padding: 1rem;">
+                        <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">💻 Coding & Development</h4>
+                        <ul style="color: var(--text-secondary); font-size: 0.9rem; padding-left: 1.25rem; margin: 0;">
+                            <li>Standardize variable naming</li>
+                            <li>Convert database column names</li>
+                            <li>Normalize string data</li>
+                            <li>Quick text transformations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div style="margin-bottom: 1rem;">
+                <h3 style="font-size: 1.25rem; color: var(--primary-color); margin-bottom: 1rem;">❓ Frequently Asked Questions</h3>
+                
+                <div style="margin-bottom: 1rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">What is a case converter?</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                        A <strong>case converter</strong> is a tool that transforms text between different letter cases like uppercase, lowercase, title case, and sentence case. It's faster and more accurate than manually retyping text.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">What's the difference between Title Case and Sentence case?</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                        <strong>Title Case</strong> capitalizes the first letter of every word (e.g., "The Quick Brown Fox"). <strong>Sentence case</strong> only capitalizes the first letter of sentences (e.g., "The quick brown fox"), creating a more conversational, modern tone.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Is there a character limit for Twitter/X?</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                        Yes, Twitter/X allows 280 characters per post. Use our <strong>character counter</strong> to check your text length before posting. Meta descriptions should be 155-160 characters for optimal SEO.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Is my text data safe?</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                        Absolutely. All <strong>text manipulation</strong> happens entirely in your browser using JavaScript. Your data never touches our servers—100% private and secure.
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 1rem;">
+                    <h4 style="color: var(--text-primary); margin-bottom: 0.5rem;">Can I process large amounts of text?</h4>
+                    <p style="color: var(--text-secondary); line-height: 1.7; margin: 0;">
+                        Yes! There's no size limit since all processing happens in your browser. Paste entire documents—the tool handles them instantly.
+                    </p>
+                </div>
+            </div>
+        </div>
+
         <!-- Related Tools Section -->
         <div class="tool-container" style="margin-top: 2rem;">
-            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">⚡ Related Tools</h2>
+            <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">? Related Tools</h2>
             <div class="button-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <a href="json-formatter.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
-                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📋</div>
+                <a href="../index.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">??</div>
                     <strong>JSON Formatter</strong>
                     <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Format & validate JSON</p>
                 </a>
                 <a href="hash-generator.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
-                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">#️⃣</div>
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">#??</div>
                     <strong>Hash Generator</strong>
                     <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Generate MD5, SHA hashes</p>
                 </a>
                 <a href="../tools.html" class="btn btn-primary" style="text-decoration: none; padding: 1rem; text-align: center;">
-                    <strong>View All Tools →</strong>
+                    <strong>View All Tools ?</strong>
                 </a>
             </div>
         </div>
@@ -390,8 +554,7 @@
                 <h3>Resources</h3>
                 <ul>
                     <li><a href="../tools.html">All Tools</a></li>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
             
@@ -400,18 +563,9 @@
                 <ul>
                     <li><a href="stopwatch.html">Stopwatch</a></li>
                     <li><a href="timer.html">Timer</a></li>
-                    <li><a href="json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="../index.html">JSON Formatter</a></li>
                     <li><a href="csv-json.html">CSV to JSON</a></li>
                     <li><a href="qr-code.html">QR Code Generator</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="../services/web-development.html">Web Development</a></li>
-                    <li><a href="../services/custom-tools.html">Custom Tools</a></li>
-                    <li><a href="../services/automation-ai.html">Automation & AI</a></li>
                 </ul>
             </div>
             
@@ -419,7 +573,6 @@
                 <h3>Legal</h3>
                 <ul>
                     <li><a href="../privacy.html">Privacy Policy</a></li>
-                    <li><a href="../contact.html">Terms & Conditions</a></li>
                 </ul>
             </div>
         </div>

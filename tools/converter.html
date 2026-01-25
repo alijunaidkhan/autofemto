@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,12 +6,13 @@
     <meta name="google-adsense-account" content="ca-pub-2073279535794487">
     
     <!-- Primary SEO Meta Tags -->
-    <title>Free Unit Converter - Length, Weight, Temperature, Volume & More | AutoFemto</title>
-    <meta name="title" content="Free Unit Converter - Length, Weight, Temperature, Volume & More | AutoFemto">
-    <meta name="description" content="Free online unit converter with 100% browser-based processing. Convert length, weight, temperature, volume, area, and time instantly. Meters to feet, kg to lbs, Celsius to Fahrenheit—completely private!">
+    <title>Unit Converter - Length, Weight, Temperature & More</title>
+    <meta name="title" content="Unit Converter - Length, Weight, Temperature & More">
+    <meta name="description" content="Free unit converter for length, weight, temperature, volume & time. Meters to feet, kg to lbs - instant browser-based conversion.">
     <meta name="keywords" content="unit converter, measurement converter, length converter, weight converter, temperature converter, volume converter, area converter, time converter, meters to feet, kg to lbs, celsius to fahrenheit, metric to imperial">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://autofemto.com/tools/converter.html">
+    <link rel="icon" type="image/png" href="../logos/logo.png">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -154,7 +155,7 @@
     
     <div class="container">
         <div class="tool-container">
-            <h1 class="tool-title">🔄 Unit Converter</h1>
+            <h1 class="tool-title">?? Unit Converter</h1>
             <p class="tool-description">Convert between different units of measurement</p>
 
             <div class="form-group">
@@ -177,7 +178,7 @@
                         <!-- Options populated by JavaScript -->
                     </select>
                 </div>
-                <div class="arrow">→</div>
+                <div class="arrow">?</div>
                 <div class="form-group">
                     <label>To:</label>
                     <input type="number" id="toValue" readonly placeholder="Result">
@@ -188,19 +189,162 @@
             </div>
         </div>
 
+        <!-- Guide Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 1.75rem; margin-bottom: 1.5rem; color: var(--primary-color);">📖 Complete Unit Converter Guide</h2>
+            
+            <div style="line-height: 1.8; color: var(--text-secondary);">
+                <!-- What is Unit Conversion -->
+                <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-top: 1.5rem; margin-bottom: 1rem;">What is Unit Conversion?</h3>
+                <p style="margin-bottom: 1rem;">
+                    Unit conversion is the process of changing a measurement from one unit to another while maintaining the same value. Whether you're converting meters to feet, kilograms to pounds, or Celsius to Fahrenheit, unit conversion allows people worldwide to communicate measurements accurately despite using different measurement systems.
+                </p>
+                <p style="margin-bottom: 1.5rem;">
+                    <strong>Unit conversions are everywhere.</strong> Cooking, construction, travel, development, science—you're constantly switching between metric, imperial, and specialized units.
+                </p>
+
+                <!-- Common Conversions -->
+                <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">Common Conversions by Category</h3>
+                
+                <h4 style="font-size: 1.1rem; color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.75rem;">📏 Length Conversion</h4>
+                <ul style="margin-bottom: 1rem; padding-left: 1.5rem;">
+                    <li>1 meter = 3.28 feet</li>
+                    <li>1 kilometer = 0.621 miles</li>
+                    <li>1 inch = 2.54 centimeters</li>
+                    <li>1 mile = 1.609 kilometers</li>
+                    <li>1 yard = 0.914 meters</li>
+                </ul>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;"><strong>Example:</strong> Running a 5K? That's 3.1 miles.</p>
+
+                <h4 style="font-size: 1.1rem; color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.75rem;">⚖️ Weight Conversion</h4>
+                <ul style="margin-bottom: 1rem; padding-left: 1.5rem;">
+                    <li>1 kilogram = 2.205 pounds</li>
+                    <li>1 pound = 453.6 grams</li>
+                    <li>1 ounce = 28.35 grams</li>
+                    <li>1 metric ton = 2,205 pounds</li>
+                </ul>
+                <p style="margin-bottom: 1.5rem; font-size: 0.95rem;"><strong>Example:</strong> Luggage weight limit is 23kg? That's about 50 pounds.</p>
+
+                <h4 style="font-size: 1.1rem; color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.75rem;">🌡️ Temperature Conversion</h4>
+                <table style="width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem 0; font-size: 0.95rem;">
+                    <thead>
+                        <tr style="background: rgba(99, 102, 241, 0.1);">
+                            <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(99, 102, 241, 0.2); color: var(--primary-color);">Celsius (°C)</th>
+                            <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(99, 102, 241, 0.2); color: var(--primary-color);">Fahrenheit (°F)</th>
+                            <th style="padding: 0.75rem; text-align: left; border: 1px solid rgba(99, 102, 241, 0.2); color: var(--primary-color);">Condition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">0°C</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">32°F</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">Freezing point of water</td></tr>
+                        <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">20°C</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">68°F</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">Room temperature</td></tr>
+                        <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">37°C</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">98.6°F</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">Human body temperature</td></tr>
+                        <tr><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">100°C</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">212°F</td><td style="padding: 0.75rem; border: 1px solid rgba(99, 102, 241, 0.2);">Boiling point of water</td></tr>
+                    </tbody>
+                </table>
+
+                <h4 style="font-size: 1.1rem; color: var(--primary-color); margin-top: 1.5rem; margin-bottom: 0.75rem;">🫗 Volume Conversion</h4>
+                <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                    <li>1 liter = 0.264 US gallons</li>
+                    <li>1 US gallon = 3.785 liters</li>
+                    <li>1 cup = 240 milliliters</li>
+                    <li>1 tablespoon = 15 milliliters</li>
+                    <li>1 fluid ounce = 29.57 milliliters</li>
+                </ul>
+
+                <!-- Metric vs Imperial -->
+                <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">Metric vs Imperial Systems</h3>
+                <div style="background: rgba(99, 102, 241, 0.05); border-left: 4px solid var(--primary-color); padding: 1.25rem; margin: 1rem 0 1.5rem 0; border-radius: 0.5rem;">
+                    <p style="margin-bottom: 1rem;"><strong>Metric System (SI):</strong> Used by most countries worldwide. Based on powers of 10, making calculations simple. Units include meters, kilograms, liters, and Celsius.</p>
+                    <p style="margin-bottom: 0;"><strong>Imperial System:</strong> Used primarily in the United States, Liberia, and Myanmar. Units include feet, pounds, gallons, and Fahrenheit. Conversions within the system are less intuitive (12 inches = 1 foot, 3 feet = 1 yard).</p>
+                </div>
+
+                <!-- Common Formulas -->
+                <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">Essential Conversion Formulas</h3>
+                <div style="background: var(--card-bg); padding: 1.25rem; border-radius: 0.5rem; margin-bottom: 1.5rem;">
+                    <p style="margin-bottom: 0.75rem;"><strong>Temperature:</strong></p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>°F = (°C × 9/5) + 32</li>
+                        <li>°C = (°F - 32) × 5/9</li>
+                        <li>K = °C + 273.15</li>
+                    </ul>
+                    <p style="margin-bottom: 0.75rem;"><strong>Length:</strong></p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 1rem;">
+                        <li>feet = meters × 3.28084</li>
+                        <li>miles = kilometers × 0.621371</li>
+                        <li>centimeters = inches × 2.54</li>
+                    </ul>
+                    <p style="margin-bottom: 0.75rem;"><strong>Weight:</strong></p>
+                    <ul style="padding-left: 1.5rem; margin-bottom: 0;">
+                        <li>pounds = kilograms × 2.20462</li>
+                        <li>ounces = grams × 0.035274</li>
+                    </ul>
+                </div>
+
+                <!-- When You Need Unit Conversion -->
+                <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">When You Need Unit Conversion</h3>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: rgba(99, 102, 241, 0.05); padding: 1rem; border-radius: 0.5rem;">
+                        <strong style="color: var(--primary-color);">✈️ Travel</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">Weather (°C to °F), distance (km to miles), speed limits, and currency.</p>
+                    </div>
+                    <div style="background: rgba(99, 102, 241, 0.05); padding: 1rem; border-radius: 0.5rem;">
+                        <strong style="color: var(--primary-color);">👨‍🍳 Cooking</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">International recipes use grams and milliliters vs cups and ounces.</p>
+                    </div>
+                    <div style="background: rgba(99, 102, 241, 0.05); padding: 1rem; border-radius: 0.5rem;">
+                        <strong style="color: var(--primary-color);">🔬 Science</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">Standardized SI units for experiments, research, and publications.</p>
+                    </div>
+                    <div style="background: rgba(99, 102, 241, 0.05); padding: 1rem; border-radius: 0.5rem;">
+                        <strong style="color: var(--primary-color);">🔨 Construction</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem; margin-bottom: 0;">Material specifications, area calculations, lumber dimensions.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <h3 style="font-size: 1.3rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">❓ Frequently Asked Questions</h3>
+                
+                <details style="margin-bottom: 1rem; background: var(--card-bg); border-radius: 0.5rem; padding: 1rem;">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--text-primary);">What's the easiest way to estimate Celsius to Fahrenheit?</summary>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;">Double the Celsius value and add 30 for a quick estimate. Example: 20°C → (20×2) + 30 = 70°F (actual: 68°F).</p>
+                </details>
+                
+                <details style="margin-bottom: 1rem; background: var(--card-bg); border-radius: 0.5rem; padding: 1rem;">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--text-primary);">Why are there US gallons and UK gallons?</summary>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;">Historical reasons. <strong>US gallon = 3.785 liters</strong>, <strong>UK gallon = 4.546 liters</strong>. Always specify which one when converting.</p>
+                </details>
+                
+                <details style="margin-bottom: 1rem; background: var(--card-bg); border-radius: 0.5rem; padding: 1rem;">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--text-primary);">What's the difference between mass and weight?</summary>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;"><strong>Mass:</strong> Amount of matter (kg, grams) - constant everywhere. <strong>Weight:</strong> Force due to gravity (newtons) - varies by location. In everyday use, "weight" usually means mass.</p>
+                </details>
+                
+                <details style="margin-bottom: 1rem; background: var(--card-bg); border-radius: 0.5rem; padding: 1rem;">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--text-primary);">Are all unit conversions exact?</summary>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;">Most are defined exactly (1 inch = exactly 2.54 cm). Some, like currency exchange rates, change constantly.</p>
+                </details>
+                
+                <details style="margin-bottom: 1rem; background: var(--card-bg); border-radius: 0.5rem; padding: 1rem;">
+                    <summary style="cursor: pointer; font-weight: 600; color: var(--text-primary);">How do I convert cooking measurements accurately?</summary>
+                    <p style="margin-top: 0.75rem; margin-bottom: 0;">Remember: 1 cup = 240ml, 1 tablespoon = 15ml, 1 teaspoon = 5ml. For weight, don't confuse volume with weight—1 cup of flour weighs less than 1 cup of water.</p>
+                </details>
+            </div>
+        </div>
+
         <!-- Related Tools Section -->
         <div class="tool-container" style="margin-top: 2rem;">
             <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">⚡ Related Tools</h2>
             <div class="button-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <a href="../index.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📝</div>
+                    <strong>JSON Formatter</strong>
+                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Format & validate JSON</p>
+                </a>
                 <a href="stopwatch.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
                     <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⏱️</div>
                     <strong>Stopwatch</strong>
                     <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Track time with laps</p>
-                </a>
-                <a href="timer.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
-                    <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">⏲️</div>
-                    <strong>Countdown Timer</strong>
-                    <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Set timers with alerts</p>
                 </a>
                 <a href="../tools.html" class="btn btn-primary" style="text-decoration: none; padding: 1rem; text-align: center;">
                     <strong>View All Tools →</strong>
@@ -230,14 +374,14 @@
                 'Ounce (oz)': 35.274
             },
             temperature: {
-                'Celsius (°C)': 'c',
-                'Fahrenheit (°F)': 'f',
+                'Celsius (�C)': 'c',
+                'Fahrenheit (�F)': 'f',
                 'Kelvin (K)': 'k'
             },
             volume: {
                 'Liter (L)': 1,
                 'Milliliter (mL)': 1000,
-                'Cubic Meter (m³)': 0.001,
+                'Cubic Meter (m�)': 0.001,
                 'Gallon (gal)': 0.264172,
                 'Quart (qt)': 1.05669,
                 'Pint (pt)': 2.11338,
@@ -245,10 +389,10 @@
                 'Fluid Ounce (fl oz)': 33.814
             },
             area: {
-                'Square Meter (m²)': 1,
-                'Square Kilometer (km²)': 0.000001,
-                'Square Centimeter (cm²)': 10000,
-                'Square Mile (mi²)': 3.861e-7,
+                'Square Meter (m�)': 1,
+                'Square Kilometer (km�)': 0.000001,
+                'Square Centimeter (cm�)': 10000,
+                'Square Mile (mi�)': 3.861e-7,
                 'Acre': 0.000247105,
                 'Hectare (ha)': 0.0001
             },
@@ -313,18 +457,18 @@
             let celsius;
             
             // Convert to Celsius first
-            if (from === 'Celsius (°C)') {
+            if (from === 'Celsius (�C)') {
                 celsius = value;
-            } else if (from === 'Fahrenheit (°F)') {
+            } else if (from === 'Fahrenheit (�F)') {
                 celsius = (value - 32) * 5/9;
             } else if (from === 'Kelvin (K)') {
                 celsius = value - 273.15;
             }
             
             // Convert from Celsius to target
-            if (to === 'Celsius (°C)') {
+            if (to === 'Celsius (�C)') {
                 return celsius;
-            } else if (to === 'Fahrenheit (°F)') {
+            } else if (to === 'Fahrenheit (�F)') {
                 return celsius * 9/5 + 32;
             } else if (to === 'Kelvin (K)') {
                 return celsius + 273.15;
@@ -346,8 +490,7 @@
                 <h3>Resources</h3>
                 <ul>
                     <li><a href="../tools.html">All Tools</a></li>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
             
@@ -356,18 +499,9 @@
                 <ul>
                     <li><a href="stopwatch.html">Stopwatch</a></li>
                     <li><a href="timer.html">Timer</a></li>
-                    <li><a href="json-formatter.html">JSON Formatter</a></li>
+                    <li><a href="../index.html">JSON Formatter</a></li>
                     <li><a href="csv-json.html">CSV to JSON</a></li>
                     <li><a href="qr-code.html">QR Code Generator</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="../services/web-development.html">Web Development</a></li>
-                    <li><a href="../services/custom-tools.html">Custom Tools</a></li>
-                    <li><a href="../services/automation-ai.html">Automation & AI</a></li>
                 </ul>
             </div>
             
@@ -375,7 +509,6 @@
                 <h3>Legal</h3>
                 <ul>
                     <li><a href="../privacy.html">Privacy Policy</a></li>
-                    <li><a href="../contact.html">Terms & Conditions</a></li>
                 </ul>
             </div>
         </div>

@@ -27,30 +27,21 @@ function createNavigation(currentPage = '') {
                     <span class="nav-icon">🏠</span> Home
                 </a>
                 <div class="nav-dropdown">
-                    <a href="${currentPage}tools.html" class="nav-btn ${isTools ? 'active' : ''}">
+                    <button type="button" class="nav-btn dropdown-trigger ${isTools ? 'active' : ''}">
                         <span class="nav-icon">🛠️</span> Tools <span class="dropdown-arrow">▼</span>
-                    </a>
+                    </button>
                     <div class="dropdown-content">
                         <a href="${currentPage}tools/stopwatch.html">⏱️ Stopwatch</a>
                         <a href="${currentPage}tools/timer.html">⏲️ Timer</a>
                         <a href="${currentPage}tools/converter.html">🔄 Unit Converter</a>
                         <a href="${currentPage}tools/compound-calculator.html">💰 Compound Calculator</a>
-                        <a href="${currentPage}tools/json-formatter.html">📋 JSON Formatter</a>
+                        <a href="${currentPage}index.html">📋 JSON Formatter</a>
                         <a href="${currentPage}tools/csv-json.html">📊 CSV to JSON</a>
                         <a href="${currentPage}tools/color-picker.html">🎨 Color Picker</a>
                         <a href="${currentPage}tools/qr-code.html">📱 QR Code</a>
                         <a href="${currentPage}tools.html" class="view-all">View All Tools →</a>
                     </div>
                 </div>
-                <a href="${currentPage}blog/index.html" class="nav-btn ${isBlog ? 'active' : ''}">
-                    <span class="nav-icon">📚</span> Blog
-                </a>
-                <a href="${currentPage}about.html" class="nav-btn ${isAbout ? 'active' : ''}">
-                    <span class="nav-icon">ℹ️</span> About
-                </a>
-                <a href="${currentPage}contact.html" class="nav-btn ${isContact ? 'active' : ''}">
-                    <span class="nav-icon">✉️</span> Contact
-                </a>
                 <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
                     <span class="theme-icon">🌙</span>
                 </button>
@@ -149,6 +140,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Insert navigation
     insertNavigation(prefix);
     
+    // Setup dropdown toggle for mobile/click support
+    setupDropdownToggle();
+    
     // Typing animation for tagline
     const text = "Automation at Quantum Speed!";
     const taglineElement = document.getElementById('tagline');
@@ -185,3 +179,45 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setTimeout(typeWriter, 500);
 });
+
+// Setup dropdown toggle functionality
+function setupDropdownToggle() {
+    const dropdown = document.querySelector('.nav-dropdown');
+    const trigger = document.querySelector('.dropdown-trigger');
+    const dropdownContent = document.querySelector('.dropdown-content');
+    
+    if (!dropdown || !trigger) return;
+    
+    // Toggle dropdown on click
+    trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropdown.classList.toggle('open');
+    });
+    
+    // Keep dropdown open when hovering over content
+    dropdownContent.addEventListener('mouseenter', () => {
+        dropdown.classList.add('open');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target)) {
+            dropdown.classList.remove('open');
+        }
+    });
+    
+    // Close dropdown when pressing Escape
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            dropdown.classList.remove('open');
+        }
+    });
+    
+    // Close dropdown when a link inside is clicked
+    dropdownContent.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            dropdown.classList.remove('open');
+        });
+    });
+}

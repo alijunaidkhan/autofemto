@@ -10,6 +10,7 @@
     <meta name="description" content="AutoFemto Privacy Policy - Learn how we protect your data and respect your privacy.">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://autofemto.com/privacy.html">
+    <link rel="icon" type="image/png" href="logos/logo.png">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -34,32 +35,397 @@
       gtag('config', 'G-E5RNQ75Z8V');
     </script>
     
-    <link rel="stylesheet" href="theme.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="navigation.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --gradient: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        h4 {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 1rem;
+            color: var(--text-secondary);
+        }
+
+        ul {
+            margin-bottom: 1rem;
+        }
+
+        li {
+            color: var(--text-secondary);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .content-section {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient);
+            color: white;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: transform 0.2s ease;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+            text-decoration: none;
+        }
+
+        /* Scroll to Top Button */
+        .scroll-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 110px;
+            width: 60px;
+            height: 60px;
+            background: rgba(30, 41, 59, 0.9);
+            color: white;
+            border: 2px solid rgba(99, 102, 241, 0.5);
+            border-radius: 50%;
+            font-size: 1.8rem;
+            font-weight: bold;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 998;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .scroll-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .scroll-to-top.chatbot-open {
+            right: 440px;
+        }
+
+        .scroll-to-top:hover {
+            transform: scale(1.1) translateY(-3px);
+            background: var(--gradient);
+            border-color: transparent;
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+        }
+
+        /* Chatbot Widget */
+        .chatbot-widget {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .chatbot-panel {
+            position: fixed;
+            right: -400px;
+            top: 0;
+            width: 400px;
+            height: 100vh;
+            background: var(--card-bg);
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            z-index: 1001;
+        }
+
+        .chatbot-panel.open {
+            right: 0;
+        }
+
+        .chatbot-header {
+            padding: 1rem 1.25rem;
+            background: var(--gradient);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chatbot-header h3 {
+            font-size: 1.1rem;
+            color: white;
+            margin: 0;
+        }
+
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .message {
+            margin-bottom: 0.75rem;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            max-width: 85%;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            margin-left: auto;
+            color: white;
+            border-bottom-right-radius: 0.25rem;
+            box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+        }
+
+        .message.user .message-sender {
+            display: none;
+        }
+
+        .message.user .message-text {
+            font-size: 0.9rem;
+        }
+
+        .message.bot {
+            background: var(--bg-color);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-bottom-left-radius: 0.25rem;
+        }
+
+        .message-sender {
+            font-weight: 600;
+            margin-bottom: 0.35rem;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            opacity: 0.8;
+        }
+
+        .message.bot .message-sender {
+            color: var(--primary-color);
+        }
+
+        .message-text {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .chat-input-container {
+            padding: 1rem;
+            background: var(--card-bg);
+            border-top: 1px solid rgba(99, 102, 241, 0.2);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.75rem;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            border-radius: 0.5rem;
+            color: var(--text-primary);
+            font-size: 0.95rem;
+        }
+
+        .chat-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .chat-send-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--gradient);
+            border: none;
+            border-radius: 0.5rem;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .chat-send-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .chat-messages::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .chat-messages::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+        }
+
+        .chat-messages::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .scroll-to-top {
+                bottom: 90px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .scroll-to-top.chatbot-open {
+                right: 20px;
+                bottom: 160px;
+            }
+
+            .chatbot-panel {
+                width: 100%;
+                right: -100%;
+            }
+
+            .chatbot-widget {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .chatbot-toggle {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation will be inserted here by navigation.js -->
-    
     <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
         <header>
-            <div class="logo">
-                <h1><a href="index.html" style="color: inherit; text-decoration: none;">AutoFemto</a></h1>
-                <p class="tagline">Automate. Simplify. Accelerate.</p>
-            </div>
+            <h1>AutoFemto</h1>
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">Free Online Tools</p>
         </header>
 
         <main>
             <section class="content-page">
                 <h2>Privacy Policy</h2>
-                <p><strong>Last Updated:</strong> January 11, 2025</p>
+                <p><strong>Last Updated:</strong> January 25, 2026</p>
                 
                 <div class="content-section">
                     <h3>1. Introduction</h3>
                     <p>
                         Welcome to AutoFemto ("we," "our," or "us"). We respect your privacy and are committed 
                         to protecting your personal data. This privacy policy explains how we handle your 
-                        information when you visit our website at autofemto.com.
+                        information when you visit our website at autofemto.com and use our free online tools.
                     </p>
                 </div>
 
@@ -68,7 +434,7 @@
                     
                     <h4>2.1 Automatically Collected Information</h4>
                     <p>
-                        When you visit our website, we may automatically collect certain information through 
+                        When you visit our website, we automatically collect certain information through 
                         Google Analytics, including:
                     </p>
                     <ul style="line-height: 2; margin-left: 2rem;">
@@ -82,23 +448,14 @@
 
                     <h4>2.2 Tool Usage Data</h4>
                     <p>
-                        <strong>Important:</strong> All our tools process data entirely in your browser. 
-                        We do not collect, store, or transmit any data you enter into our tools 
-                        (text, images, JSON data, etc.). Your data never leaves your device.
+                        All our tools process data entirely in your browser. Your data never leaves your device.
+                        We do not collect, store, or transmit any data you input into our tools.
                     </p>
 
-                    <h4>2.3 Contact Form Information</h4>
+                    <h4>2.3 Chatbot Interactions</h4>
                     <p>
-                        If you use our contact form, we collect:
-                    </p>
-                    <ul style="line-height: 2; margin-left: 2rem;">
-                        <li>Name</li>
-                        <li>Email address</li>
-                        <li>Message content</li>
-                        <li>Service type and budget (optional)</li>
-                    </ul>
-                    <p>
-                        This information is processed by Formspree and used solely to respond to your inquiry.
+                        Our AI chatbot widget may temporarily store conversation history in your browser's local storage.
+                        This data never leaves your device and is cleared when you close the chat or browser.
                     </p>
                 </div>
 
@@ -108,8 +465,7 @@
                     <ul style="line-height: 2; margin-left: 2rem;">
                         <li>Analyze website traffic and improve user experience</li>
                         <li>Understand which tools are most popular</li>
-                        <li>Respond to your inquiries and support requests</li>
-                        <li>Improve our services and develop new features</li>
+                        <li>Improve our tools and add new features</li>
                         <li>Ensure website security and prevent abuse</li>
                     </ul>
                 </div>
@@ -124,24 +480,14 @@
                     </p>
                     <p>
                         You can opt out of Google Analytics by installing the 
-                        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" 
-                           style="color: var(--accent-color);">Google Analytics Opt-out Browser Add-on</a>.
+                        <a href="https://tools.google.com/dlpage/gaoptout" target="_blank">Google Analytics Opt-out Browser Add-on</a>.
                     </p>
 
-                    <h4>4.2 Google AdSense (When Implemented)</h4>
+                    <h4>4.2 Essential Cookies</h4>
                     <p>
-                        We may display advertisements through Google AdSense. Google uses cookies to serve 
-                        ads based on your prior visits to our website or other websites. You can opt out of 
-                        personalized advertising by visiting 
-                        <a href="https://www.google.com/settings/ads" target="_blank" 
-                           style="color: var(--accent-color);">Google Ads Settings</a>.
-                    </p>
-
-                    <h4>4.3 Essential Cookies</h4>
-                    <p>
-                        Some of our tools may use local storage in your browser to save your preferences 
-                        (e.g., undo history in Text Tools). This data is stored only on your device and 
-                        is never transmitted to our servers.
+                        We use browser local storage to save your theme preferences (dark/light mode) and 
+                        chatbot conversation state. This data is stored only on your device and is never 
+                        transmitted to our servers.
                     </p>
                 </div>
 
@@ -153,13 +499,12 @@
                     </p>
                     <ul style="line-height: 2; margin-left: 2rem;">
                         <li><strong>Google Analytics:</strong> For website traffic analysis</li>
-                        <li><strong>Google AdSense:</strong> For displaying advertisements (when implemented)</li>
-                        <li><strong>Formspree:</strong> For processing contact form submissions</li>
-                        <li><strong>GitHub Pages:</strong> Our hosting provider</li>
+                        <li><strong>Cloud Hosting Providers:</strong> For website hosting and infrastructure</li>
+
                     </ul>
                     <p>
                         These third parties have their own privacy policies and may use cookies and 
-                        tracking technologies.
+                        tracking technologies. We ensure all partners comply with applicable data protection laws.
                     </p>
                 </div>
 
@@ -171,9 +516,11 @@
                     </p>
                     <ul style="line-height: 2; margin-left: 2rem;">
                         <li>HTTPS encryption for all pages</li>
-                        <li>Client-side processing for tool data (nothing stored on servers)</li>
-                        <li>Secure hosting through GitHub Pages</li>
+                        <li>Secure cloud hosting infrastructure</li>
+                        <li>Client-side processing for chatbot interactions</li>
                         <li>Regular security updates and monitoring</li>
+                        <li>Access controls and authentication for internal systems</li>
+                        <li>Data encryption in transit and at rest</li>
                     </ul>
                 </div>
 
@@ -188,8 +535,7 @@
                         <li><strong>Opt-out:</strong> Opt out of cookies and tracking</li>
                     </ul>
                     <p>
-                        To exercise these rights, please <a href="contact.html" 
-                        style="color: var(--accent-color);">contact us</a>.
+                        To exercise these rights, please email us at privacy@autofemto.com.
                     </p>
                 </div>
 
@@ -225,10 +571,7 @@
                         If you have any questions about this Privacy Policy, please contact us:
                     </p>
                     <ul style="line-height: 2; margin-left: 2rem;">
-                        <li><strong>Website:</strong> <a href="https://autofemto.com" 
-                            style="color: var(--accent-color);">autofemto.com</a></li>
-                        <li><strong>Contact Form:</strong> <a href="contact.html" 
-                            style="color: var(--accent-color);">autofemto.com/contact.html</a></li>
+                        <li><strong>Website:</strong> <a href="https://autofemto.com">autofemto.com</a></li>
                     </ul>
                 </div>
 
@@ -278,55 +621,143 @@
             </section>
         </main>
 
-        <footer class="site-footer">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>About Us</h3>
-                    <p>AutoFemto empowers developers with cutting-edge online tools that boost productivity, streamline workflows, and unlock new possibilities for professionals worldwide.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Resources</h3>
-                    <ul>
-                        <li><a href="tools.html">All Tools</a></li>
-                        <li><a href="about.html">About</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Popular Tools</h3>
-                    <ul>
-                        <li><a href="tools/stopwatch.html">Stopwatch</a></li>
-                        <li><a href="tools/timer.html">Timer</a></li>
-                        <li><a href="tools/json-formatter.html">JSON Formatter</a></li>
-                        <li><a href="tools/csv-json.html">CSV to JSON</a></li>
-                        <li><a href="tools/qr-code.html">QR Code Generator</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="services/web-development.html">Web Development</a></li>
-                        <li><a href="services/custom-tools.html">Custom Tools</a></li>
-                        <li><a href="services/automation-ai.html">Automation & AI</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Legal</h3>
-                    <ul>
-                        <li><a href="privacy.html">Privacy Policy</a></li>
-                        <li><a href="contact.html">Terms & Conditions</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 AutoFemto. All rights reserved. | Powered by <a href="https://autofemto.com">AutoFemto.com</a></p>
-            </div>
+        <footer style="text-align: center; padding: 2rem 0; margin-top: 4rem; border-top: 1px solid rgba(99, 102, 241, 0.3); color: var(--text-secondary);">
+            <p>&copy; 2026 AutoFemto. All rights reserved.</p>
         </footer>
     </div>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()" aria-label="Scroll to top">
+        ▲
+    </button>
+
+    <!-- Chatbot Widget -->
+    <div class="chatbot-widget">
+        <button class="chatbot-toggle" onclick="toggleChatbot()">💬</button>
+    </div>
+
+    <!-- Chatbot Panel -->
+    <div class="chatbot-panel" id="chatbotPanel">
+        <div class="chatbot-header">
+            <h3>💬 AI Assistant</h3>
+            <button class="chatbot-close" onclick="toggleChatbot()">✕</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="message bot">
+                <div class="message-sender">🤖 Assistant</div>
+                <div class="message-text">Hello! I'm here to help. Feel free to ask me about our free online tools!</div>
+            </div>
+        </div>
+        <div class="chat-input-container">
+            <input 
+                type="text" 
+                class="chat-input" 
+                id="chatInput" 
+                placeholder="Type your message..."
+                onkeypress="if(event.key === 'Enter') sendMessage()"
+            >
+            <button class="chat-send-btn" onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        // Chatbot toggle
+        function toggleChatbot() {
+            const panel = document.getElementById('chatbotPanel');
+            const scrollBtn = document.getElementById('scrollToTop');
+            panel.classList.toggle('open');
+            
+            // Move scroll-to-top button when chatbot opens/closes
+            if (panel.classList.contains('open')) {
+                scrollBtn.classList.add('chatbot-open');
+            } else {
+                scrollBtn.classList.remove('chatbot-open');
+            }
+        }
+
+        // Close chatbot when clicking outside
+        document.addEventListener('click', function(event) {
+            const panel = document.getElementById('chatbotPanel');
+            const chatbotWidget = document.querySelector('.chatbot-widget');
+            const scrollBtn = document.getElementById('scrollToTop');
+            
+            if (panel && panel.classList.contains('open')) {
+                // Check if click is outside both the panel and the toggle button
+                if (!panel.contains(event.target) && !chatbotWidget.contains(event.target)) {
+                    panel.classList.remove('open');
+                    scrollBtn.classList.remove('chatbot-open');
+                }
+            }
+        });
+
+        // Close chatbot with ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const panel = document.getElementById('chatbotPanel');
+                const scrollBtn = document.getElementById('scrollToTop');
+                if (panel && panel.classList.contains('open')) {
+                    panel.classList.remove('open');
+                    scrollBtn.classList.remove('chatbot-open');
+                }
+            }
+        });
+
+        // Chatbot functionality
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const messagesContainer = document.getElementById('chatMessages');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            // Add user message
+            const userMessage = document.createElement('div');
+            userMessage.className = 'message user';
+            userMessage.innerHTML = `
+                <div class="message-sender">You</div>
+                <div class="message-text">${escapeHtml(message)}</div>
+            `;
+            messagesContainer.appendChild(userMessage);
+            
+            // Clear input
+            input.value = '';
+            
+            // Scroll to bottom
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            
+            // Add bot response after a short delay
+            setTimeout(() => {
+                const botMessage = document.createElement('div');
+                botMessage.className = 'message bot';
+                botMessage.innerHTML = `
+                    <div class="message-sender">🤖 Assistant</div>
+                    <div class="message-text">Thank you for your interest! All our tools are 100% free and privacy-focused. Your data never leaves your browser. Visit our <a href="index.html" style="color: var(--accent-color);">homepage</a> to try our JSON formatter or browse all our <a href="tools.html" style="color: var(--accent-color);">tools</a>!</div>
+                `;
+                messagesContainer.appendChild(botMessage);
+                messagesContainer.scrollTop = messagesContainer.scrollHeight;
+            }, 500);
+        }
+        
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Scroll to top functionality
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show/hide scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollToTop');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('visible');
+            } else {
+                scrollBtn.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 </html>

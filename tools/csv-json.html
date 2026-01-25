@@ -8,10 +8,11 @@
     <!-- Primary SEO Meta Tags -->
     <title>CSV to JSON Converter - Free Online Tool | AutoFemto</title>
     <meta name="title" content="CSV to JSON Converter - Free Online Tool | AutoFemto">
-    <meta name="description" content="Convert CSV to JSON with 100% browser-based processing—your data never leaves your device. Free converter with preview, download, and validation. Handle large files with column mapping, completely private!">
+    <meta name="description" content="Convert CSV to JSON instantly with preview & download. Handle large files with column mapping. 100% browser-based & private.">
     <meta name="keywords" content="csv to json, json to csv, csv converter, json converter, csv to json online, convert csv to json, data converter, file converter, csv parser, json parser, private csv converter">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://autofemto.com/tools/csv-json.html">
+    <link rel="icon" type="image/png" href="../logos/logo.png">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -244,11 +245,145 @@ Jane,25,Los Angeles"></textarea>
             </div>
         </div>
 
+        <!-- CSV to JSON Guide Section -->
+        <div class="tool-container" style="margin-top: 2rem;">
+            <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--text-primary);">📖 CSV to JSON Converter Guide</h2>
+            
+            <div style="line-height: 1.8; color: var(--text-secondary);">
+                
+                <!-- What is CSV vs JSON -->
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">What is CSV vs JSON?</h3>
+                <p style="margin-bottom: 1rem;">
+                    <strong>CSV (Comma-Separated Values)</strong> is a flat, tabular format where data is organized in rows and columns. It's the universal format for spreadsheets, database exports, and bulk data transfers. Every value is treated as text (strings).
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>JSON (JavaScript Object Notation)</strong> is a hierarchical, structured format that supports nested objects, arrays, and multiple data types (strings, numbers, booleans, null). It's the industry standard for APIs and modern web applications.
+                </p>
+                
+                <!-- Comparison Table -->
+                <div style="overflow-x: auto; margin: 1.5rem 0;">
+                    <table style="width: 100%; border-collapse: collapse; background: var(--input-bg); border-radius: 0.5rem;">
+                        <thead>
+                            <tr>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--primary-color); color: var(--primary-color);">Feature</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--primary-color); color: var(--primary-color);">CSV</th>
+                                <th style="padding: 1rem; text-align: left; border-bottom: 2px solid var(--primary-color); color: var(--primary-color);">JSON</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);"><strong>Structure</strong></td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">Flat (rows & columns)</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">Hierarchical (nested objects)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);"><strong>Data Types</strong></td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">Text only (strings)</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">Strings, numbers, booleans, arrays</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);"><strong>Nested Data</strong></td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">❌ Not supported</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">✅ Full support</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);"><strong>Best For</strong></td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">Spreadsheets, Excel, bulk exports</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(99, 102, 241, 0.1);">APIs, web apps, databases</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- When to Use Each Format -->
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">When to Use Each Format</h3>
+                <p style="margin-bottom: 1rem;">
+                    <strong>Use CSV when:</strong> Working with spreadsheet tools (Excel, Google Sheets), exporting database tables, sharing data with non-technical users, or handling simple tabular data.
+                </p>
+                <p style="margin-bottom: 1rem;">
+                    <strong>Use JSON when:</strong> Building APIs, storing configuration data, working with web applications, or handling complex nested data structures.
+                </p>
+                
+                <!-- How the Conversion Works -->
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">How CSV to JSON Conversion Works</h3>
+                <p style="margin-bottom: 1rem;">
+                    Our CSV to JSON converter parses your CSV data and transforms each row into a JSON object. The first row becomes the keys (headers), and each subsequent row becomes an object with those keys:
+                </p>
+                <div style="background: #1e1e1e; color: #d4d4d4; padding: 1rem; border-radius: 0.5rem; overflow-x: auto; margin: 1rem 0; font-family: monospace; font-size: 0.9rem;">
+                    <div style="color: #6a9955;">// CSV Input:</div>
+                    <div>name,age,city</div>
+                    <div>Alice,30,New York</div>
+                    <div>Bob,25,Los Angeles</div>
+                    <br>
+                    <div style="color: #6a9955;">// JSON Output:</div>
+                    <div>[</div>
+                    <div>&nbsp;&nbsp;{"name": "Alice", "age": 30, "city": "New York"},</div>
+                    <div>&nbsp;&nbsp;{"name": "Bob", "age": 25, "city": "Los Angeles"}</div>
+                    <div>]</div>
+                </div>
+                
+                <!-- Common Use Cases -->
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">Common Use Cases</h3>
+                <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.75rem;"><strong>🔌 API Integration:</strong> Convert spreadsheet data to JSON format for REST API requests and data imports.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>📊 Spreadsheet to API:</strong> Transform Excel/CSV exports into JSON for web applications and dashboards.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>🔄 Data Migration:</strong> Move data between legacy systems (CSV exports) and modern platforms (JSON APIs).</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>📥 API Response to Excel:</strong> Convert JSON API responses to CSV for analysis in spreadsheet tools.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>📋 Bulk Data Entry:</strong> Import CSV data from Google Sheets or Excel into JSON-based databases.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>🔍 Log Analysis:</strong> Convert JSON server logs to CSV for analysis in Excel or SQL tools.</li>
+                </ul>
+                
+                <!-- Tips for Clean Conversion -->
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">Tips for Clean CSV to JSON Conversion</h3>
+                <ul style="margin-bottom: 1.5rem; padding-left: 1.5rem;">
+                    <li style="margin-bottom: 0.75rem;"><strong>Validate After Conversion:</strong> Always check your JSON output with a JSON validator to catch syntax issues.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Use Consistent Headers:</strong> Ensure CSV column names are clean (no spaces, special characters) for easier JSON parsing.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Handle Empty Values:</strong> Decide how to treat empty cells—as empty strings, null, or omit them entirely.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Escape Special Characters:</strong> If your CSV contains commas, wrap fields in quotes to prevent parsing errors.</li>
+                    <li style="margin-bottom: 0.75rem;"><strong>Check Encoding:</strong> Use UTF-8 encoding to avoid character display issues in your converted data.</li>
+                </ul>
+                
+                <!-- FAQ Section -->
+                <h3 style="font-size: 1.4rem; color: var(--text-primary); margin-top: 2rem; margin-bottom: 1rem;">Frequently Asked Questions</h3>
+                
+                <div style="background: var(--input-bg); padding: 1rem 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                    <strong style="color: var(--text-primary);">Can I convert Excel files directly?</strong>
+                    <p style="margin: 0.5rem 0 0 0;">Not directly—Excel files (.xlsx) are binary. First export to CSV from Excel (File → Save As → CSV), then use this tool to convert CSV to JSON.</p>
+                </div>
+                
+                <div style="background: var(--input-bg); padding: 1rem 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                    <strong style="color: var(--text-primary);">What happens to nested JSON when converting to CSV?</strong>
+                    <p style="margin: 0.5rem 0 0 0;">Nested objects are flattened into columns with dot notation (e.g., user.address.city). Very deep nesting might not convert cleanly—CSV is inherently flat.</p>
+                </div>
+                
+                <div style="background: var(--input-bg); padding: 1rem 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                    <strong style="color: var(--text-primary);">Is my data safe?</strong>
+                    <p style="margin: 0.5rem 0 0 0;">Yes! All conversion happens in your browser using JavaScript. Your data never leaves your computer—no uploads, no server processing.</p>
+                </div>
+                
+                <div style="background: var(--input-bg); padding: 1rem 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                    <strong style="color: var(--text-primary);">Can I convert JSON arrays to CSV?</strong>
+                    <p style="margin: 0.5rem 0 0 0;">Yes! If your JSON is an array of objects with consistent keys, it converts perfectly to CSV rows and columns.</p>
+                </div>
+                
+                <div style="background: var(--input-bg); padding: 1rem 1.5rem; border-radius: 0.5rem; margin-bottom: 1rem;">
+                    <strong style="color: var(--text-primary);">What if my CSV has inconsistent columns?</strong>
+                    <p style="margin: 0.5rem 0 0 0;">Our tool handles missing fields gracefully by filling them with empty values or null in the JSON output.</p>
+                </div>
+                
+                <div style="background: var(--input-bg); padding: 1rem 1.5rem; border-radius: 0.5rem; margin-bottom: 0;">
+                    <strong style="color: var(--text-primary);">What's the maximum file size?</strong>
+                    <p style="margin: 0.5rem 0 0 0;">This tool handles files up to 10MB. For larger files, consider splitting them into chunks or using server-side processing tools.</p>
+                </div>
+                
+            </div>
+        </div>
+
         <!-- Related Tools Section -->
         <div class="tool-container" style="margin-top: 2rem;">
             <h2 style="font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary);">⚡ Related Tools</h2>
             <div class="button-grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
-                <a href="json-formatter.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
+                <a href="../index.html" class="btn btn-secondary" style="text-decoration: none; padding: 1rem; text-align: left;">
                     <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📋</div>
                     <strong>JSON Formatter</strong>
                     <p style="font-size: 0.85rem; opacity: 0.8; margin-top: 0.25rem;">Format and validate JSON</p>
@@ -524,28 +659,18 @@ Jane,25,Los Angeles"></textarea>
                 <h3>Resources</h3>
                 <ul>
                     <li><a href="../tools.html">All Tools</a></li>
-                    <li><a href="../about.html">About</a></li>
-                    <li><a href="../contact.html">Contact</a></li>
+                    <li><a href="../privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
             
             <div class="footer-column">
                 <h3>Popular Tools</h3>
                 <ul>
-                    <li><a href="../tools/stopwatch.html">Stopwatch</a></li>
-                    <li><a href="../tools/timer.html">Timer</a></li>
-                    <li><a href="../tools/json-formatter.html">JSON Formatter</a></li>
-                    <li><a href="../tools/csv-json.html">CSV to JSON</a></li>
-                    <li><a href="../tools/qr-code.html">QR Code Generator</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Services</h3>
-                <ul>
-                    <li><a href="../services/web-development.html">Web Development</a></li>
-                    <li><a href="../services/custom-tools.html">Custom Tools</a></li>
-                    <li><a href="../services/automation-ai.html">Automation & AI</a></li>
+                    <li><a href="stopwatch.html">Stopwatch</a></li>
+                    <li><a href="timer.html">Timer</a></li>
+                    <li><a href="../index.html">JSON Formatter</a></li>
+                    <li><a href="csv-json.html">CSV to JSON</a></li>
+                    <li><a href="qr-code.html">QR Code Generator</a></li>
                 </ul>
             </div>
             
@@ -553,7 +678,6 @@ Jane,25,Los Angeles"></textarea>
                 <h3>Legal</h3>
                 <ul>
                     <li><a href="../privacy.html">Privacy Policy</a></li>
-                    <li><a href="../contact.html">Terms & Conditions</a></li>
                 </ul>
             </div>
         </div>
